@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 翟开顺的个人博客
+title: 挡路人
 subtitle: 学有所思，思有所感
-description: 翟开顺的个人博客
-author: 翟开顺
-language: zh-CN
+description: the blog of dangluren
+author: zhaikaishun
+language: zh-Hans
 timezone:  
 
 # URL
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: hexo-theme-next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
