@@ -6,6 +6,7 @@ categories: [大数据,hadoop]
 author: kaishun
 id: 15
 permalink: hadoop-example-2
+blogexcerpt: 前言:单词去重在很多地方都会进行，其实这个就类似于wordcount。 需求说明:对指定的一个或者多个文本进行数据去重,需求输入一个或者多个文本，测试文本内容:输出的内容中单词没有重复,代码如下
 ---
 
 

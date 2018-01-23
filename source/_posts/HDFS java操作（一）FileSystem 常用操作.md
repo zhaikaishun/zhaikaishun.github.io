@@ -6,11 +6,12 @@ categories: [大数据,hdfs]
 author: kaishun
 id: 10
 permalink: hdfs-filesystem-1
+blogexcerpt: 本文主要讲解如何用java去操作hdfs，以下是我整理的常用的一些方法，本文主要介绍的是FileSystem，我把其集合到了一个工具类当中，下面的操作主要有 检查文件是否存在，创建文件，创建文件夹，复制（上传）本地文件到hdfs指定目录，复制（上传）本地文件夹到hdfs指定目录，从hdfs下载文件，移动hdfs上的文件或者文件夹，删除文件或者文件夹，HDFS到 HDFS的合并，列出所有DataNode的名字信息，检测是否是备用节点等操作
 ---
 
 # **简介:**
 本文主要讲解如何用java去操作hdfs，以下是我整理的常用的一些方法，本文主要介绍的是FileSystem，我把其集合到了一个工具类当中，下面的操作主要有 检查文件是否存在，创建文件，创建文件夹，复制（上传）本地文件到hdfs指定目录，复制（上传）本地文件夹到hdfs指定目录，从hdfs下载文件，移动hdfs上的文件或者文件夹，删除文件或者文件夹，HDFS 到 HDFS 的合并，列出所有DataNode的名字信息，检测是否是备用节点等操作
-![image](http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg)
+![hdfs-commands](http://or49tneld.bkt.clouddn.com/18-1-23/63075597.jpg)
 
 ```java
 package hdfs.tutorial;

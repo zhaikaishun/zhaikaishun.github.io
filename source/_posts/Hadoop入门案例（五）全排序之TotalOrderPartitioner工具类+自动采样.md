@@ -10,11 +10,11 @@ permalink: hadoop-example-5
 
 
 
-## **为什么用这种方法** 
+**为什么用这种方法** 
 我们之前的是自定义分区的，但是如果我们不知道数据的分布，手动分区不太容易，稍有不慎，会导致数据倾斜较大，这时候，我们应该使用采样点进行排序，本文使用的是 Hadoop内置的名为 TotalOrderPartitioner 的全排序，采样器使用的是 InputSampler.Sampler，关键解释已经存在于代码之中。 文章参考了    
 国外  http://blog.ditullio.fr/2016/01/04/hadoop-basics-total-order-sorting-mapreduce/#The_TotalOrderPartitioner    
 国内  http://www.cnblogs.com/one--way/p/5931308.html
-
+<!-- more -->
 ## **代码**
 ```
 package com.myhadoop.mapreduce.test;

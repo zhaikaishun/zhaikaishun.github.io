@@ -10,8 +10,8 @@ permalink: hdfs-operator-1
 # **1. 简介**  
 本文主要简单介绍一些常用的hdfs，包括复制文件，修改文件权限，查看文件内容，改变文件的所有权，创建目录，等HDFS文件操作  
 所有的Hadoop文件系统shell命令是由在bin / HDFS脚本调用  
-![这里写图片描述](http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg)
-
+![hdfs-commands](http://or49tneld.bkt.clouddn.com/18-1-23/63075597.jpg)
+<!-- more -->
 # **2. version  查看版本**
 **指令用法**
 ```

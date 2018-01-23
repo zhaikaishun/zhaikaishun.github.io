@@ -6,6 +6,7 @@ categories: [大数据,hadoop]
 author: kaishun
 id: 20
 permalink: hadoop-example-7
+blogexcerpt: 目的：找出数据集中的top k，二. 思路1. 最开始是快速排序或者归并排序2. 其次就是wordcount，然后再进行一遍mapReduce 3. 先排序，再取前k个2.2 在mapper阶段，找出本地的top k, 然后所有的独立的top k集合在reduce中运算
 ---
 
 

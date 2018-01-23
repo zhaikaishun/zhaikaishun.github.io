@@ -6,12 +6,13 @@ categories: [大数据,hdfs]
 author: kaishun
 id: 9
 permalink: hdfs-operator-4
+blogexcerpt: 关键字：hdfs命令,find,help,setfatter,truncate,usage 的用法,前言,在这个HDFS教程中，主要介绍了如何查看命令帮助，如何设置文件扩展属性，文件的截断 . 1. find, 找出能匹配上的所有文件, 不区分大小写，对大小写不敏感
 ---
 
 关键字：hdfs命令,find,help,setfatter,truncate,usage 的用法
 # **前言**
 在这个HDFS教程中，主要介绍了 如何查看命令帮助，如何设置文件扩展属性，文件的截断
-![hdfs命令](http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg)
+![hdfs-commands](http://or49tneld.bkt.clouddn.com/18-1-23/63075597.jpg)
 
 # **1. find**
 找出能匹配上的所有文件  

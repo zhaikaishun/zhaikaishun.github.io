@@ -13,7 +13,7 @@ timezone:
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 
-url: http://yoursite.com
+url: http://localhost:4000
 root: /
 ## permalink: :year/:month/:day/:title/
 permalink: :category/:title.html
@@ -79,7 +79,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-next
+theme: hexo-theme-xups
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

@@ -6,6 +6,7 @@ categories: [大数据,hadoop]
 author: kaishun
 id: 21
 permalink: hadoop-example-8
+blogexcerpt: 表关联:两个表关联，代码和以后再贴一起在github上贴出来，mapreduce表关联思路很简单。主要如下 思路： mapper阶段:(key，value) value中加一个字符，用来区别多个表 .reduce时 new 多个数组，例如我们是两个表关联，通过value中的字符，用来判断哪个是哪个表，分别放在不同的数组中，然后数组中进行笛卡尔乘积即可
 ---
 
 

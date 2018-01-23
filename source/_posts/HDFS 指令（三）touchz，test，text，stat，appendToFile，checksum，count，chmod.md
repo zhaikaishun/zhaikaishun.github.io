@@ -6,12 +6,13 @@ categories: [大数据,hdfs]
 author: kaishun
 id: 7
 permalink: hdfs-operator-3
+blogexcerpt: 关键词：hdfs命令，touchz，test，text，stat，appendToFile，checksum，count，chmod. 本章目的. 在这个Hadoop HDFS命令教程中，我们将学习剩下一些重要并且经常使用的HDFS命令，借助这些命令，我们将能够执行HDFS文件操作，如复制文件，更改文件权限，查看文件内容，更改文件所有权，创建目录等。要了解有关世界上最可靠的存储层的更多信息，请参阅HDFS入门指南。  
 ---
 
 关键词：hdfs命令，touchz，test，text，stat，appendToFile，checksum，count，chmod
 # **本章目的**
 在这个Hadoop HDFS命令教程中，我们将学习剩下一些重要并且经常使用的HDFS命令，借助这些命令，我们将能够执行HDFS文件操作，如复制文件，更改文件权限，查看文件内容，更改文件所有权，创建目录等。要了解有关世界上最可靠的存储层的更多信息，请参阅HDFS入门指南。  
-![image](http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg)
+![hdfs-commands](http://or49tneld.bkt.clouddn.com/18-1-23/63075597.jpg)
 
 # **1. touchz**  
 在指定目录创建一个新文件，如果文件存在，则创建失败

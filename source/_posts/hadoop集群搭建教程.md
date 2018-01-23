@@ -6,6 +6,7 @@ categories: [大数据,hadoop]
 author: kaishun
 id: 12
 permalink: hadoop-cluster-install
+toc: true
 ---
 
 hadoop的配置参看github https://github.com/zhaikaishun/hadoop_cluster  
@@ -15,6 +16,7 @@ hadoop的配置参看github https://github.com/zhaikaishun/hadoop_cluster
 集群环境介绍，Hadoop简介，网络配置，所需软件
 SSH免密码登陆配置，java环境安装，卸载原有的JDK， 安装jdk17， 配置java环境变量，验证是否成功，Hadoop集群安装，安装Hadoop，验证hadoop
 hadoop错误分析
+<!-- more -->
 # **集群环境介绍**
 ## **1.  Hadoop简介**  
 　Hadoop是Apache软件基金会旗下的一个开源分布式计算平台。以Hadoop分布式文件系统（HDFS，Hadoop Distributed Filesystem）和MapReduce（Google MapReduce的开源实现）为核心的Hadoop为用户提供了系统底层细节透明的分布式基础架构。

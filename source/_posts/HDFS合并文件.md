@@ -6,10 +6,13 @@ categories: [大数据,hdfs]
 author: kaishun
 id: 1
 permalink: hdfs-merge-file
+blogexcerpt: hdfs提供了一种FileUtil.copyMerge（）的方法， 注意下面的 false。 这个，如果改为true，就会删除这个目录
+toc: true
 ---
+![hdfs-commands](http://or49tneld.bkt.clouddn.com/18-1-23/63075597.jpg)  
 
 # **HDFS到HDFS的合并**
-hdfs提供了一种FileUtil.copyMerge（）的方法， 注意下面的 false 这个，如果改为true，就会删除这个目录
+hdfs提供了一种FileUtil.copyMerge（）的方法， 注意下面的 false 这个，如果改为true，就会删除这个目录，public void copyMerge(String folder, String file) {Path src = new Path(folder).......;
 ```java
 	public void copyMerge(String folder, String file) {
 

@@ -6,12 +6,13 @@ categories: [大数据,hdfs]
 author: kaishun
 id: 6
 permalink: hdfs-operator-2
+blogexcerpt: 本文主要学习hadoop hdfs, 从hdfs移动到本地，从本地移动到hdfs，tail查看最后，rm删除文件，expunge清空 trash,chown, 改变拥有者，setrep 改变文件副本数，chgrp改变所属组，，du,df磁盘占用情况
 ---
 
 # **目的**  
 本文主要学习hadoop hdfs 从hdfs移动到本地，从本地移动到hdfs，tail查看最后，rm删除文件，expunge清空 trash,chown 改变拥有者，setrep 改变文件副本数，chgrp改变所属组，，du,df磁盘占用情况
 
-![image](http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg)  
+![hdfs-commands](http://or49tneld.bkt.clouddn.com/18-1-23/63075597.jpg)
 
 # **moveFromLocal**  
 复制一份本地文件到hdfs，当成功后，删除本地文件

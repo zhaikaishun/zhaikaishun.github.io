@@ -6,6 +6,7 @@ categories: [大数据,hadoop]
 author: kaishun
 id: 19
 permalink: hadoop-example-6
+blogexcerpt: 对于二次排序，定义是在一个字段排好顺序的前提下，另外一个字段也进行排序。类似于sql中的order by多个字段，然而，网上大多数二次排序，对于partitioner都没有利用，因为网上的partition竟然都是是按照hash分组的，而且也没设置reduceTaskNum，这不能充分利用集群的资源，只有一个reduce，，即使如果有多个reduce，partition按照hash分区也不属于全排序，准确的说属于分组排序。我对网上的代码做了稍加修改，可以满足全排序的情况下，再进行二次排序。测试数和代码都参考自网上，具体哪个不记得了，反正网上都差不多测试数据
 ---
 
 

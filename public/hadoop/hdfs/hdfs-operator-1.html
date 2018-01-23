@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hdfs," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1. 简介本文主要简单介绍一些常用的hdfs，包括复制文件，修改文件权限，查看文件内容，改变文件的所有权，创建目录，等HDFS文件操作所有的Hadoop文件系统shell命令是由在bin / HDFS脚本调用 2. version  查看版本指令用法1hdfs version 例子1[hadoop@master ~]$ hdfs version 输出hadoop版本号  Hadoop 2.7.1">
+<meta name="keywords" content="hdfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDFS 指令（一）version，mkdir，ls，put，copyFromLocal，get，copyToLocal，cat，mv，cp">
+<meta property="og:url" content="http://yoursite.com/hadoop/hdfs/hdfs-operator-1.html">
+<meta property="og:site_name" content="挡路人">
+<meta property="og:description" content="1. 简介本文主要简单介绍一些常用的hdfs，包括复制文件，修改文件权限，查看文件内容，改变文件的所有权，创建目录，等HDFS文件操作所有的Hadoop文件系统shell命令是由在bin / HDFS脚本调用 2. version  查看版本指令用法1hdfs version 例子1[hadoop@master ~]$ hdfs version 输出hadoop版本号  Hadoop 2.7.1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg">
+<meta property="og:updated_time" content="2018-01-22T14:47:08.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HDFS 指令（一）version，mkdir，ls，put，copyFromLocal，get，copyToLocal，cat，mv，cp">
+<meta name="twitter:description" content="1. 简介本文主要简单介绍一些常用的hdfs，包括复制文件，修改文件权限，查看文件内容，改变文件的所有权，创建目录，等HDFS文件操作所有的Hadoop文件系统shell命令是由在bin / HDFS脚本调用 2. version  查看版本指令用法1hdfs version 例子1[hadoop@master ~]$ hdfs version 输出hadoop版本号  Hadoop 2.7.1">
+<meta name="twitter:image" content="http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/hadoop/hdfs/hdfs-operator-1.html"/>
+
+
+
+
+
+  <title>HDFS 指令（一）version，mkdir，ls，put，copyFromLocal，get，copyToLocal，cat，mv，cp | 挡路人</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+	<a href="https://github.com/zhaikaishun">
+	<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+	</div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">挡路人</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">学有所思，思有所感</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/hadoop/hdfs/hdfs-operator-1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhaikaishun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="挡路人">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HDFS 指令（一）version，mkdir，ls，put，copyFromLocal，get，copyToLocal，cat，mv，cp</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-17T23:13:21+08:00">
+                2016-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hadoop/hdfs/" itemprop="url" rel="index">
+                    <span itemprop="name">hdfs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a><strong>1. 简介</strong></h1><p>本文主要简单介绍一些常用的hdfs，包括复制文件，修改文件权限，查看文件内容，改变文件的所有权，创建目录，等HDFS文件操作<br>所有的Hadoop文件系统shell命令是由在bin / HDFS脚本调用<br><img src="http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg" alt="这里写图片描述"></p>
+<h1 id="2-version-查看版本"><a href="#2-version-查看版本" class="headerlink" title="2. version  查看版本"></a><strong>2. version  查看版本</strong></h1><p><strong>指令用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hdfs version</div></pre></td></tr></table></figure></p>
+<p>例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master ~]$ hdfs version</div></pre></td></tr></table></figure></p>
+<p>输出hadoop版本号  Hadoop 2.7.1</p>
+<h1 id="3-mkdir-创建目录"><a href="#3-mkdir-创建目录" class="headerlink" title="3. mkdir 创建目录"></a><strong>3. mkdir 创建目录</strong></h1><p><strong>指令用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir &lt;path&gt;</div></pre></td></tr></table></figure></p>
+<p>例子 , 创建testdir目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master ~]$ hdfs dfs -mkdir /testdir</div></pre></td></tr></table></figure></p>
+<h1 id="4-ls-查看目录文件"><a href="#4-ls-查看目录文件" class="headerlink" title="4. ls  查看目录文件"></a><strong>4. ls  查看目录文件</strong></h1><p>能显示指定路径的文件或文件夹列表，显示每个条目 的名称，权限，拥有者，大小和修改日期，路径。  </p>
+<p><strong>指令用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls &lt;path&gt;</div></pre></td></tr></table></figure></p>
+<p>例子，查看 /test目录 (我之前创建了test目录，并且放了一个文件在里面)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master ~]$ hdfs dfs -ls  /test</div></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Found 1 items</div><div class="line">-rw-r--r--   2 hadoop supergroup         14 2017-04-03 14:45 /test/slaves</div></pre></td></tr></table></figure></p>
+<h1 id="5-put-复制文件到hdfs"><a href="#5-put-复制文件到hdfs" class="headerlink" title="5. put 复制文件到hdfs"></a><strong>5. put 复制文件到hdfs</strong></h1><p>可以复制本地文件到hdfs，也可以复制hdfs上的文件，到hdfs的另外一个地方<br><strong>指令用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">put &lt;localSrc&gt; &lt;dest&gt;</div></pre></td></tr></table></figure></p>
+<p>例子，把hdfs.site文件放到 /test目录下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master hadoop]$ hdfs dfs -put /home/hadoop/MyCloudera/APP/hadoop/hadoop/etc/hadoop/hdfs-site.xml /test</div></pre></td></tr></table></figure></p>
+<h1 id="6-copyFromLocal"><a href="#6-copyFromLocal" class="headerlink" title="6. copyFromLocal"></a><strong>6. copyFromLocal</strong></h1><p>和put很像，但是指定了只能是从本地复制到hdfs<br><strong>指令用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">copyFromLocal &lt;localSrc&gt; &lt;dest&gt;</div></pre></td></tr></table></figure></p>
+<p>例子，把hadoop-env.sh复制到 /test中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master hadoop]$ hdfs dfs -copyFromLocal /home/hadoop/MyCloudera/APP/hadoop/hadoop/etc/hadoop/hadoop-env.sh  /test</div></pre></td></tr></table></figure></p>
+<h1 id="7-get-复制hdfs文件到本地"><a href="#7-get-复制hdfs文件到本地" class="headerlink" title="7. get 复制hdfs文件到本地"></a><strong>7. get 复制hdfs文件到本地</strong></h1><p>指令用法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get [-crc] &lt;src&gt; &lt;localDest&gt;</div></pre></td></tr></table></figure></p>
+<p>例如我将hdfs 上的文件拷贝到本地<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master Downloads]$ hdfs dfs -get /test/slaves /home/hadoop/Downloads/</div></pre></td></tr></table></figure></p>
+<h1 id="8-copyToLocal-复制hdfs文件到本地"><a href="#8-copyToLocal-复制hdfs文件到本地" class="headerlink" title="8. copyToLocal  复制hdfs文件到本地"></a><strong>8. copyToLocal  复制hdfs文件到本地</strong></h1><p>类似于get命令，唯一的区别是，在这个目的路径被限制到本地</p>
+<p><strong>指令用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">copyToLocal &lt;src&gt; &lt;localDest&gt;</div></pre></td></tr></table></figure></p>
+<p>例子, 复制slaves到本地,Downloads目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master Downloads]$ hdfs dfs -copyToLocal /test/slaves /home/hadoop/Downloads/</div></pre></td></tr></table></figure></p>
+<h1 id="9-cat-查看文件内容"><a href="#9-cat-查看文件内容" class="headerlink" title="9. cat 查看文件内容"></a><strong>9. cat 查看文件内容</strong></h1><p>将文件的内容输出到console或者stdout控制台<br><strong>指令用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat &lt;file-name&gt;</div></pre></td></tr></table></figure></p>
+<p>例如，查看/test/slaves文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master Downloads]$ hdfs dfs -cat /test/slaves</div></pre></td></tr></table></figure></p>
+<p>控制台打印<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">master</div><div class="line">node01</div></pre></td></tr></table></figure></p>
+<h1 id="10-mv-移动"><a href="#10-mv-移动" class="headerlink" title="10. mv 移动"></a><strong>10. mv 移动</strong></h1><p>类似于linux的mv命令，移动hdfs中的一个地方到另外一个地方<br><strong>指定用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mv &lt;src&gt; &lt;dest&gt;</div></pre></td></tr></table></figure></p>
+<p>把/test/slaves 复制到 /testdir<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[hadoop@master Downloads]$ hdfs dfs -mv /test/slaves /testdir</div></pre></td></tr></table></figure></p>
+<h1 id="11-copy复制"><a href="#11-copy复制" class="headerlink" title="11. copy复制"></a><strong>11. copy复制</strong></h1><p>类似于linux中的cp方法，复制hdfs中的一个文件到另外一个文件目录</p>
+<p><strong>指令用法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp &lt;src&gt; &lt;dest&gt;</div></pre></td></tr></table></figure></p>
+<p>例子</p>
+<pre><code>[hadoop@master Downloads]$ hdfs dfs -cp /testdir/slaves /test
+</code></pre><p>翻译原文：<a href="http://data-flair.training/blogs/top-hadoop-hdfs-commands-tutorial/" target="_blank" rel="external">http://data-flair.training/blogs/top-hadoop-hdfs-commands-tutorial/</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hdfs/" rel="tag"># hdfs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hadoop/hdfs/hdfs-ContentSummary-directory.html" rel="next" title="HDFS获取目录大小API">
+                <i class="fa fa-chevron-left"></i> HDFS获取目录大小API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/hadoop/hdfs/hdfs-operator-2.html" rel="prev" title="HDFS 指令（二）moveFromLocal，moveToLocal，tail，rm，expunge，chown，chgrp，setrep，du，df">
+                HDFS 指令（二）moveFromLocal，moveToLocal，tail，rm，expunge，chown，chgrp，setrep，du，df <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhaikaishun</p>
+              <p class="site-description motion-element" itemprop="description">the blog of dangluren</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/zhaikaishun" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="zhaikaishun@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/t1dmzks/" title="zhaikaishun blog" target="_blank">zhaikaishun blog</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-简介"><span class="nav-number">1.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-version-查看版本"><span class="nav-number">2.</span> <span class="nav-text">2. version  查看版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-mkdir-创建目录"><span class="nav-number">3.</span> <span class="nav-text">3. mkdir 创建目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-ls-查看目录文件"><span class="nav-number">4.</span> <span class="nav-text">4. ls  查看目录文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-put-复制文件到hdfs"><span class="nav-number">5.</span> <span class="nav-text">5. put 复制文件到hdfs</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-copyFromLocal"><span class="nav-number">6.</span> <span class="nav-text">6. copyFromLocal</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-get-复制hdfs文件到本地"><span class="nav-number">7.</span> <span class="nav-text">7. get 复制hdfs文件到本地</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-copyToLocal-复制hdfs文件到本地"><span class="nav-number">8.</span> <span class="nav-text">8. copyToLocal  复制hdfs文件到本地</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#9-cat-查看文件内容"><span class="nav-number">9.</span> <span class="nav-text">9. cat 查看文件内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#10-mv-移动"><span class="nav-number">10.</span> <span class="nav-text">10. mv 移动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#11-copy复制"><span class="nav-number">11.</span> <span class="nav-text">11. copy复制</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhaikaishun</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

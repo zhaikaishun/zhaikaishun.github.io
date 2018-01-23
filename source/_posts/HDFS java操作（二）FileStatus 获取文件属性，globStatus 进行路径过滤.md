@@ -6,12 +6,13 @@ categories: [大数据,hdfs]
 author: kaishun
 id: 11
 permalink: hdfs-filesystem-2
+blogexcerpt: 前言，本章主要记录了如何使用fileStatus来获取hdfs文件的一些属性，以及如何使用globStatus对路径进行过滤, filestatus 获取文件状态.globStatus 路径过滤等等 
 ---
 
 # 前言：  
-本章主要记录了如何使用fileStatus来获取hdfs文件的一些属性，以及如何使用globStatus对路径进行过滤
+本章主要记录了如何使用fileStatus来获取hdfs文件的一些属性，以及如何使用globStatus对路径进行过滤, 列出某个目录下所有文件的信息
 
-![image](http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg)
+![hdfs-commands](http://or49tneld.bkt.clouddn.com/18-1-23/63075597.jpg)
 
 # filestatus 获取文件状态
 

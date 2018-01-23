@@ -6,6 +6,7 @@ categories: [大数据,hadoop]
 author: kaishun
 id: 17
 permalink: hadoop-example-4
+blogexcerpt: 大量文本中有很多单词，需要对这些单词进行排序，排序规则按照字符进行排序。 和上一篇对数字进行排序是一样的 http://blog.csdn.net/T1DMzks/article/details/73028776 ， 只不过是自定义分区有点变化, 利用mapReduce中map到reduce端的shuffle进行排序，MapReduce只能保证各个分区内部有序，但不能保证全局有序，于是我还自定义了分区，在map后、shuffle之前，我先将小于c的放在0分区，c-f的放在1分区，其余的放在2分区，这样，首先保证了分区与分区之间是整体有序，然后各个分区进行各自的shuffle，使其分区内部有序。
 ---
 
 

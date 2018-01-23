@@ -6,6 +6,7 @@ categories: [大数据,hdfs]
 author: kaishun
 id: 2
 permalink: hdfs-ContentSummary-directory
+blogexcerpt: 获取文件大小，在命令行上，使用hadoop fs -du 命令可以，但是通过javaAPI怎么获取呢，最开始我想到的是递归的方法，这个方法很慢，后来发现FileSystem.getContentSummary的方法,最慢的一个方法--递归,使用FileSystem.getContentSummary方法,
 ---
 
 获取文件大小，在命令行上，使用hadoop fs -du 命令可以，但是通过javaAPI怎么获取呢，
