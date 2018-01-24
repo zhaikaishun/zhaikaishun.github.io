@@ -135,7 +135,7 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://localhost:4000/Linux/linux-crontab.html">
+    	<a href="http://dangluren.top/Linux/linux-crontab.html">
     		Linux  定时任务Crontab
     	</a>
     </h3>
@@ -160,24 +160,14 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <h1 id="Crontab-介绍"><a href="#Crontab-介绍" class="headerlink" title="Crontab 介绍"></a>Crontab 介绍</h1><p>Crontab是Linux系统中在固定时间执行某一个程序的工具，类似于Windows系统中的任务计划程序，在一些自动化的程序或者运维中，起到很大的作用，在很多数据处理方面，例如定时备份数据库，定时指定某些任务等等，用linux的Crontab往往比较方便，下面介绍如何安装与使用crontab</p>
-<h1 id="crontab安装"><a href="#crontab安装" class="headerlink" title="crontab安装"></a>crontab安装</h1><h2 id="检查是否已经安装，若已经安装那么不需要重复安装"><a href="#检查是否已经安装，若已经安装那么不需要重复安装" class="headerlink" title="检查是否已经安装，若已经安装那么不需要重复安装"></a>检查是否已经安装，若已经安装那么不需要重复安装</h2><p>先查看crontab有没有安装，有的话就不需要安装了,==root用户下==<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[root@master crontest]# service crond status  </div><div class="line">若没有出现status说明已经安装</div><div class="line">```  </div><div class="line">若没有安装，则按以下步骤进行</div><div class="line">## 安装</div><div class="line">```shell</div><div class="line">yum -y install vixie-cron</div><div class="line">yum -y install crontabs</div></pre></td></tr></table></figure></p>
-<p>说明：<br>vixie-cron 软件包是 cron 的主程序；<br>crontabs 软件包是用来安装、卸装、或列举用来驱动 cron 守护进程的表格的程序。  </p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">service crond start     //启动服务</div><div class="line">service crond stop      //关闭服务</div><div class="line">service crond restart   //重启服务</div><div class="line">service crond reload    //重新载入配置</div><div class="line">service crond status    //查看crontab服务状态</div><div class="line">chkconfig --level 345 crond on  //在CentOS系统中加入开机自动启动:</div></pre></td></tr></table></figure>
-<h2 id="添加定时器任务"><a href="#添加定时器任务" class="headerlink" title="添加定时器任务"></a>添加定时器任务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure>
-<p>如果是root用户，可以直接编写下面的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/crontab</div></pre></td></tr></table></figure></p>
-<h2 id="cron文件语法"><a href="#cron文件语法" class="headerlink" title="cron文件语法:"></a>cron文件语法:</h2><p>下面是打开/etc/crontab显示的内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">SHELL=/bin/bash</div><div class="line">PATH=/sbin:/bin:/usr/sbin:/usr/bin</div><div class="line">MAILTO=root</div><div class="line">HOME=/</div><div class="line"></div><div class="line"># For details see man 4 crontabs</div><div class="line"></div><div class="line"># Example of job definition:</div><div class="line"># .---------------- minute (0 - 59)</div><div class="line"># |  .------------- hour (0 - 23)</div><div class="line"># |  |  .---------- day of month (1 - 31)</div><div class="line"># |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...</div><div class="line"># |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat</div><div class="line"># |  |  |  |  |</div><div class="line"># *  *  *  *  * user-name command to be executed</div><div class="line"># */1 * * * * hadoop /home/hadoop/crontest/testcronmkdir.sh</div></pre></td></tr></table></figure></p>
-<p>分     时    日       月       周    用户  命令<br>注意最后一个是周，不是年！！！  ,/etc/crontab 需要指定用户, crontable -e就没有<br> 0-59   0-23   1-31   1-12     0-6     command     (取值范围,0表示周日一般一行对应一个任务)  </p>
-<p>下面有一些特殊符号需要记住，通过这些特殊符号，可以很灵活的设置定时任务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">“*”代表取值范围内的数字,</div><div class="line">“/”代表”每”,</div><div class="line">“-”代表从某个数字到某个数字,</div><div class="line">“,”分开几个离散的数字</div></pre></td></tr></table></figure></p>
-<p>如果把最后的命令换做成脚本，例如我上面的那个，记得必须得是.sh脚本，那就需要在最前面引入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div></pre></td></tr></table></figure></p>
-
+                Crontab是Linux系统中在固定时间执行某一个程序的工具，类似于Windows系统中的任务计划程序，在一些自动化的程序或者运维中，起到很大的作用，在很多数据处理方面，例如定时备份数据库，定时指定某些任务等等，用linux的Crontab往往比较方便，下面介绍如何安装与使用crontab
             
             <p class="more">
-                <a href="http://localhost:4000/Linux/linux-crontab.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/Linux/linux-crontab.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://localhost:4000/Linux/linux-crontab.html" title="Linux  定时任务Crontab">
+            <a href="http://dangluren.top/Linux/linux-crontab.html" title="Linux  定时任务Crontab">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
                 
@@ -197,7 +187,7 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://localhost:4000/Linux/linux-find-xargs.html">
+    	<a href="http://dangluren.top/Linux/linux-find-xargs.html">
     		Linux 常见的查找相关笔记
     	</a>
     </h3>
@@ -225,30 +215,13 @@
 <li>按照文件名查找<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find / -name httpd.conf　　#在根目录下查找文件httpd.conf，表示在整个硬盘查找</div><div class="line">find /etc -name httpd.conf　　#在/etc目录下文件httpd.conf</div><div class="line">find /etc -name &apos;*srm*&apos;　　#使用通配符*(0或者任意多个)。表示在/etc目录下查找文件名中含有字符串‘srm’的文件</div><div class="line">find . -name &apos;srm*&apos; 　　#表示当前目录下查找文件名开头是字符串‘srm’的文件</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol>
-<li><p>按照文件特征查找 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">find / -amin -10 　　# 查找在系统中最后10分钟访问的文件(access time)</div><div class="line">find / -atime -2　　 # 查找在系统中最后48小时访问的文件</div><div class="line">find / -empty 　　# 查找在系统中为空的文件或者文件夹</div><div class="line">find / -group cat 　　# 查找在系统中属于 group为cat的文件</div><div class="line">find / -mmin -5 　　# 查找在系统中最后5分钟里修改过的文件(modify time)</div><div class="line">find / -mtime -1 　　#查找在系统中最后24小时里修改过的文件</div><div class="line">find / -user fred 　　#查找在系统中属于fred这个用户的文件</div><div class="line">find / -size +10000c　　#查找出大于10000000字节的文件(c:字节，w:双字，k:KB，M:MB，G:GB)</div><div class="line">find / -size -1000k 　　#查找出小于1000KB的文件</div></pre></td></tr></table></figure>
-</li>
-<li><p>使用混合查找方式查找文件<br><strong>参数有： ！，-and(-a)，-or(-o)。</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">find /tmp -size +10000c -and -mtime +2 　　#在/tmp目录下查找大于10000字节并在最后2分钟内修改的文件</div><div class="line">find / -user fred -or -user george 　　#在/目录下查找用户是fred或者george的文件文件</div><div class="line">find /tmp ! -user panda　　#在/tmp目录中查找所有不属于panda用户的文件</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="查找包含字符串的文件"><a href="#查找包含字符串的文件" class="headerlink" title="查找包含字符串的文件"></a>查找包含字符串的文件</h2><p> grep  “string”  ./<em><br> “string”为待查找串  ， ./</em> 表示当前目录下所有文件<br><strong>二、grep命令</strong></p>
-<p>　　　  基本格式：find  expression</p>
-<p> 　　　 1.主要参数</p>
-<p>　　　　[options]主要参数：<br>　　　　－c：只输出匹配行的计数。<br>　　　　－i：不区分大小写<br>　　　　－h：查询多文件时不显示文件名。<br>　　　　－l：查询多文件时只输出包含匹配字符的文件名。<br>　　　　－n：显示匹配行及行号。<br>　　　　－s：不显示不存在或无匹配文本的错误信息。<br>　　　　－v：显示不包含匹配文本的所有行。  </p>
-<p>　　　　pattern正则表达式主要参数：<br>　　　　\： 忽略正则表达式中特殊字符的原有含义。<br>　　　　^：匹配正则表达式的开始行。<br>　　　　$: 匹配正则表达式的结束行。<br>　　　　\&lt;：从匹配正则表达 式的行开始。<br>　　　　>：到匹配正则表达式的行结束。<br>　　　　[ ]：单个字符，如[A]即A符合要求 。<br>　　　　[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。<br>　　　　.：所有的单个字符。<br>　　　　* ：有字符，长度可以为0。  </p>
-<p><strong>2.实例</strong>　   </p>
-<p>　　(1)grep ‘test’ d*　　#显示所有以d开头的文件中包含 test的行<br>　　(2)grep ‘test’ aa bb cc 　　 #显示在aa，bb，cc文件中包含test的行<br>　　(3)grep ‘[a-z]{5}’ aa   　　#显示所有包含每行字符串至少有5个连续小写字符的字符串的行<br>　　(4)grep magic /usr/src　　#显示/usr/src目录下的文件(不含子目录)包含magic的行<br>　　(5)grep -r magic   /usr/src　　#显示/usr/src目录下的文件(包含子目录)包含magic的行  </p>
-<p>　　(6)grep -w pattern files   ：只匹配整个单词，而不是字符串的一部分(如匹配’magic’，而不是’magical’)，  </p>
-
             
             <p class="more">
-                <a href="http://localhost:4000/Linux/linux-find-xargs.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/Linux/linux-find-xargs.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://localhost:4000/Linux/linux-find-xargs.html" title="Linux 常见的查找相关笔记">
+            <a href="http://dangluren.top/Linux/linux-find-xargs.html" title="Linux 常见的查找相关笔记">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
                 
@@ -307,17 +280,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -351,27 +319,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

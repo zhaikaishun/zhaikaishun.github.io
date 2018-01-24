@@ -128,7 +128,8 @@
     <div class="post-content">
 	<!-- Table of Contents -->
 
-        <h1 id="mapToPair"><a href="#mapToPair" class="headerlink" title="mapToPair"></a><strong>mapToPair</strong></h1><p>举例，在F:\sparktest\sample.txt 文件的内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">aa bb cc aa aa aa dd dd ee ee ee ee </div><div class="line">ff aa bb zks</div><div class="line">ee kks</div><div class="line">ee  zz zks</div><div class="line">``` </div><div class="line">将每一行的第一个单词作为键，1 作为value创建pairRDD</div><div class="line">**scala版本**  </div><div class="line">scala是没有mapToPair函数的，scala版本只需要map就可以了</div><div class="line">```scala</div><div class="line">    scala&gt; val lines = sc.textFile(&quot;F:\\sparktest\\sample.txt&quot;)</div><div class="line">    </div><div class="line">    scala&gt; val pairs = lines.map(x =&gt; (x.split(&quot;\\s+&quot;)(0), 1))</div><div class="line">    </div><div class="line">    scala&gt; pairs.collect</div><div class="line">    res0: Array[(String, Int)] = Array((aa,1), (ff,1), (ee,1), (ee,1))</div></pre></td></tr></table></figure></p>
+        <h1 id="mapToPair"><a href="#mapToPair" class="headerlink" title="mapToPair"></a><strong>mapToPair</strong></h1><p>举例，在F:\sparktest\sample.txt 文件的内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">aa bb cc aa aa aa dd dd ee ee ee ee </div><div class="line">ff aa bb zks</div><div class="line">ee kks</div><div class="line">ee  zz zks</div></pre></td></tr></table></figure></p>
+<p>将每一行的第一个单词作为键，1 作为value创建pairRDD<br><a id="more"></a><br><strong>scala版本</strong><br>scala是没有mapToPair函数的，scala版本只需要map就可以了<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">scala&gt; <span class="keyword">val</span> lines = sc.textFile(<span class="string">"F:\\sparktest\\sample.txt"</span>)</div><div class="line"></div><div class="line">scala&gt; <span class="keyword">val</span> pairs = lines.map(x =&gt; (x.split(<span class="string">"\\s+"</span>)(<span class="number">0</span>), <span class="number">1</span>))</div><div class="line"></div><div class="line">scala&gt; pairs.collect</div><div class="line">res0: <span class="type">Array</span>[(<span class="type">String</span>, <span class="type">Int</span>)] = <span class="type">Array</span>((aa,<span class="number">1</span>), (ff,<span class="number">1</span>), (ee,<span class="number">1</span>), (ee,<span class="number">1</span>))</div></pre></td></tr></table></figure></p>
 <p><strong>java版本</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">JavaRDD&lt;String&gt; lines = sc.textFile(<span class="string">"F:\\sparktest\\sample.txt"</span>);</div><div class="line"><span class="comment">//输入的是一个string的字符串，输出的是一个(String, Integer) 的map</span></div><div class="line">JavaPairRDD&lt;String, Integer&gt; pairRDD = lines.mapToPair(<span class="keyword">new</span> PairFunction&lt;String, String, Integer&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Tuple2&lt;String, Integer&gt; <span class="title">call</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Tuple2&lt;String, Integer&gt;(s.split(<span class="string">"\\s+"</span>)[<span class="number">0</span>], <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <h1 id="flatMapToPair"><a href="#flatMapToPair" class="headerlink" title="flatMapToPair"></a><strong>flatMapToPair</strong></h1><p>类似于xxx连接  mapToPair是一对一，一个元素返回一个元素，而flatMapToPair可以一个元素返回多个，相当于先flatMap,在mapToPair<br>例子: 将每一个单词都分成键为<br><strong>scala版本</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> lines = sc.textFile(<span class="string">"F:\\sparktest\\sample.txt"</span>)</div><div class="line"><span class="keyword">val</span> flatRDD = lines.flatMap(x =&gt; (x.split(<span class="string">"\\s+"</span>)))</div><div class="line"><span class="keyword">val</span> pairs = flatRDD.map(x=&gt;(x,<span class="number">1</span>))</div><div class="line"></div><div class="line">scala&gt; pairs.collect</div><div class="line">res1: <span class="type">Array</span>[(<span class="type">String</span>, <span class="type">Int</span>)] = <span class="type">Array</span>((aa,<span class="number">1</span>), (bb,<span class="number">1</span>), (cc,<span class="number">1</span>), (aa,<span class="number">1</span>), (aa,<span class="number">1</span>), (aa,<span class="number">1</span>), (dd,<span class="number">1</span>), (dd,<span class="number">1</span>), (ee,<span class="number">1</span>), (ee,<span class="number">1</span>), (ee,<span class="number">1</span>), (ee,<span class="number">1</span>), (ff,<span class="number">1</span>), (aa,<span class="number">1</span>), (bb,<span class="number">1</span>), (zks,<span class="number">1</span>), (ee,<span class="number">1</span>), (kks,<span class="number">1</span>), (ee,<span class="number">1</span>), (zz,<span class="number">1</span>), (zks,<span class="number">1</span>))</div></pre></td></tr></table></figure></p>
 <p><strong>java版本 spark2.0以下</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">JavaPairRDD&lt;String, Integer&gt; wordPairRDD = lines.flatMapToPair(<span class="keyword">new</span> PairFlatMapFunction&lt;String, String, Integer&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="keyword">public</span> Iterable&lt;Tuple2&lt;String, Integer&gt;&gt; call(String s) <span class="keyword">throws</span> Exception &#123;</div><div class="line">                ArrayList&lt;Tuple2&lt;String, Integer&gt;&gt; tpLists = <span class="keyword">new</span> ArrayList&lt;Tuple2&lt;String, Integer&gt;&gt;();</div><div class="line">                String[] split = s.split(<span class="string">"\\s+"</span>);</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;split.length ; i++) &#123;</div><div class="line">                    Tuple2 tp = <span class="keyword">new</span> Tuple2&lt;String,Integer&gt;(split[i], <span class="number">1</span>);</div><div class="line">                    tpLists.add(tp);</div><div class="line">                &#125;</div><div class="line">            <span class="keyword">return</span> tpLists;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">```  </div><div class="line">**java版本 spark2.0以上**</div><div class="line">主要是iterator和iteratable的一些区别</div><div class="line">```java</div><div class="line">        JavaPairRDD&lt;String, Integer&gt; wordPairRDD = lines.flatMapToPair(<span class="keyword">new</span> PairFlatMapFunction&lt;String, String, Integer&gt;() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="keyword">public</span> Iterator&lt;Tuple2&lt;String, Integer&gt;&gt; call(String s) <span class="keyword">throws</span> Exception &#123;</div><div class="line">                ArrayList&lt;Tuple2&lt;String, Integer&gt;&gt; tpLists = <span class="keyword">new</span> ArrayList&lt;Tuple2&lt;String, Integer&gt;&gt;();</div><div class="line">                String[] split = s.split(<span class="string">"\\s+"</span>);</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;split.length ; i++) &#123;</div><div class="line">                    Tuple2 tp = <span class="keyword">new</span> Tuple2&lt;String,Integer&gt;(split[i], <span class="number">1</span>);</div><div class="line">                    tpLists.add(tp);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> tpLists.iterator();</div><div class="line">            &#125;</div><div class="line">        &#125;);</div></pre></td></tr></table></figure></p>
@@ -308,17 +309,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -352,27 +348,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

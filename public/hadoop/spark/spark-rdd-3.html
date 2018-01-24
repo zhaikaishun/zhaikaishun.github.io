@@ -128,7 +128,7 @@
     <div class="post-content">
 	<!-- Table of Contents -->
 
-        <p><strong>spark伪集合</strong><br>尽管 RDD 本身不是严格意义上的集合，但它也支持许多数学上的集合操作，比如合并和相交操作, 下图展示了这四种操作<br><img src="http://i2.muimg.com/567571/cf473cf5e7f9f270.png" alt="RDD伪集合">  </p>
+        <p><strong>spark伪集合</strong><br>尽管 RDD 本身不是严格意义上的集合，但它也支持许多数学上的集合操作，比如合并和相交操作, 下图展示了这四种操作<br><img src="http://i2.muimg.com/567571/cf473cf5e7f9f270.png" alt="RDD伪集合"><br><a id="more"></a></p>
 <h1 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a><strong>distinct</strong></h1><p>distinct用于去重， 我们生成的RDD可能有重复的元素，使用distinct方法可以去掉重复的元素, 不过此方法涉及到混洗，操作开销很大<br><strong>scala版本</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">    scala&gt; <span class="keyword">var</span> <span class="type">RDD1</span> = sc.parallelize(<span class="type">List</span>(<span class="string">"aa"</span>,<span class="string">"aa"</span>,<span class="string">"bb"</span>,<span class="string">"cc"</span>,<span class="string">"dd"</span>))</div><div class="line">    </div><div class="line">    scala&gt; <span class="type">RDD1</span>.collect</div><div class="line">    res3: <span class="type">Array</span>[<span class="type">String</span>] = <span class="type">Array</span>(aa, aa, bb, cc, dd)</div><div class="line">    </div><div class="line">    scala&gt; <span class="keyword">var</span> distinctRDD = <span class="type">RDD1</span>.distinct</div><div class="line">    </div><div class="line">    scala&gt; distinctRDD.collect</div><div class="line">    res5: <span class="type">Array</span>[<span class="type">String</span>] = <span class="type">Array</span>(aa, dd, bb, cc)</div><div class="line">```  </div><div class="line">**java版本**</div><div class="line">```java</div><div class="line">    <span class="type">JavaRDD</span>&lt;<span class="type">String</span>&gt; <span class="type">RDD1</span> = sc.parallelize(<span class="type">Arrays</span>.asList(<span class="string">"aa"</span>, <span class="string">"aa"</span>, <span class="string">"bb"</span>, <span class="string">"cc"</span>, <span class="string">"dd"</span>));</div><div class="line">    <span class="type">JavaRDD</span>&lt;<span class="type">String</span>&gt; distinctRDD = <span class="type">RDD1</span>.distinct();</div><div class="line">    <span class="type">List</span>&lt;<span class="type">String</span>&gt; collect = distinctRDD.collect();</div><div class="line">    <span class="keyword">for</span> (<span class="type">String</span> str:collect) &#123;</div><div class="line">        <span class="type">System</span>.out.print(str+<span class="string">", "</span>);</div><div class="line">    &#125;</div><div class="line">---------输出----------</div><div class="line">aa, dd, bb, cc,</div><div class="line">```  </div><div class="line"># **union**  </div><div class="line">两个<span class="type">RDD</span>进行合并</div><div class="line">**scala版本**</div></pre></td></tr></table></figure></p>
 <pre><code>scala&gt; var RDD1 = sc.parallelize(List(&quot;aa&quot;,&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;))
 scala&gt; var RDD2 = sc.parallelize(List(&quot;aa&quot;,&quot;dd&quot;,&quot;ff&quot;))
@@ -360,17 +360,12 @@ res11: <span class="type">Array</span>[(<span class="type">String</span>, <span 
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -404,27 +399,17 @@ res11: <span class="type">Array</span>[(<span class="type">String</span>, <span 
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

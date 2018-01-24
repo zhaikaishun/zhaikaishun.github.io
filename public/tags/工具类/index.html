@@ -135,7 +135,7 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://localhost:4000/programme/jdbc-util.html">
+    	<a href="http://dangluren.top/programme/jdbc-util.html">
     		JDBC批量插入与更新工具类
     	</a>
     </h3>
@@ -162,138 +162,14 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <h2 id="批量添加"><a href="#批量添加" class="headerlink" title="批量添加"></a>批量添加</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">	public void UpdateFileData(String sSQL, ArrayList&lt;String[]&gt; objParams)</div><div class="line">	&#123;</div><div class="line">		GetConn();</div><div class="line">		int iResult = 0;</div><div class="line"></div><div class="line">		try</div><div class="line">		&#123;</div><div class="line">//			Statement ps = _CONN.createStatement();</div><div class="line">			PreparedStatement preparedStatement = _CONN.prepareStatement(sSQL);</div><div class="line">			for (int i = 0; i &lt;objParams.size() ; i++) &#123;</div><div class="line">				preparedStatement.setString(1,objParams.get(i)[0]);</div><div class="line">				preparedStatement.setString(2,objParams.get(i)[1]);</div><div class="line">				preparedStatement.setString(3,objParams.get(i)[2]);</div><div class="line">				preparedStatement.setLong(4,Integer.parseInt(objParams.get(i)[3]));</div><div class="line">				preparedStatement.setString(5,objParams.get(i)[4]);</div><div class="line">				preparedStatement.setString(6,objParams.get(i)[5]);</div><div class="line">				preparedStatement.addBatch();</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			preparedStatement.executeBatch();</div><div class="line">		&#125; catch (Exception ex)</div><div class="line">		&#123;</div><div class="line">			System.out.println(ex.getMessage());</div><div class="line"></div><div class="line">		&#125; finally</div><div class="line">		&#123;</div><div class="line">			CloseConn();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">``` </div><div class="line">## 参考网上的例子</div></pre></td></tr></table></figure>
-<p>import java.sql.Connection;<br>import java.sql.Date;<br>import java.sql.PreparedStatement;<br>import java.sql.Statement;</p>
-<p>import org.junit.Test;</p>
-<p>import xuezaipiao1.JDBC_Tools;<br>/**</p>
-<ul>
-<li>向Oracle 的 temp 数据表中添加  10万 条记录</li>
-<li>测试如何插入，用时最短<br>*/</li>
-</ul>
-<p>public class JDBCTest {</p>
-<pre><code>/**
- * 
- * 1.使用 Statement .
- * 测试用时:35535
- */
-@Test
-public void testBbatchStatement() {
-    Connection conn = null;
-    Statement statement = null;
-    String sql = null;
-    try {
-        conn = JDBC_Tools.getConnection();
-        JDBC_Tools.beginTx(conn);
-
-        long beginTime = System.currentTimeMillis();
-        statement = conn.createStatement();
-        for(int i = 0;i&lt;100000;i++){
-            sql = &quot;INSERT INTO temp values(&quot;+(i+1)
-                    +&quot;,&apos;name_&quot;+(i+1)+&quot;&apos;,&apos;13-6月 -15&apos;)&quot;;
-            statement.executeUpdate(sql);
-        }
-        long endTime = System.currentTimeMillis();
-        System.out.println(&quot;Time : &quot;+(endTime - beginTime));
-        JDBC_Tools.commit(conn);
-    } catch (Exception e) {
-        e.printStackTrace();
-        JDBC_Tools.rollback(conn);
-    }finally{
-        JDBC_Tools.relaseSource(conn, statement);
-    }
-}
-
-/**
- * 使用PreparedStatement 
- * 测试用时:9717
- */
-@Test
-public void testBbatchPreparedStatement() {
-    Connection conn = null;
-    PreparedStatement ps = null;
-    String sql = null;
-    try {
-        conn = JDBC_Tools.getConnection();
-        JDBC_Tools.beginTx(conn);
-
-        long beginTime = System.currentTimeMillis();
-        sql = &quot;INSERT INTO temp values(?,?,?)&quot;;
-        ps = conn.prepareStatement(sql);
-        Date date = new Date(new java.util.Date().getTime());
-        for(int i = 0;i&lt;100000;i++){
-            ps.setInt(1, i+1);
-            ps.setString(2, &quot;name_&quot;+i);
-            ps.setDate(3, date);
-            ps.executeUpdate();//9717
-        }
-        long endTime = System.currentTimeMillis();
-        System.out.println(&quot;Time : &quot;+(endTime - beginTime));
-        JDBC_Tools.commit(conn);
-    } catch (Exception e) {
-
-        e.printStackTrace();
-        JDBC_Tools.rollback(conn);
-    }finally{
-        JDBC_Tools.relaseSource(conn, ps);
-    }
-}
-
-/**
- * 测试用时 : 658
- */
-@Test
-public void testBbatch() {
-    Connection conn = null;
-    PreparedStatement ps = null;
-    String sql = null;
-    try {
-        conn = JDBC_Tools.getConnection();
-        JDBC_Tools.beginTx(conn);
-
-        long beginTime = System.currentTimeMillis();
-        sql = &quot;INSERT INTO temp values(?,?,?)&quot;;
-        ps = conn.prepareStatement(sql);
-        Date date = new Date(new java.util.Date().getTime());
-        for(int i = 0;i&lt;100000;i++){
-            ps.setInt(1, i+1);
-            ps.setString(2, &quot;name_&quot;+i);
-            ps.setDate(3, date);
-
-            //积攒SQL
-            ps.addBatch();
-
-            //当积攒到一定程度,就执行一次,并且清空记录
-            if((i+1) % 300==0){
-                ps.executeBatch();
-                ps.clearBatch();
-            }
-        }
-        //总条数不是批量值整数倍,则还需要在执行一次
-        if(100000 % 300 != 0){
-            ps.executeBatch();
-            ps.clearBatch();
-        }
-        long endTime = System.currentTimeMillis();
-        System.out.println(&quot;Time : &quot;+(endTime - beginTime));
-        JDBC_Tools.commit(conn);
-    } catch (Exception e) {
-
-        e.printStackTrace();
-        JDBC_Tools.rollback(conn);
-    }finally{
-        JDBC_Tools.relaseSource(conn, ps);
-    }
-}
-</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">## JDBC批量更新</div></pre></td></tr></table></figure></p>
-<p>public void insertInTransaction(String[] sqls) throws SQLException{<br>          try ( Connection conn = DriverManager.getConnection(url, user, pass)) {<br>              //关闭自动提交，即开启事务<br>              conn.setAutoCommit(false);<br>              try(Statement stmt = conn.createStatement()) {<br>                  for (String sql : sqls) {<br>                      stmt.addBatch(sql);<br>                  }<br>                  stmt.executeBatch();<br>                 //提交事务<br>                 conn.commit();<br>             } catch (SQLException e) {<br>                 conn.rollback();<br>                 System.out.println(“Exception:”);<br>                 System.out.println(e.getMessage());<br>             } finally {<br>                 conn.setAutoCommit(true);<br>             }<br>         }<br>     }<br>```</p>
-
+                关键字： 批量添加，JDBC批量更新，public void UpdateFileData(String sSQL, ArrayList<String[]> objParams)，JDBCTest
             
             <p class="more">
-                <a href="http://localhost:4000/programme/jdbc-util.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/programme/jdbc-util.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://localhost:4000/programme/jdbc-util.html" title="JDBC批量插入与更新工具类">
+            <a href="http://dangluren.top/programme/jdbc-util.html" title="JDBC批量插入与更新工具类">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
                 
@@ -352,17 +228,12 @@ public void testBbatch() {
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -396,27 +267,17 @@ public void testBbatch() {
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

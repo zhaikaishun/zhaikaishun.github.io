@@ -128,7 +128,7 @@
     <div class="post-content">
 	<!-- Table of Contents -->
 
-        <h1 id="combineByKey"><a href="#combineByKey" class="headerlink" title="combineByKey"></a><strong>combineByKey</strong></h1><p>聚合数据一般在集中式数据比较方便，如果涉及到分布式的数据集，该如何去实现呢。这里介绍一下combineByKey, 这个是各种聚集操作的鼻祖，应该要好好了解一下,<a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions" target="_blank" rel="external">参考scala API</a>  </p>
+        <h1 id="combineByKey"><a href="#combineByKey" class="headerlink" title="combineByKey"></a><strong>combineByKey</strong></h1><p>聚合数据一般在集中式数据比较方便，如果涉及到分布式的数据集，该如何去实现呢。这里介绍一下combineByKey, 这个是各种聚集操作的鼻祖，应该要好好了解一下,<a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions" target="_blank" rel="external">参考scala API</a><br><a id="more"></a></p>
 <h2 id="简要介绍"><a href="#简要介绍" class="headerlink" title="简要介绍"></a><strong>简要介绍</strong></h2><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">combineByKey</span></span>[<span class="type">C</span>](createCombiner: (<span class="type">V</span>) =&gt; <span class="type">C</span>,  </div><div class="line">                    mergeValue: (<span class="type">C</span>, <span class="type">V</span>) =&gt; <span class="type">C</span>,   </div><div class="line">                    mergeCombiners: (<span class="type">C</span>, <span class="type">C</span>) =&gt; <span class="type">C</span>): <span class="type">RD</span></div></pre></td></tr></table></figure>
 <ul>
 <li><strong>createCombiner</strong>: combineByKey() 会遍历分区中的所有元素，因此每个元素的键要么还没有遇到过，要么就<br>和之前的某个元素的键相同。如果这是一个新的元素， combineByKey() 会使用一个叫作 createCombiner() 的函数来创建<br>那个键对应的累加器的初始值</li>
@@ -321,17 +321,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -365,27 +360,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

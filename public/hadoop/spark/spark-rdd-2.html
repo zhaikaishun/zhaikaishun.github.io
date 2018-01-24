@@ -128,7 +128,7 @@
     <div class="post-content">
 	<!-- Table of Contents -->
 
-        <p>先来一张spark快速大数据中的图片进行快速入门，后面有更详细的例子<br><img src="http://i4.buimg.com/567571/9bf09aff04368678.png" alt=""></p>
+        <p>先来一张spark快速大数据中的图片进行快速入门，后面有更详细的例子<br><img src="http://i4.buimg.com/567571/9bf09aff04368678.png" alt="spark-map"><br><a id="more"></a></p>
 <h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a><strong>filter</strong></h2><p>举例，在F:\sparktest\sample.txt 文件的内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">aa bb cc aa aa aa dd dd ee ee ee ee </div><div class="line">ff aa bb zks</div><div class="line">ee kks</div><div class="line">ee  zz zks</div><div class="line">```  </div><div class="line">我要将包含zks的行的内容给找出来</div><div class="line">**scala版本**</div><div class="line">```scala</div><div class="line">    val lines = sc.textFile(&quot;F:\\sparktest\\sample.txt&quot;).filter(line=&gt;line.contains(&quot;zks&quot;))</div><div class="line">    //打印内容</div><div class="line">    lines.collect().foreach(println(_));</div><div class="line">-------------输出------------------</div><div class="line">ff aa bb zks</div><div class="line">ee  zz zks</div><div class="line"></div><div class="line">```  </div><div class="line">**java版本**</div><div class="line">```java</div><div class="line">        JavaRDD&lt;String&gt; lines = sc.textFile(&quot;F:\\sparktest\\sample.txt&quot;);</div><div class="line">        JavaRDD&lt;String&gt; zksRDD = lines.filter(new Function&lt;String, Boolean&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public Boolean call(String s) throws Exception &#123;</div><div class="line">                return s.contains(&quot;zks&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        //打印内容</div><div class="line">        List&lt;String&gt; zksCollect = zksRDD.collect();</div><div class="line">        for (String str:zksCollect) &#123;</div><div class="line">            System.out.println(str);</div><div class="line">        &#125;</div><div class="line">----------------输出-------------------</div><div class="line">ff aa bb zks</div><div class="line">ee  zz zks</div><div class="line">```  </div><div class="line"></div><div class="line">## **map**  </div><div class="line">map() 接收一个函数，把这个函数用于 RDD 中的每个元素，将函数的返回结果作为结果RDD编程 ｜ 31</div><div class="line">RDD 中对应元素的值 map是一对一的关系</div><div class="line">举例，在F:\sparktest\sample.txt 文件的内容如下</div></pre></td></tr></table></figure></p>
 <p>aa bb cc aa aa aa dd dd ee ee ee ee<br>ff aa bb zks<br>ee kks<br>ee  zz zks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">把每一行变成一个数组</div><div class="line">**scala版本**</div><div class="line">```scala</div><div class="line">//读取数据</div><div class="line">scala&gt; val lines = sc.textFile(&quot;F:\\sparktest\\sample.txt&quot;)</div><div class="line">//用map，对于每一行数据，按照空格分割成一个一个数组，然后返回的是一对一的关系</div><div class="line">scala&gt; var mapRDD = lines.map(line =&gt; line.split(&quot;\\s+&quot;))</div><div class="line">---------------输出-----------</div><div class="line">res0: Array[Array[String]] = Array(Array(aa, bb, cc, aa, aa, aa, dd, dd, ee, ee, ee, ee), Array(ff, aa, bb, zks), Array(ee, kks), Array(ee, zz, zks))</div><div class="line"></div><div class="line">//读取第一个元素</div><div class="line">scala&gt; mapRDD.first</div><div class="line">---输出----</div><div class="line">res1: Array[String] = Array(aa, bb, cc, aa, aa, aa, dd, dd, ee, ee, ee, ee)</div><div class="line">```  </div><div class="line">**java版本**</div><div class="line">```java</div><div class="line">        JavaRDD&lt;Iterable&lt;String&gt;&gt; mapRDD = lines.map(new Function&lt;String, Iterable&lt;String&gt;&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public Iterable&lt;String&gt; call(String s) throws Exception &#123;</div><div class="line">                String[] split = s.split(&quot;\\s+&quot;);</div><div class="line">                return Arrays.asList(split);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        //读取第一个元素</div><div class="line">        System.out.println(mapRDD.first());</div><div class="line">    ---------------输出-------------</div><div class="line">    [aa, bb, cc, aa, aa, aa, dd, dd, ee, ee, ee, ee]</div></pre></td></tr></table></figure></p>
 <h2 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a><strong>flatMap</strong></h2><p>有时候，我们希望对某个元素生成多个元素，实现该功能的操作叫作 flatMap()<br>faltMap的函数应用于每一个元素，对于每一个元素返回的是多个元素组成的迭代器(想要了解更多，请参考<a href="http://blog.csdn.net/t1dmzks/article/details/69858060#t23" target="_blank" rel="external">scala的flatMap和map用法</a>)<br>例如我们将数据切分为单词<br><strong>scala版本</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    scala&gt;  <span class="keyword">val</span> lines = sc.textFile(<span class="string">"F:\\sparktest\\sample.txt"</span>)</div><div class="line">    scala&gt; <span class="keyword">val</span> flatMapRDD = lines.flatMap(line=&gt;line.split(<span class="string">"\\s"</span>))</div><div class="line">    scala&gt; flatMapRDD.first() </div><div class="line">---输出----</div><div class="line">res0: <span class="type">String</span> = aa</div></pre></td></tr></table></figure></p>
@@ -310,17 +310,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -354,27 +349,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

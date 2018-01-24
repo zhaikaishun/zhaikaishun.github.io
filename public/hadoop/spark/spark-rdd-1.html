@@ -132,7 +132,7 @@
 <ul>
 <li>第一个参数一是一个 Seq集合</li>
 <li>第二个参数是分区数</li>
-<li>返回的是RDD[T]<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">scala&gt; sc.parallelize(<span class="type">List</span>(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>))</div><div class="line">res1: org.apache.spark.rdd.<span class="type">RDD</span>[<span class="type">String</span>] = <span class="type">ParallelCollectionRDD</span>[<span class="number">1</span>] at parallelize at &lt;console&gt;:<span class="number">22</span></div><div class="line">```  </div><div class="line"></div><div class="line">**java版本**     </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">parallelize</span></span>[<span class="type">T</span>](list : java.util.<span class="type">List</span>[<span class="type">T</span>], numSlices : scala.<span class="type">Int</span>) : org.apache.spark.api.java.<span class="type">JavaRDD</span>[<span class="type">T</span>] = &#123; <span class="comment">/* compiled code */</span> &#125; </div><div class="line">- 第一个参数是一个<span class="type">List</span>集合</div><div class="line">- 第二个参数是一个分区，可以默认</div><div class="line">- 返回的是一个<span class="type">JavaRDD</span>[<span class="type">T</span>]</div><div class="line">java版本只能接收<span class="type">List</span>的集合</div><div class="line">```java</div><div class="line"><span class="type">JavaRDD</span>&lt;<span class="type">String</span>&gt; javaStringRDD = sc.parallelize(<span class="type">Arrays</span>.asList(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>));</div><div class="line">```  </div><div class="line"></div><div class="line">## makeRDD</div><div class="line">只有scala版本的才有makeRDD  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeRDD</span></span>[<span class="type">T</span>](seq : scala.<span class="type">Seq</span>[<span class="type">T</span>], numSlices : scala.<span class="type">Int</span> = &#123; <span class="comment">/* compiled code */</span> &#125;)  </div><div class="line">跟parallelize类似</div><div class="line">```scala</div><div class="line">sc.makeRDD(<span class="type">List</span>(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>))</div></pre></td></tr></table></figure>
+<li>返回的是RDD[T]<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">scala&gt; sc.parallelize(<span class="type">List</span>(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>))</div><div class="line">res1: org.apache.spark.rdd.<span class="type">RDD</span>[<span class="type">String</span>] = <span class="type">ParallelCollectionRDD</span>[<span class="number">1</span>] at parallelize at &lt;console&gt;:<span class="number">22</span></div><div class="line">```  </div><div class="line">&lt;!-- more --&gt;</div><div class="line">**java版本**     </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">parallelize</span></span>[<span class="type">T</span>](list : java.util.<span class="type">List</span>[<span class="type">T</span>], numSlices : scala.<span class="type">Int</span>) : org.apache.spark.api.java.<span class="type">JavaRDD</span>[<span class="type">T</span>] = &#123; <span class="comment">/* compiled code */</span> &#125; </div><div class="line">- 第一个参数是一个<span class="type">List</span>集合</div><div class="line">- 第二个参数是一个分区，可以默认</div><div class="line">- 返回的是一个<span class="type">JavaRDD</span>[<span class="type">T</span>]</div><div class="line">java版本只能接收<span class="type">List</span>的集合</div><div class="line">```java</div><div class="line"><span class="type">JavaRDD</span>&lt;<span class="type">String</span>&gt; javaStringRDD = sc.parallelize(<span class="type">Arrays</span>.asList(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>));</div><div class="line">```  </div><div class="line"></div><div class="line">## makeRDD</div><div class="line">只有scala版本的才有makeRDD  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeRDD</span></span>[<span class="type">T</span>](seq : scala.<span class="type">Seq</span>[<span class="type">T</span>], numSlices : scala.<span class="type">Int</span> = &#123; <span class="comment">/* compiled code */</span> &#125;)  </div><div class="line">跟parallelize类似</div><div class="line">```scala</div><div class="line">sc.makeRDD(<span class="type">List</span>(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>))</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="textFile"><a href="#textFile" class="headerlink" title="textFile"></a>textFile</h2><p>调用SparkContext.textFile()方法，从外部存储中读取数据来创建 RDD<br>例如在我本地F:\dataexample\wordcount\input下有个sample.txt文件，文件随便写了点内容，我需要将里面的内容读取出来创建RDD<br><strong>scala版本</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lines = sc.textFile(<span class="string">"F:\\dataexample\\wordcount\\input"</span>)</div></pre></td></tr></table></figure></p>
@@ -314,17 +314,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -358,27 +353,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

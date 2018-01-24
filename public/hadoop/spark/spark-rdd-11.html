@@ -130,8 +130,7 @@
 
         <hr>
 <p>关键字:Spark算子、Spark函数、Spark RDD行动Action、Spark RDD存储操作、saveAsTextFile、saveAsSequenceFile、saveAsObjectFile,saveAsHadoopFile、saveAsHadoopDataset,saveAsNewAPIHadoopFile、saveAsNewAPIHadoopDataset </p>
-<hr>
-<h1 id="saveAsTextFile"><a href="#saveAsTextFile" class="headerlink" title="saveAsTextFile"></a><strong>saveAsTextFile</strong></h1><p>def saveAsTextFile(path: String): Unit</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h1 id="saveAsTextFile"><a href="#saveAsTextFile" class="headerlink" title="saveAsTextFile"></a><strong>saveAsTextFile</strong></h1><p>def saveAsTextFile(path: String): Unit</p>
 <p>def saveAsTextFile(path: String, codec: Class[_ &lt;: CompressionCodec]): Unit</p>
 <p>saveAsTextFile用于将RDD以文本文件的格式存储到文件系统中。</p>
 <p>codec参数可以指定压缩的类名。<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> rdd1 = sc.makeRDD(<span class="number">1</span> to <span class="number">10</span>,<span class="number">2</span>)</div><div class="line">scala&gt; rdd1.saveAsTextFile(<span class="string">"hdfs://cdh5/tmp/lxw1234.com/"</span>) <span class="comment">//保存到HDFS</span></div><div class="line">hadoop fs -ls /tmp/lxw1234.com</div><div class="line"><span class="type">Found</span> <span class="number">2</span> items</div><div class="line">-rw-r--r--   <span class="number">2</span> lxw1234 supergroup        <span class="number">0</span> <span class="number">2015</span><span class="number">-07</span><span class="number">-10</span> <span class="number">09</span>:<span class="number">15</span> /tmp/lxw1234.com/_SUCCESS</div><div class="line">-rw-r--r--   <span class="number">2</span> lxw1234 supergroup        <span class="number">21</span> <span class="number">2015</span><span class="number">-07</span><span class="number">-10</span> <span class="number">09</span>:<span class="number">15</span> /tmp/lxw1234.com/part<span class="number">-00000</span></div><div class="line"> </div><div class="line">hadoop fs -cat /tmp/lxw1234.com/part<span class="number">-00000</span></div></pre></td></tr></table></figure></p>
@@ -325,17 +324,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -369,27 +363,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

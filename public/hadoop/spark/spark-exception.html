@@ -128,8 +128,7 @@
     <div class="post-content">
 	<!-- Table of Contents -->
 
-        <h1 id="Lost-task-java-lang-NullPointerException"><a href="#Lost-task-java-lang-NullPointerException" class="headerlink" title="Lost task java.lang.NullPointerException"></a>Lost task java.lang.NullPointerException</h1><p>Exception in thread “main” org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost): java.lang.NullPointerException  </p>
-<p>我之前的代码类似于<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> Iterable&lt;Tuple2&lt;String, String&gt;&gt; call(String s) <span class="keyword">throws</span> Exception&#123;</div><div class="line">    Tuple2&lt;String, String&gt; tp=<span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">        <span class="keyword">if</span>(XXX)&#123;</div><div class="line">            tp=<span class="keyword">new</span> Tuple2&lt;&gt;(xxx, xxx);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(xxx)&#123;</div><div class="line">          tp=<span class="keyword">new</span> Tuple2&lt;&gt;(xxx, xxx);  </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Arrays.asList(tp);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">        e.printStackTrace();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;Tuple2&lt;String, String&gt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h1 id="Lost-task-java-lang-NullPointerException"><a href="#Lost-task-java-lang-NullPointerException" class="headerlink" title="Lost task java.lang.NullPointerException"></a>Lost task java.lang.NullPointerException</h1><p>Exception in thread “main” org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost): java.lang.NullPointerException<br><a id="more"></a><br>我之前的代码类似于<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> Iterable&lt;Tuple2&lt;String, String&gt;&gt; call(String s) <span class="keyword">throws</span> Exception&#123;</div><div class="line">    Tuple2&lt;String, String&gt; tp=<span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">        <span class="keyword">if</span>(XXX)&#123;</div><div class="line">            tp=<span class="keyword">new</span> Tuple2&lt;&gt;(xxx, xxx);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(xxx)&#123;</div><div class="line">          tp=<span class="keyword">new</span> Tuple2&lt;&gt;(xxx, xxx);  </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Arrays.asList(tp);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">        e.printStackTrace();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;Tuple2&lt;String, String&gt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>发现没有进入catch，那应该没问题啊，最后才发现，原来是tp对于两个if都不满足，return Arrays.asList(tp);中，tp为null，导致程序出错,<strong>更加要注意的是，对于容错，如果某条数据不要，千万不能返回null,可以返回类似于new ArrayList<tuple2<string, string="">&gt;();的list即可,返回null同样会报如上的错误</tuple2<string,></strong>  </p>
 <p><strong>特别是传过来的参数有可能导致空指针</strong><br>一个对象并不是空的，但是在spark的内部，却报空指针，即使实现了序列化也有可能出现这种情况，这种情况下，应该像mapreduce中的setUp函数,或者使用广播传进来，这两种方法该如何实现呢？  参考 TODO</p>
 <h2 id="Lost-task-java-lang-OutOfMemoryError-Java-heap-space"><a href="#Lost-task-java-lang-OutOfMemoryError-Java-heap-space" class="headerlink" title="Lost task java.lang.OutOfMemoryError: Java heap space"></a>Lost task java.lang.OutOfMemoryError: Java heap space</h2><p>java.lang.OutOfMemoryError: Java heap space<br>        at java.io.BufferedOutputStream.<init>(BufferedOutputStream.java:76)<br>        at java.io.BufferedOutputStream.<init>(BufferedOutputStream.java:59)<br>        at org.apache.spark.sql.execution.UnsafeRowSerializerInstance$$anon$2.<init>(UnsafeRowSerializer.scala:55)  </init></init></init></p>
@@ -334,17 +333,12 @@ at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.nextBlockOutputStream(DFS
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -378,27 +372,17 @@ at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.nextBlockOutputStream(DFS
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

@@ -135,7 +135,7 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://localhost:4000/programme/java-commons-math.html">
+    	<a href="http://dangluren.top/programme/java-commons-math.html">
     		java曲线拟合commons-math3-3.6.1函数
     	</a>
     </h3>
@@ -162,107 +162,14 @@
             
                 <p>需要的jar 包 commons-math3-3.6.1.jar<br><a href="http://commons.apache.org/proper/commons-math/download_math.cgi" target="_blank" rel="external">jar包下载地址
 </a><br><a href="http://commons.apache.org/proper/commons-math/javadocs/api-3.4/org/apache/commons/math3/fitting/WeightedObservedPoint.html" target="_blank" rel="external">API参考地址</a></p>
-<p>示例代码如下</p>
-<pre><code class="java"><span class="keyword">package</span> cn.mingtong.testdistance;
-
-<span class="keyword">import</span> org.apache.commons.math3.fitting.PolynomialCurveFitter;
-<span class="keyword">import</span> org.apache.commons.math3.fitting.WeightedObservedPoint;
-
-<span class="keyword">import</span> java.awt.*;
-<span class="keyword">import</span> java.util.ArrayList;
-<span class="keyword">import</span> java.util.Collection;
-
-<span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.toRadians;
-
-<span class="comment">/**</span>
-<span class="comment"> * Created by Administrator on 2017/3/24.</span>
-<span class="comment"> */</span>
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestInstance</span> </span>{
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
-
-
-
-        <span class="keyword">double</span>[] doubles = trainPolyFit(<span class="number">3</span>, <span class="number">10000</span>);
-
-        <span class="comment">//下面是测试</span>
-        System.out.println(<span class="string">"a1: "</span>+doubles[<span class="number">0</span>]);
-        System.out.println(<span class="string">"a2: "</span>+doubles[<span class="number">1</span>]);
-        System.out.println(<span class="string">"a3: "</span>+doubles[<span class="number">2</span>]);
-        System.out.println(<span class="string">"a4: "</span>+doubles[<span class="number">3</span>]);
-        System.out.println(<span class="string">"double的个数"</span>+doubles.length);
-        <span class="keyword">double</span> hehe = Math.cos(toRadians(<span class="number">40</span>));
-
-        <span class="keyword">double</span> fo = doubles[<span class="number">3</span>]*<span class="number">40</span>*<span class="number">40</span>*<span class="number">40</span>+doubles[<span class="number">2</span>]*<span class="number">40</span>*<span class="number">40</span>+doubles[<span class="number">1</span>]*<span class="number">40</span>+doubles[<span class="number">0</span>];
-        System.out.println(<span class="string">"hehe: "</span>+hehe);
-        System.out.println(<span class="string">"fo: "</span>+fo);
-        <span class="keyword">double</span> sub = hehe-fo;
-        System.out.println(sub*<span class="number">300000</span>);
-    }
-
-    <span class="comment">/**</span>
-<span class="comment">     *</span>
-<span class="comment">     * <span class="doctag">@param</span> degree 代表你用几阶去拟合</span>
-<span class="comment">     * <span class="doctag">@param</span> Length  把10 --60 分成多少个点去拟合，越大应该越精确</span>
-<span class="comment">     * <span class="doctag">@return</span></span>
-<span class="comment">     */</span>
-    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span>[] trainPolyFit(<span class="keyword">int</span> degree, <span class="keyword">int</span> Length){
-
-        PolynomialCurveFitter polynomialCurveFitter = PolynomialCurveFitter.create(degree);
-
-        <span class="keyword">double</span> minLat = <span class="number">10.0</span>; <span class="comment">//中国最低纬度</span>
-
-        <span class="keyword">double</span> maxLat = <span class="number">60.0</span>; <span class="comment">//中国最高纬度</span>
-
-        <span class="keyword">double</span> interv = (maxLat - minLat) / (<span class="keyword">double</span>)Length;
-
-        ArrayList weightedObservedPoints = <span class="keyword">new</span> ArrayList();
-
-        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Length; i++) {
-
-            WeightedObservedPoint weightedObservedPoint = <span class="keyword">new</span> WeightedObservedPoint(<span class="number">1</span>,  minLat + (<span class="keyword">double</span>)i*interv, Math.cos(toRadians(minLat + (<span class="keyword">double</span>)i*interv)));
-
-            weightedObservedPoints.add(weightedObservedPoint);
-
-        }
-
-        <span class="keyword">return</span> polynomialCurveFitter.fit(weightedObservedPoints);
-
-    }
-
-
-
-    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">distanceSimplifyMore</span><span class="params">(<span class="keyword">double</span> lat1, <span class="keyword">double</span> lng1, <span class="keyword">double</span> lat2, <span class="keyword">double</span> lng2, <span class="keyword">double</span>[] a)</span> </span>{
-
-        <span class="comment">//1) 计算三个参数</span>
-
-        <span class="keyword">double</span> dx = lng1 - lng2; <span class="comment">// 经度差值</span>
-
-        <span class="keyword">double</span> dy = lat1 - lat2; <span class="comment">// 纬度差值</span>
-
-        <span class="keyword">double</span> b = (lat1 + lat2) / <span class="number">2.0</span>; <span class="comment">// 平均纬度</span>
-
-        <span class="comment">//2) 计算东西方向距离和南北方向距离(单位：米)，东西距离采用三阶多项式</span>
-
-        <span class="keyword">double</span> Lx = (a[<span class="number">3</span>] * b*b*b  + a[<span class="number">2</span>]* b*b  +a[<span class="number">1</span>] * b + a[<span class="number">0</span>] ) * toRadians(dx) * <span class="number">6367000.0</span>; <span class="comment">// 东西距离</span>
-
-        <span class="keyword">double</span> Ly = <span class="number">6367000.0</span> * toRadians(dy); <span class="comment">// 南北距离</span>
-
-        <span class="comment">//3) 用平面的矩形对角距离公式计算总距离</span>
-
-        <span class="keyword">return</span> Math.sqrt(Lx * Lx + Ly * Ly);
-
-    }
-
-}
-</code></pre>
-
+<p>示例代码如下<br>
             
             <p class="more">
-                <a href="http://localhost:4000/programme/java-commons-math.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/programme/java-commons-math.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://localhost:4000/programme/java-commons-math.html" title="java曲线拟合commons-math3-3.6.1函数">
+            <a href="http://dangluren.top/programme/java-commons-math.html" title="java曲线拟合commons-math3-3.6.1函数">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
                 
@@ -321,17 +228,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -365,27 +267,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

@@ -130,7 +130,7 @@
 
         <p>前提：已经安装好了hadoop, 说明，这次安装的是spark-1.4.0-bin-hadoop2.6.tgz版本，这个版本是兼容hadoop2.7的hdfs和yarn的</p>
 <h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备:"></a>软件准备:</h2><p>scala-2.10.4 ,<a href="http://www.scala-lang.org/" target="_blank" rel="external">下载地址</a><br>spark-1.4.0-bin-hadoop2.6.tgz <a href="http://spark.apache.org/downloads.html" target="_blank" rel="external">下载地址</a></p>
-<h2 id="1-安装scala-2-10-4"><a href="#1-安装scala-2-10-4" class="headerlink" title="1. 安装scala-2.10.4"></a>1. 安装scala-2.10.4</h2><p>将下载好的scala-2.11.4.tgz复制到/usr/lib  </p>
+<h2 id="1-安装scala-2-10-4"><a href="#1-安装scala-2-10-4" class="headerlink" title="1. 安装scala-2.10.4"></a>1. 安装scala-2.10.4</h2><p>将下载好的scala-2.11.4.tgz复制到/usr/lib<br><a id="more"></a></p>
 <h3 id="1-1-解压安装包"><a href="#1-1-解压安装包" class="headerlink" title="1.1 解压安装包"></a>1.1 解压安装包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sudo tar -zxf scala-2.11.4.tgz</div><div class="line">```  </div><div class="line"><span class="meta">#</span>## 1.2 设置scala环境变量</div><div class="line">```shell</div><div class="line">sudo vim /etc/profile</div><div class="line">```   </div><div class="line">打开之后在末尾添加</div><div class="line">```shell</div><div class="line"><span class="meta">#</span>scale</div><div class="line">export SCALA_HOME=/usr/lib/scala-2.10.4</div><div class="line">export PATH=$SCALA_HOME/bin:$PATH</div></pre></td></tr></table></figure>
 <p>使配置生效<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
 <h3 id="1-3-检查是否安装成功"><a href="#1-3-检查是否安装成功" class="headerlink" title="1.3 检查是否安装成功"></a>1.3 检查是否安装成功</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scala -version</div></pre></td></tr></table></figure>
@@ -332,17 +332,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -376,27 +371,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

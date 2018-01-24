@@ -130,7 +130,7 @@
 
         <p>先从spark-learning中的一张图大致了解其功能<br><img src="http://i1.piimg.com/567571/1ccee438414f9c6f.png" alt=""></p>
 <h1 id="subtractByKey"><a href="#subtractByKey" class="headerlink" title="subtractByKey"></a><strong>subtractByKey</strong></h1><p><strong>函数定义</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def subtractByKey[W](other: RDD[(K, W)])(implicit arg0: ClassTag[W]): RDD[(K, V)]</div><div class="line"></div><div class="line">def subtractByKey[W](other: RDD[(K, W)], numPartitions: Int)(implicit arg0: ClassTag[W]): RDD[(K, V)]</div><div class="line"></div><div class="line">def subtractByKey[W](other: RDD[(K, W)], p: Partitioner)(implicit arg0: ClassTag[W]): RDD[(K, V)]</div></pre></td></tr></table></figure></p>
-<p>类似于subtrac，删掉 RDD 中键与 other RDD 中的键相同的元素</p>
+<p>类似于subtrac，删掉 RDD 中键与 other RDD 中的键相同的元素<br><a id="more"></a></p>
 <h1 id="join"><a href="#join" class="headerlink" title="join"></a><strong>join</strong></h1><p><strong>函数定义</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def join[W](other: RDD[(K, W)]): RDD[(K, (V, W))]</div><div class="line"></div><div class="line">def join[W](other: RDD[(K, W)], numPartitions: Int): RDD[(K, (V, W))]</div><div class="line"></div><div class="line">def join[W](other: RDD[(K, W)], partitioner: Partitioner): RDD[(K, (V, W))]</div></pre></td></tr></table></figure></p>
 <p>RDD1.join(RDD2)<br>可以把RDD1,RDD2中的相同的key给连接起来，类似于sql中的join操作  </p>
 <h1 id="leftOuterJoin"><a href="#leftOuterJoin" class="headerlink" title="leftOuterJoin"></a><strong>leftOuterJoin</strong></h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">def leftOuterJoin[W](other: RDD[(K, W)]): RDD[(K, (V, Option[W]))]</div><div class="line"></div><div class="line">def leftOuterJoin[W](other: RDD[(K, W)], numPartitions: Int): RDD[(K, (V, Option[W]))]</div><div class="line"></div><div class="line">def leftOuterJoin[W](other: RDD[(K, W)], partitioner: Partitioner): RDD[(K, (V, Option[W]))]</div><div class="line">```  </div><div class="line">直接看图即可 </div><div class="line">对两个 RDD 进行连接操作，类似于sql中的左外连接</div><div class="line"># **rightOuterJoin**</div><div class="line">对两个 RDD 进行连接操作，类似于sql中的右外连接，存在的话，value用的Some, 不存在用的None,具体的看上面的图和下面的代码即可  </div><div class="line"></div><div class="line"># **代码示例**</div><div class="line"></div><div class="line">**scala语言**</div><div class="line">```scala  </div><div class="line">    scala&gt; val rdd = sc.makeRDD(Array((<span class="number">1</span>,<span class="number">2</span>),(<span class="number">3</span>,<span class="number">4</span>),(<span class="number">3</span>,<span class="number">6</span>)))</div><div class="line">    scala&gt; val other = sc.makeRDD(Array((<span class="number">3</span>,<span class="number">9</span>)))</div><div class="line">    </div><div class="line">    scala&gt;  rdd.subtractByKey(other).collect()</div><div class="line">    res0: Array[(Int, Int)] = Array((<span class="number">1</span>,<span class="number">2</span>))</div><div class="line">    </div><div class="line">    scala&gt; rdd.join(other).collect()</div><div class="line">    res1: Array[(Int, (Int, Int))] = Array((<span class="number">3</span>,(<span class="number">4</span>,<span class="number">9</span>)), (<span class="number">3</span>,(<span class="number">6</span>,<span class="number">9</span>)))</div><div class="line">    </div><div class="line">    scala&gt; rdd.leftOuterJoin(other).collect()</div><div class="line">    res2: Array[(Int, (Int, Option[Int]))] = Array((<span class="number">1</span>,(<span class="number">2</span>,None)), (<span class="number">3</span>,(<span class="number">4</span>,Some(<span class="number">9</span>))), (<span class="number">3</span>,(<span class="number">6</span>,Some(<span class="number">9</span>))))</div><div class="line">    </div><div class="line">    scala&gt; rdd.rightOuterJoin(other).collect()</div><div class="line">    res3: Array[(Int, (Option[Int], Int))] = Array((<span class="number">3</span>,(Some(<span class="number">4</span>),<span class="number">9</span>)), (<span class="number">3</span>,(Some(<span class="number">6</span>),<span class="number">9</span>)))</div></pre></td></tr></table></figure>
@@ -311,17 +311,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -355,27 +350,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>

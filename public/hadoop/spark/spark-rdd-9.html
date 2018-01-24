@@ -128,7 +128,13 @@
     <div class="post-content">
 	<!-- Table of Contents -->
 
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#first"><span class="toc-number">1.</span> <span class="toc-text">first</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#take"><span class="toc-number">2.</span> <span class="toc-text">take</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#collect"><span class="toc-number">3.</span> <span class="toc-text">collect</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#count"><span class="toc-number">4.</span> <span class="toc-text">count</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#countByValue"><span class="toc-number">5.</span> <span class="toc-text">countByValue</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#reduce"><span class="toc-number">6.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#aggregate"><span class="toc-number">7.</span> <span class="toc-text">aggregate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#fold"><span class="toc-number">8.</span> <span class="toc-text">fold</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#top"><span class="toc-number">9.</span> <span class="toc-text">top</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#takeOrdered"><span class="toc-number">10.</span> <span class="toc-text">takeOrdered</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#foreach"><span class="toc-number">11.</span> <span class="toc-text">foreach</span></a></li></ol>
+  </div>
+
         <h1 id="first"><a href="#first" class="headerlink" title="first"></a><strong>first</strong></h1><p>返回第一个元素<br><strong>scala</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scala&gt; <span class="keyword">val</span> rdd = sc.parallelize(<span class="type">List</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>))</div><div class="line"></div><div class="line">scala&gt; rdd.first()</div><div class="line">res1: <span class="type">Int</span> = <span class="number">1</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p><strong>java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">JavaRDD&lt;Integer&gt; rdd = sc.parallelize(Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>));</div><div class="line">Integer first = rdd.first();</div></pre></td></tr></table></figure></p>
 <h1 id="take"><a href="#take" class="headerlink" title="take"></a><strong>take</strong></h1><p>rdd.take(n)返回第n个元素<br><strong>scala</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scala&gt; <span class="keyword">val</span> rdd = sc.parallelize(<span class="type">List</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>))</div><div class="line"></div><div class="line">scala&gt; rdd.take(<span class="number">2</span>)</div><div class="line">res3: <span class="type">Array</span>[<span class="type">Int</span>] = <span class="type">Array</span>(<span class="number">1</span>, <span class="number">2</span>)</div></pre></td></tr></table></figure></p>
 <p><strong>java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">JavaRDD&lt;Integer&gt; rdd = sc.parallelize(Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>));</div><div class="line">List&lt;Integer&gt; take = rdd.take(<span class="number">2</span>);</div></pre></td></tr></table></figure></p>
@@ -327,17 +333,12 @@
     </li>
     
     <li>
-        <a href="/categories/再测试sss/">再测试sss</a>
-        <span class="badge">(0)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
         <span class="badge">(1)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(1)</span>
     </li>
     
@@ -371,27 +372,17 @@
   
     <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
-    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
-  
-    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
-  
-    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
-  
-    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
-  
-    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
-    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
     <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
 </div>
     </section>
