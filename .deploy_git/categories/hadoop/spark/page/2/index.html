@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>`spark`分类下的文章 | 挡路人</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
+    <meta name="description" content="Jelon个人前端小站" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="挡路人" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+</head>
+
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
+
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">挡路人</span>
+                    <span class="description">学有所思，思有所感</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/categories/hadoop/spark/page/2/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/categories/hadoop/spark/page/2/index.html" class="item ">
+                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
+            </li>
+            
+            <li rel="/categories/hadoop/spark/page/2/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/categories/hadoop/spark/page/2/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `spark`分类下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://localhost:4000/hadoop/spark/spark-rdd-3.html">
+    		spark RDD算子（三） distinct，union，intersection，subtract，cartesian
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-03T13:25:21.000Z">2017-03-03</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p><strong>spark伪集合</strong><br>尽管 RDD 本身不是严格意义上的集合，但它也支持许多数学上的集合操作，比如合并和相交操作, 下图展示了这四种操作<br><img src="http://i2.muimg.com/567571/cf473cf5e7f9f270.png" alt="RDD伪集合">  </p>
+<h1 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a><strong>distinct</strong></h1><p>distinct用于去重， 我们生成的RDD可能有重复的元素，使用distinct方法可以去掉重复的元素, 不过此方法涉及到混洗，操作开销很大<br><strong>scala版本</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">    scala&gt; <span class="keyword">var</span> <span class="type">RDD1</span> = sc.parallelize(<span class="type">List</span>(<span class="string">"aa"</span>,<span class="string">"aa"</span>,<span class="string">"bb"</span>,<span class="string">"cc"</span>,<span class="string">"dd"</span>))</div><div class="line">    </div><div class="line">    scala&gt; <span class="type">RDD1</span>.collect</div><div class="line">    res3: <span class="type">Array</span>[<span class="type">String</span>] = <span class="type">Array</span>(aa, aa, bb, cc, dd)</div><div class="line">    </div><div class="line">    scala&gt; <span class="keyword">var</span> distinctRDD = <span class="type">RDD1</span>.distinct</div><div class="line">    </div><div class="line">    scala&gt; distinctRDD.collect</div><div class="line">    res5: <span class="type">Array</span>[<span class="type">String</span>] = <span class="type">Array</span>(aa, dd, bb, cc)</div><div class="line">```  </div><div class="line">**java版本**</div><div class="line">```java</div><div class="line">    <span class="type">JavaRDD</span>&lt;<span class="type">String</span>&gt; <span class="type">RDD1</span> = sc.parallelize(<span class="type">Arrays</span>.asList(<span class="string">"aa"</span>, <span class="string">"aa"</span>, <span class="string">"bb"</span>, <span class="string">"cc"</span>, <span class="string">"dd"</span>));</div><div class="line">    <span class="type">JavaRDD</span>&lt;<span class="type">String</span>&gt; distinctRDD = <span class="type">RDD1</span>.distinct();</div><div class="line">    <span class="type">List</span>&lt;<span class="type">String</span>&gt; collect = distinctRDD.collect();</div><div class="line">    <span class="keyword">for</span> (<span class="type">String</span> str:collect) &#123;</div><div class="line">        <span class="type">System</span>.out.print(str+<span class="string">", "</span>);</div><div class="line">    &#125;</div><div class="line">---------输出----------</div><div class="line">aa, dd, bb, cc,</div><div class="line">```  </div><div class="line"># **union**  </div><div class="line">两个<span class="type">RDD</span>进行合并</div><div class="line">**scala版本**</div></pre></td></tr></table></figure></p>
+<pre><code>scala&gt; var RDD1 = sc.parallelize(List(&quot;aa&quot;,&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;))
+scala&gt; var RDD2 = sc.parallelize(List(&quot;aa&quot;,&quot;dd&quot;,&quot;ff&quot;))
+
+scala&gt; RDD1.collect
+res6: Array[String] = Array(aa, aa, bb, cc, dd)
+
+scala&gt; RDD2.collect
+res7: Array[String] = Array(aa, dd, ff)
+
+scala&gt; RDD1.union(RDD2).collect
+res8: Array[String] = Array(aa, aa, bb, cc, dd, aa, dd, ff)
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">**java版本**</div><div class="line">```java</div><div class="line">    JavaRDD&lt;String&gt; RDD1 = sc.parallelize(Arrays.asList(&quot;aa&quot;, &quot;aa&quot;, &quot;bb&quot;, &quot;cc&quot;, &quot;dd&quot;));</div><div class="line">    JavaRDD&lt;String&gt; RDD2 = sc.parallelize(Arrays.asList(&quot;aa&quot;,&quot;dd&quot;,&quot;ff&quot;));</div><div class="line">    JavaRDD&lt;String&gt; unionRDD = RDD1.union(RDD2);</div><div class="line">    List&lt;String&gt; collect = unionRDD.collect();</div><div class="line">    for (String str:collect) &#123;</div><div class="line">        System.out.print(str+&quot;, &quot;);</div><div class="line">    &#125;</div><div class="line">-----------输出---------</div><div class="line">aa, aa, bb, cc, dd, aa, dd, ff,</div><div class="line">``` </div><div class="line"># **intersection**</div><div class="line">RDD1.intersection(RDD2)  返回两个RDD的交集，并且去重  </div><div class="line">intersection 需要混洗数据，比较浪费性能  </div><div class="line">**scala版本**  </div><div class="line">```scala</div><div class="line">    scala&gt; var RDD1 = sc.parallelize(List(&quot;aa&quot;,&quot;aa&quot;,&quot;bb&quot;,&quot;cc&quot;,&quot;dd&quot;))</div><div class="line">    scala&gt; var RDD2 = sc.parallelize(List(&quot;aa&quot;,&quot;dd&quot;,&quot;ff&quot;))</div><div class="line">    </div><div class="line">    scala&gt; RDD1.collect</div><div class="line">    res6: Array[String] = Array(aa, aa, bb, cc, dd)</div><div class="line">    </div><div class="line">    scala&gt; RDD2.collect</div><div class="line">    res7: Array[String] = Array(aa, dd, ff)</div><div class="line">    </div><div class="line">    scala&gt; var insertsectionRDD = RDD1.intersection(RDD2)</div><div class="line">    scala&gt; insertsectionRDD.collect</div><div class="line">    </div><div class="line">    res9: Array[String] = Array(aa, dd)</div><div class="line">```  </div><div class="line">**java版本**  </div><div class="line">```java</div><div class="line">    JavaRDD&lt;String&gt; RDD1 = sc.parallelize(Arrays.asList(&quot;aa&quot;, &quot;aa&quot;, &quot;bb&quot;, &quot;cc&quot;, &quot;dd&quot;));</div><div class="line">    JavaRDD&lt;String&gt; RDD2 = sc.parallelize(Arrays.asList(&quot;aa&quot;,&quot;dd&quot;,&quot;ff&quot;));</div><div class="line">    JavaRDD&lt;String&gt; intersectionRDD = RDD1.intersection(RDD2);</div><div class="line">    List&lt;String&gt; collect = intersectionRDD.collect();</div><div class="line">    for (String str:collect) &#123;</div><div class="line">        System.out.print(str+&quot; &quot;);</div><div class="line">    &#125;</div><div class="line">-------------输出-----------</div><div class="line">aa dd</div><div class="line">```  </div><div class="line"># **subtract**</div><div class="line">RDD1.subtract(RDD2),返回在RDD1中出现，但是不在RDD2中出现的元素，不去重  </div><div class="line">**scala版本**</div><div class="line">```scala</div><div class="line">    JavaRDD&lt;String&gt; RDD1 = sc.parallelize(Arrays.asList(&quot;aa&quot;, &quot;aa&quot;,&quot;bb&quot;, &quot;cc&quot;, &quot;dd&quot;));</div><div class="line">    </div><div class="line">    JavaRDD&lt;String&gt; RDD2 = sc.parallelize(Arrays.asList(&quot;aa&quot;,&quot;dd&quot;,&quot;ff&quot;));</div><div class="line">    </div><div class="line">    scala&gt; var substractRDD =RDD1.subtract(RDD2)</div><div class="line">    </div><div class="line">    scala&gt;  substractRDD.collect</div><div class="line">    res10: Array[String] = Array(bb, cc)</div></pre></td></tr></table></figure>
+<p><strong>java版本</strong></p>
+<pre><code class="java">    JavaRDD&lt;String&gt; RDD1 = sc.parallelize(Arrays.asList(<span class="string">"aa"</span>, <span class="string">"aa"</span>, <span class="string">"bb"</span>,<span class="string">"cc"</span>, <span class="string">"dd"</span>));
+    JavaRDD&lt;String&gt; RDD2 = sc.parallelize(Arrays.asList(<span class="string">"aa"</span>,<span class="string">"dd"</span>,<span class="string">"ff"</span>));
+    JavaRDD&lt;String&gt; subtractRDD = RDD1.subtract(RDD2);
+    List&lt;String&gt; collect = subtractRDD.collect();
+    <span class="keyword">for</span> (String str:collect) {
+        System.out.print(str+<span class="string">" "</span>);
+    }
+------------输出-----------------
+bb  cc
+</code></pre>
+<h1 id="cartesian"><a href="#cartesian" class="headerlink" title="cartesian"></a><strong>cartesian</strong></h1><p>RDD1.cartesian(RDD2)  返回RDD1和RDD2的笛卡儿积，这个开销非常大</p>
+<p><strong>scala版本</strong></p>
+<pre><code class="scala">scala&gt;  <span class="keyword">var</span> <span class="type">RDD1</span> = sc.parallelize(<span class="type">List</span>(<span class="string">"1"</span>,<span class="string">"2"</span>,<span class="string">"3"</span>))
+
+scala&gt; <span class="keyword">var</span> <span class="type">RDD2</span> = sc.parallelize(<span class="type">List</span>(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>))
+
+scala&gt; <span class="keyword">var</span> cartesianRDD = <span class="type">RDD1</span>.cartesian(<span class="type">RDD2</span>)
+
+scala&gt; cartesianRDD.collect
+res11: <span class="type">Array</span>[(<span class="type">String</span>, <span class="type">String</span>)] = <span class="type">Array</span>((<span class="number">1</span>,a), (<span class="number">1</span>,b), (<span class="number">1</span>,c), (<span class="number">2</span>,a), (<span class="number">2</span>,b), (<span class="number">2</span>,c), (<span class="number">3</span>,a), (<span class="number">3</span>,b), (<span class="number">3</span>,c))
+</code></pre>
+<p><strong>java版本</strong></p>
+<pre><code class="java">    JavaRDD&lt;String&gt; RDD1 = sc.parallelize(Arrays.asList(<span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>));
+    JavaRDD&lt;String&gt; RDD2 = sc.parallelize(Arrays.asList(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>));
+    JavaPairRDD&lt;String, String&gt; cartesian = RDD1.cartesian(RDD2);
+
+    List&lt;Tuple2&lt;String, String&gt;&gt; collect1 = cartesian.collect();
+    <span class="keyword">for</span> (Tuple2&lt;String, String&gt; tp:collect1) {
+        System.out.println(<span class="string">"("</span>+tp._1+<span class="string">" "</span>+tp._2+<span class="string">")"</span>);
+    }
+------------输出-----------------
+(<span class="number">1</span> a)
+(<span class="number">1</span> b)
+(<span class="number">1</span> c)
+(<span class="number">2</span> a)
+(<span class="number">2</span> b)
+(<span class="number">2</span> c)
+(<span class="number">3</span> a)
+(<span class="number">3</span> b)
+(<span class="number">3</span> c)
+</code></pre>
+
+            
+            <p class="more">
+                <a href="http://localhost:4000/hadoop/spark/spark-rdd-3.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://localhost:4000/hadoop/spark/spark-rdd-3.html" title="spark RDD算子（三） distinct，union，intersection，subtract，cartesian">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://localhost:4000/hadoop/spark/spark-rdd-2.html">
+    		spark RDD算子（二） filter,map ,flatMap
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-02T13:25:21.000Z">2017-03-02</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>先来一张spark快速大数据中的图片进行快速入门，后面有更详细的例子<br><img src="http://i4.buimg.com/567571/9bf09aff04368678.png" alt=""></p>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a><strong>filter</strong></h2><p>举例，在F:\sparktest\sample.txt 文件的内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">aa bb cc aa aa aa dd dd ee ee ee ee </div><div class="line">ff aa bb zks</div><div class="line">ee kks</div><div class="line">ee  zz zks</div><div class="line">```  </div><div class="line">我要将包含zks的行的内容给找出来</div><div class="line">**scala版本**</div><div class="line">```scala</div><div class="line">    val lines = sc.textFile(&quot;F:\\sparktest\\sample.txt&quot;).filter(line=&gt;line.contains(&quot;zks&quot;))</div><div class="line">    //打印内容</div><div class="line">    lines.collect().foreach(println(_));</div><div class="line">-------------输出------------------</div><div class="line">ff aa bb zks</div><div class="line">ee  zz zks</div><div class="line"></div><div class="line">```  </div><div class="line">**java版本**</div><div class="line">```java</div><div class="line">        JavaRDD&lt;String&gt; lines = sc.textFile(&quot;F:\\sparktest\\sample.txt&quot;);</div><div class="line">        JavaRDD&lt;String&gt; zksRDD = lines.filter(new Function&lt;String, Boolean&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public Boolean call(String s) throws Exception &#123;</div><div class="line">                return s.contains(&quot;zks&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        //打印内容</div><div class="line">        List&lt;String&gt; zksCollect = zksRDD.collect();</div><div class="line">        for (String str:zksCollect) &#123;</div><div class="line">            System.out.println(str);</div><div class="line">        &#125;</div><div class="line">----------------输出-------------------</div><div class="line">ff aa bb zks</div><div class="line">ee  zz zks</div><div class="line">```  </div><div class="line"></div><div class="line">## **map**  </div><div class="line">map() 接收一个函数，把这个函数用于 RDD 中的每个元素，将函数的返回结果作为结果RDD编程 ｜ 31</div><div class="line">RDD 中对应元素的值 map是一对一的关系</div><div class="line">举例，在F:\sparktest\sample.txt 文件的内容如下</div></pre></td></tr></table></figure></p>
+<p>aa bb cc aa aa aa dd dd ee ee ee ee<br>ff aa bb zks<br>ee kks<br>ee  zz zks<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">把每一行变成一个数组</div><div class="line">**scala版本**</div><div class="line">```scala</div><div class="line">//读取数据</div><div class="line">scala&gt; val lines = sc.textFile(&quot;F:\\sparktest\\sample.txt&quot;)</div><div class="line">//用map，对于每一行数据，按照空格分割成一个一个数组，然后返回的是一对一的关系</div><div class="line">scala&gt; var mapRDD = lines.map(line =&gt; line.split(&quot;\\s+&quot;))</div><div class="line">---------------输出-----------</div><div class="line">res0: Array[Array[String]] = Array(Array(aa, bb, cc, aa, aa, aa, dd, dd, ee, ee, ee, ee), Array(ff, aa, bb, zks), Array(ee, kks), Array(ee, zz, zks))</div><div class="line"></div><div class="line">//读取第一个元素</div><div class="line">scala&gt; mapRDD.first</div><div class="line">---输出----</div><div class="line">res1: Array[String] = Array(aa, bb, cc, aa, aa, aa, dd, dd, ee, ee, ee, ee)</div><div class="line">```  </div><div class="line">**java版本**</div><div class="line">```java</div><div class="line">        JavaRDD&lt;Iterable&lt;String&gt;&gt; mapRDD = lines.map(new Function&lt;String, Iterable&lt;String&gt;&gt;() &#123;</div><div class="line">            @Override</div><div class="line">            public Iterable&lt;String&gt; call(String s) throws Exception &#123;</div><div class="line">                String[] split = s.split(&quot;\\s+&quot;);</div><div class="line">                return Arrays.asList(split);</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        //读取第一个元素</div><div class="line">        System.out.println(mapRDD.first());</div><div class="line">    ---------------输出-------------</div><div class="line">    [aa, bb, cc, aa, aa, aa, dd, dd, ee, ee, ee, ee]</div></pre></td></tr></table></figure></p>
+<h2 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a><strong>flatMap</strong></h2><p>有时候，我们希望对某个元素生成多个元素，实现该功能的操作叫作 flatMap()<br>faltMap的函数应用于每一个元素，对于每一个元素返回的是多个元素组成的迭代器(想要了解更多，请参考<a href="http://blog.csdn.net/t1dmzks/article/details/69858060#t23" target="_blank" rel="external">scala的flatMap和map用法</a>)<br>例如我们将数据切分为单词<br><strong>scala版本</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">    scala&gt;  <span class="keyword">val</span> lines = sc.textFile(<span class="string">"F:\\sparktest\\sample.txt"</span>)</div><div class="line">    scala&gt; <span class="keyword">val</span> flatMapRDD = lines.flatMap(line=&gt;line.split(<span class="string">"\\s"</span>))</div><div class="line">    scala&gt; flatMapRDD.first() </div><div class="line">---输出----</div><div class="line">res0: <span class="type">String</span> = aa</div></pre></td></tr></table></figure></p>
+<p><strong>java版本，spark2.0以下</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">    JavaRDD&lt;String&gt; lines = sc.textFile(<span class="string">"F:\\sparktest\\sample.txt"</span>);</div><div class="line">    JavaRDD&lt;String&gt; flatMapRDD = lines.flatMap(<span class="keyword">new</span> FlatMapFunction&lt;String, String&gt;() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> Iterable&lt;String&gt; <span class="title">call</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">            String[] split = s.split(<span class="string">"\\s+"</span>);</div><div class="line">            <span class="keyword">return</span> Arrays.asList(split);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">//输出第一个</span></div><div class="line">    System.out.println(flatMapRDD.first());</div><div class="line">------------输出----------</div><div class="line">aa</div></pre></td></tr></table></figure></p>
+<p><strong>java版本，spark2.0以上</strong><br>spark2.0以上，对flatMap的方法有所修改，就是flatMap中的Iterator和Iteratable的小区别<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">JavaRDD&lt;String&gt; flatMapRDD = lines.flatMap(<span class="keyword">new</span> FlatMapFunction&lt;String, String&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Iterator&lt;String&gt; <span class="title">call</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        String[] split = s.split(<span class="string">"\\s+"</span>);</div><div class="line">        <span class="keyword">return</span> Arrays.asList(split).iterator();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://localhost:4000/hadoop/spark/spark-rdd-2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://localhost:4000/hadoop/spark/spark-rdd-2.html" title="spark RDD算子（二） filter,map ,flatMap">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://localhost:4000/hadoop/spark/spark-rdd-1.html">
+    		spark RDD算子（一）  parallelize，makeRDD，textFile
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-01T13:25:21.000Z">2017-03-01</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="parallelize"><a href="#parallelize" class="headerlink" title="parallelize"></a>parallelize</h2><p>调用SparkContext 的 parallelize()，将一个存在的集合，变成一个RDD，这种方式试用于学习spark和做一些spark的测试<br><strong>scala版本</strong><br>def parallelize<a href="seq: Seq[T], numSlices: Int = defaultParallelism" target="_blank" rel="external">T</a>(implicit arg0: ClassTag[T]): RDD[T]  </p>
+<ul>
+<li>第一个参数一是一个 Seq集合</li>
+<li>第二个参数是分区数</li>
+<li>返回的是RDD[T]<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">scala&gt; sc.parallelize(<span class="type">List</span>(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>))</div><div class="line">res1: org.apache.spark.rdd.<span class="type">RDD</span>[<span class="type">String</span>] = <span class="type">ParallelCollectionRDD</span>[<span class="number">1</span>] at parallelize at &lt;console&gt;:<span class="number">22</span></div><div class="line">```  </div><div class="line"></div><div class="line">**java版本**     </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">parallelize</span></span>[<span class="type">T</span>](list : java.util.<span class="type">List</span>[<span class="type">T</span>], numSlices : scala.<span class="type">Int</span>) : org.apache.spark.api.java.<span class="type">JavaRDD</span>[<span class="type">T</span>] = &#123; <span class="comment">/* compiled code */</span> &#125; </div><div class="line">- 第一个参数是一个<span class="type">List</span>集合</div><div class="line">- 第二个参数是一个分区，可以默认</div><div class="line">- 返回的是一个<span class="type">JavaRDD</span>[<span class="type">T</span>]</div><div class="line">java版本只能接收<span class="type">List</span>的集合</div><div class="line">```java</div><div class="line"><span class="type">JavaRDD</span>&lt;<span class="type">String</span>&gt; javaStringRDD = sc.parallelize(<span class="type">Arrays</span>.asList(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>));</div><div class="line">```  </div><div class="line"></div><div class="line">## makeRDD</div><div class="line">只有scala版本的才有makeRDD  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeRDD</span></span>[<span class="type">T</span>](seq : scala.<span class="type">Seq</span>[<span class="type">T</span>], numSlices : scala.<span class="type">Int</span> = &#123; <span class="comment">/* compiled code */</span> &#125;)  </div><div class="line">跟parallelize类似</div><div class="line">```scala</div><div class="line">sc.makeRDD(<span class="type">List</span>(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="textFile"><a href="#textFile" class="headerlink" title="textFile"></a>textFile</h2><p>调用SparkContext.textFile()方法，从外部存储中读取数据来创建 RDD<br>例如在我本地F:\dataexample\wordcount\input下有个sample.txt文件，文件随便写了点内容，我需要将里面的内容读取出来创建RDD<br><strong>scala版本</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lines = sc.textFile(<span class="string">"F:\\dataexample\\wordcount\\input"</span>)</div></pre></td></tr></table></figure></p>
+<p><strong>java版本</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> JavaRDD&lt;String&gt; lines = sc.textFile(<span class="string">"F:\\dataexample\\wordcount\\input"</span>);</div><div class="line">```  </div><div class="line">注: textFile支持分区，支持模式匹配，例如把F:\\dataexample\\wordcount\\目录下inp开头的给转换成RDD</div><div class="line">```scala</div><div class="line">var lines = sc.textFile(<span class="string">"F:\\dataexample\\wordcount\\inp*"</span>)</div></pre></td></tr></table></figure></p>
+<p>多个路径可以使用逗号分隔，例如<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lines = sc.textFile(<span class="string">"dir1,dir2"</span>,<span class="number">3</span>)</div></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://localhost:4000/hadoop/spark/spark-rdd-1.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://localhost:4000/hadoop/spark/spark-rdd-1.html" title="spark RDD算子（一）  parallelize，makeRDD，textFile">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://localhost:4000/hadoop/spark/spark-v1-v2.html">
+    		spark 从1.x 转到2.x，编写程序的的一些区别
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-02-05T13:25:21.000Z">2017-02-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>spark 2.x 版本相对于1.x版本，有挺多地方的修改，一是类似于flatMapRDD 中 iteator iteatable之类的区别<br>2是类似于dataset的一些问题</p>
+<p>下面是2.x版本的iteatable和iteartor之类的区别，只举例了两个，其实只要和iteartor有关的都有了修改</p>
+<h2 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">JavaRDD&lt;String&gt; flatMapRDD = lines.flatMap(<span class="keyword">new</span> FlatMapFunction&lt;String, String&gt;() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Iterator&lt;String&gt; <span class="title">call</span><span class="params">(String s)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        String[] split = s.split(<span class="string">"\\s+"</span>);</div><div class="line">        <span class="keyword">return</span> Arrays.asList(split).iterator();</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="flatMapToPair-java"><a href="#flatMapToPair-java" class="headerlink" title="flatMapToPair  java"></a>flatMapToPair  java</h2><pre><code class="java">JavaPairRDD&lt;String, Integer&gt; wordPairRDD = lines.flatMapToPair(<span class="keyword">new</span> PairFlatMapFunction&lt;String, String, Integer&gt;() {
+    <span class="meta">@Override</span>
+    <span class="keyword">public</span> Iterator&lt;Tuple2&lt;String, Integer&gt;&gt; call(String s) <span class="keyword">throws</span> Exception {
+        ArrayList&lt;Tuple2&lt;String, Integer&gt;&gt; tpLists = <span class="keyword">new</span> ArrayList&lt;Tuple2&lt;String, Integer&gt;&gt;();
+        String[] split = s.split(<span class="string">"\\s+"</span>);
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;split.length ; i++) {
+            Tuple2 tp = <span class="keyword">new</span> Tuple2&lt;String,Integer&gt;(split[i], <span class="number">1</span>);
+            tpLists.add(tp);
+        }
+        <span class="keyword">return</span> tpLists.iterator();
+    }
+});
+</code></pre>
+<h2 id="spark中初始化driver的区别"><a href="#spark中初始化driver的区别" class="headerlink" title="spark中初始化driver的区别"></a>spark中初始化driver的区别</h2><p>spark2.0中，可以使用session来创建一个sparkContext作为一个新的入口，具体参考例子就可以了</p>
+<h2 id="jar包的区别"><a href="#jar包的区别" class="headerlink" title="jar包的区别"></a>jar包的区别</h2><p>spark2.x版本中不再有spark-assembly-xxx jar包，jar包全都在.jars 中 </p>
+<h2 id="scala的版本"><a href="#scala的版本" class="headerlink" title="scala的版本"></a>scala的版本</h2><p>spark2.x版本的，对scala的版本最低要求是2.11</p>
+<h2 id="下面是sql中的区别"><a href="#下面是sql中的区别" class="headerlink" title="下面是sql中的区别"></a>下面是sql中的区别</h2><p>2.x 版本的 sparkSql中<br>1.x 版本的 DataFrame与Dataset 统一化了，只剩下DataSet了，具体的也可以直接参看官方给的spark sql 的例子即可<br>具体 todo</p>
+
+            
+            <p class="more">
+                <a href="http://localhost:4000/hadoop/spark/spark-v1-v2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://localhost:4000/hadoop/spark/spark-v1-v2.html" title="spark 从1.x 转到2.x，编写程序的的一些区别">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://localhost:4000/hadoop/spark/spark-exception.html">
+    		spark lost task 异常笔记
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-02-05T13:25:21.000Z">2017-02-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Lost-task-java-lang-NullPointerException"><a href="#Lost-task-java-lang-NullPointerException" class="headerlink" title="Lost task java.lang.NullPointerException"></a>Lost task java.lang.NullPointerException</h1><p>Exception in thread “main” org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost): java.lang.NullPointerException  </p>
+<p>我之前的代码类似于<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> Iterable&lt;Tuple2&lt;String, String&gt;&gt; call(String s) <span class="keyword">throws</span> Exception&#123;</div><div class="line">    Tuple2&lt;String, String&gt; tp=<span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span>&#123;</div><div class="line">        <span class="keyword">if</span>(XXX)&#123;</div><div class="line">            tp=<span class="keyword">new</span> Tuple2&lt;&gt;(xxx, xxx);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(xxx)&#123;</div><div class="line">          tp=<span class="keyword">new</span> Tuple2&lt;&gt;(xxx, xxx);  </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> Arrays.asList(tp);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(Exception e)&#123;</div><div class="line">        e.printStackTrace();</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;Tuple2&lt;String, String&gt;&gt;();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>发现没有进入catch，那应该没问题啊，最后才发现，原来是tp对于两个if都不满足，return Arrays.asList(tp);中，tp为null，导致程序出错,<strong>更加要注意的是，对于容错，如果某条数据不要，千万不能返回null,可以返回类似于new ArrayList<tuple2<string, string="">&gt;();的list即可,返回null同样会报如上的错误</tuple2<string,></strong>  </p>
+<p><strong>特别是传过来的参数有可能导致空指针</strong><br>一个对象并不是空的，但是在spark的内部，却报空指针，即使实现了序列化也有可能出现这种情况，这种情况下，应该像mapreduce中的setUp函数,或者使用广播传进来，这两种方法该如何实现呢？  参考 TODO</p>
+<h2 id="Lost-task-java-lang-OutOfMemoryError-Java-heap-space"><a href="#Lost-task-java-lang-OutOfMemoryError-Java-heap-space" class="headerlink" title="Lost task java.lang.OutOfMemoryError: Java heap space"></a>Lost task java.lang.OutOfMemoryError: Java heap space</h2><p>java.lang.OutOfMemoryError: Java heap space<br>        at java.io.BufferedOutputStream.<init>(BufferedOutputStream.java:76)<br>        at java.io.BufferedOutputStream.<init>(BufferedOutputStream.java:59)<br>        at org.apache.spark.sql.execution.UnsafeRowSerializerInstance$$anon$2.<init>(UnsafeRowSerializer.scala:55)  </init></init></init></p>
+<p>解决办法：</p>
+<pre><code>由于我们在执行Spark任务是，读取所需要的原数据，数据量太大，导致在Worker上面分配的任务执行数据时所需要的内存不够，直接导致内存溢出了，所以我们有必要增加Worker上面的内存来满足程序运行需要。
+</code></pre><p>在Spark Streaming或者其他spark任务中，会遇到在Spark中常见的问题，典型如Executor Lost 相关的问题(shuffle fetch 失败，Task失败重试等)。这就意味着发生了内存不足或者数据倾斜的问题。这个目前需要考虑如下几个点以获得解决方案：</p>
+<p>A、相同资源下，增加partition数可以减少内存问题。 原因如下：通过增加partition数，每个task要处理的数据少了，同一时间内，所有正在运行的task要处理的数量少了很多，所有Executor占用的内存也变小了。这可以缓解数据倾斜以及内存不足的压力。</p>
+<p>B、关注shuffle read 阶段的并行数。例如reduce,group 之类的函数，其实他们都有第二个参数，并行度(partition数)，只是大家一般都不设置。不过出了问题再设置一下，也不错。</p>
+<p>C、给一个Executor 核数设置的太多，也就意味着同一时刻，在该Executor 的内存压力会更大，GC也会更频繁。我一般会控制在3个左右。然后通过提高Executor数量来保持资源的总量不变。  </p>
+<h1 id="Lost-task-FileNotFoundException"><a href="#Lost-task-FileNotFoundException" class="headerlink" title="Lost task FileNotFoundException"></a>Lost task FileNotFoundException</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">WARN TaskSetManager: Lost task 0.0 in stage 10.0 (TID 17, xx.xx.xx.xx): java.io.FileNotFoundException: File file:/usr/spark/test.txt does not exist</div><div class="line">at org.apache.hadoop.fs.RawLocalFileSystem.deprecatedGetFileStatus(RawLocalFileSystem.java:534)</div><div class="line">at org.apache.hadoop.fs.RawLocalFileSystem.getFileLinkStatusInternal(RawLocalFileSystem.java:747)</div><div class="line">at org.apache.hadoop.fs.RawLocalFileSystem.getFileStatus(RawLocalFileSystem.java:524)</div><div class="line">at org.apache.hadoop.fs.FilterFileSystem.getFileStatus(FilterFileSystem.java:409)</div><div class="line">at org.apache.hadoop.fs.ChecksumFileSystem$ChecksumFSInputChecker.&lt;init&gt;(ChecksumFileSystem.java:140)</div><div class="line">at org.apache.hadoop.fs.ChecksumFileSystem.open(ChecksumFileSystem.java:341)</div><div class="line">at org.apache.hadoop.fs.FileSystem.open(FileSystem.java:766)</div><div class="line">at org.apache.hadoop.mapred.LineRecordReader.&lt;init&gt;(LineRecordReader.java:108)</div><div class="line">at org.apache.hadoop.mapred.TextInputFormat.getRecordReader(TextInputFormat.java:67)</div><div class="line">at org.apache.spark.rdd.HadoopRDD$$anon$1.&lt;init&gt;(HadoopRDD.scala:239)</div><div class="line">at org.apache.spark.rdd.HadoopRDD.compute(HadoopRDD.scala:216)</div><div class="line">at org.apache.spark.rdd.HadoopRDD.compute(HadoopRDD.scala:101)</div><div class="line">at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:277)</div><div class="line">at org.apache.spark.rdd.RDD.iterator(RDD.scala:244)</div><div class="line">at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:35)</div><div class="line">at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:277)</div><div class="line">at org.apache.spark.rdd.RDD.iterator(RDD.scala:244)</div><div class="line">at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:63)</div><div class="line">at org.apache.spark.scheduler.Task.run(Task.scala:70)</div><div class="line">at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:213)</div><div class="line">at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)</div><div class="line">at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</div><div class="line">at java.lang.Thread.run(Thread.java:745)</div><div class="line">```  </div><div class="line">解决办法</div><div class="line">1. 确保文件路径没有错误</div><div class="line">2. 确保文件没有损坏</div><div class="line"></div><div class="line"># Lost task 0.0 in stage 0.0 (TID 0, localhost): java.lang.ArrayIndexOutOfBoundsException:  </div><div class="line">数组越界,这种问题最好是本地先运行小数据可以成功，再尝试在集群运行大数据，一般会有提示，按照提示去看是为什么数组越界了   </div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"># 异常  Exception in thread &quot;main&quot; org.apache.spark.SparkException: Job cancelled because SparkContext was shut down</div></pre></td></tr></table></figure>
+<p>Exception in thread “main” org.apache.spark.SparkException: Job cancelled because SparkContext was shut down<br>    at org.apache.spark.scheduler.DAGScheduler$$anonfun$cleanUpAfterSchedulerStop$1.apply(DAGScheduler.scala:736)<br>    at org.apache.spark.scheduler.DAGScheduler$$anonfun$cleanUpAfterSchedulerStop$1.apply(DAGScheduler.scala:735)<br>    at scala.collection.mutable.HashSet.foreach(HashSet.scala:79)<br>    at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:735)<br>    at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:1468)<br>    at org.apache.spark.util.EventLoop.stop(EventLoop.scala:84)<br>    at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:1403)<br>    at org.apache.spark.SparkContext.stop(SparkContext.scala:1642)<br>    at org.apache.spark.SparkContext$$anonfun$3.apply$mcV$sp(SparkContext.scala:559)<br>    at org.apache.spark.util.SparkShutdownHook.run(Utils.scala:2292)<br>    at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply$mcV$sp(Utils.scala:2262)<br>    at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply(Utils.scala:2262)<br>    at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply(Utils.scala:2262)<br>    at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1772)<br>    at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply$mcV$sp(Utils.scala:2262)<br>    at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply(Utils.scala:2262)<br>    at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply(Utils.scala:2262)<br>    at scala.util.Try$.apply(Try.scala:161)<br>    at org.apache.spark.util.SparkShutdownHookManager.runAll(Utils.scala:2262)<br>    at org.apache.spark.util.SparkShutdownHookManager$$anon$6.run(Utils.scala:2244)<br>    at org.apache.hadoop.util.ShutdownHookManager$1.run(ShutdownHookManager.java:54)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">原因是我当时测试的时候 ，在flatmap的iterator的方法中使用了System.exit(0),sparkcontext关闭取消,所以导致报此错误  </div><div class="line"></div><div class="line"></div><div class="line">##  Lost task 5.0 in stage 1.0 (TID 32, node003): java.lang.OutOfMemoryError: unable to create new native thread </div><div class="line"></div><div class="line">一般是内存溢出，内存溢出情况很多种，单个execute 负载太高等都可能导致，如果是yarn模式，execute-memory设置多一些</div><div class="line"></div><div class="line"></div><div class="line">##  Lost task 1.0 in stage 6.0 (TID 17, 192.168.xx.xx): org.apache.hadoop.ipc.RemoteException(java.io.IOException)  File xxx  could only be replicated to 0 nodes instead of minReplication (=1).  There are 4 datanode(s) running and 4 node(s) are excluded in this operation</div></pre></td></tr></table></figure></p>
+<p>at org.apache.hadoop.hdfs.server.blockmanagement.BlockManager.chooseTarget4NewBlock(BlockManager.java:1550)<br>        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getNewBlockTargets(FSNamesystem.java:3110)<br>        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getAdditionalBlock(FSNamesystem.java:3034)<br>        at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.addBlock(NameNodeRpcServer.java:723)<br>        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.addBlock(ClientNamenodeProtocolServerSideTranslatorPB.java:492)<br>        at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java)<br>        at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:616)<br>        at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:969)<br>        at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2049)<br>        at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:2045)<br>        at java.security.AccessController.doPrivileged(Native Method)<br>        at javax.security.auth.Subject.doAs(Subject.java:415)<br>        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1657)<br>        at org.apache.hadoop.ipc.Server$Handler.run(Server.java:2043)</p>
+<pre><code>at org.apache.hadoop.ipc.Client.call(Client.java:1468)
+at org.apache.hadoop.ipc.Client.call(Client.java:1399)
+at org.apache.hadoop.ipc.ProtobufRpcEngine$Invoker.invoke(ProtobufRpcEngine.java:232)
+at com.sun.proxy.$Proxy13.addBlock(Unknown Source)
+at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolTranslatorPB.addBlock(ClientNamenodeProtocolTranslatorPB.java:399)
+at sun.reflect.GeneratedMethodAccessor7.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(Method.java:606)
+at org.apache.hadoop.io.retry.RetryInvocationHandler.invokeMethod(RetryInvocationHandler.java:187)
+at org.apache.hadoop.io.retry.RetryInvocationHandler.invoke(RetryInvocationHandler.java:102)
+at com.sun.proxy.$Proxy14.addBlock(Unknown Source)
+at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.locateFollowingBlock(DFSOutputStream.java:1532)
+at org.apache.hadoop.hdfs.DFSOutputStream$DataStreamer.nextBlockOutputStream(DFSOutputStream.java:1349)
+</code></pre><p>```</p>
+<p>可能的情况：参考 <a href="http://blog.csdn.net/zuiaituantuan/article/details/6533867" target="_blank" rel="external">http://blog.csdn.net/zuiaituantuan/article/details/6533867</a></p>
+<h2 id="WARN-TaskSetManager-Lost-task-0-0-in-stage-2-0-TID-4-192-168-x-xx-java-net-SocketException-Too-many-open-files"><a href="#WARN-TaskSetManager-Lost-task-0-0-in-stage-2-0-TID-4-192-168-x-xx-java-net-SocketException-Too-many-open-files" class="headerlink" title="WARN TaskSetManager: Lost task 0.0 in stage 2.0 (TID 4, 192.168.x.xx): java.net.SocketException: Too many open files"></a>WARN TaskSetManager: Lost task 0.0 in stage 2.0 (TID 4, 192.168.x.xx): java.net.SocketException: Too many open files</h2><p>是否是在spark中，有大量打开文件操作，打开文件操作太多，可能会报这个错误</p>
+
+            
+            <p class="more">
+                <a href="http://localhost:4000/hadoop/spark/spark-exception.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://localhost:4000/hadoop/spark/spark-exception.html" title="spark lost task 异常笔记">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://localhost:4000/hadoop/spark/spark-cluster-install.html">
+    		Spark集群环境的搭建
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2016-09-05T13:25:21.000Z">2016-09-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>前提：已经安装好了hadoop, 说明，这次安装的是spark-1.4.0-bin-hadoop2.6.tgz版本，这个版本是兼容hadoop2.7的hdfs和yarn的</p>
+<h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备:"></a>软件准备:</h2><p>scala-2.10.4 ,<a href="http://www.scala-lang.org/" target="_blank" rel="external">下载地址</a><br>spark-1.4.0-bin-hadoop2.6.tgz <a href="http://spark.apache.org/downloads.html" target="_blank" rel="external">下载地址</a></p>
+<h2 id="1-安装scala-2-10-4"><a href="#1-安装scala-2-10-4" class="headerlink" title="1. 安装scala-2.10.4"></a>1. 安装scala-2.10.4</h2><p>将下载好的scala-2.11.4.tgz复制到/usr/lib  </p>
+<h3 id="1-1-解压安装包"><a href="#1-1-解压安装包" class="headerlink" title="1.1 解压安装包"></a>1.1 解压安装包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sudo tar -zxf scala-2.11.4.tgz</div><div class="line">```  </div><div class="line"><span class="meta">#</span>## 1.2 设置scala环境变量</div><div class="line">```shell</div><div class="line">sudo vim /etc/profile</div><div class="line">```   </div><div class="line">打开之后在末尾添加</div><div class="line">```shell</div><div class="line"><span class="meta">#</span>scale</div><div class="line">export SCALA_HOME=/usr/lib/scala-2.10.4</div><div class="line">export PATH=$SCALA_HOME/bin:$PATH</div></pre></td></tr></table></figure>
+<p>使配置生效<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
+<h3 id="1-3-检查是否安装成功"><a href="#1-3-检查是否安装成功" class="headerlink" title="1.3 检查是否安装成功"></a>1.3 检查是否安装成功</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">scala -version</div></pre></td></tr></table></figure>
+<p>出现Scala code runner version 2.10.4 – Copyright 2002-2013, LAMP/EPFL说明安装成功  </p>
+<h2 id="2-安装spark-1-4-0-bin-hadoop2-6"><a href="#2-安装spark-1-4-0-bin-hadoop2-6" class="headerlink" title="2. 安装spark-1.4.0-bin-hadoop2.6"></a>2. 安装spark-1.4.0-bin-hadoop2.6</h2><p>将下载的 spark-1.4.0-bin-hadoop2.6.tar.gz 复制到/usr目录  </p>
+<h3 id="2-1-解压并且改名"><a href="#2-1-解压并且改名" class="headerlink" title="2.1 解压并且改名"></a>2.1 解压并且改名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo tar zxvf spark-1.4.0-bin-hadoop2.6.tgz</div><div class="line">sudo mv spark-1.4.0-bin-hadoop2.6/ spark-1.4.0-hadoop2.6</div></pre></td></tr></table></figure>
+<h3 id="2-2-配置环境"><a href="#2-2-配置环境" class="headerlink" title="2.2 配置环境"></a>2.2 配置环境</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/profile</div><div class="line">``` </div><div class="line">打开之后在末尾添加</div><div class="line">```shell</div><div class="line"><span class="meta">#</span>spark</div><div class="line">export SPARK_HOME=/usr/spark-1.4.0-hadoop2.6</div><div class="line">export PATH=$SPARK_HOME/bin:$PATH</div><div class="line">```  </div><div class="line">使资源生效</div></pre></td></tr></table></figure>
+<p>source /etc/profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">### 2.3 配置Spark环境</div><div class="line">#### 配置 spark-env.sh文件</div><div class="line">进入到 spark的conf目录, 拷贝一份spark-env.sh.template  并且改名为 spark-env.sh</div><div class="line">```shell</div><div class="line">cd $SPARK_HOME/conf</div><div class="line">sudo cp spark-env.sh.template spark-env.sh</div></pre></td></tr></table></figure></p>
+<p>sudo vi spark-env.sh 添加以下内容：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/usr/local/java/jdk1.7.0_79</div><div class="line">export HADOOP_HOME=/home/hadoop/MyCloudera/APP/hadoop/hadoop</div><div class="line">export HADOOP_CONF_DIR=$&#123;HADOOP_HOME&#125;/etc/hadoop</div><div class="line">export SCALA_HOME==/usr/lib/scala-2.10.4</div><div class="line">export SPARK_HOME=/usr/spark-1.4.0-hadoop2.6</div><div class="line">export SPARK_MASTER_IP=master</div><div class="line">export SPARK_MASTER_PORT=7077</div><div class="line">export SPARK_MASTER_WEBUI_PORT=8099</div><div class="line"></div><div class="line"><span class="meta">#</span>每个Worker使用的CPU核数</div><div class="line">export SPARK_WORKER_CORES=1</div><div class="line"><span class="meta">#</span>每个Slave中启动几个Worker实例</div><div class="line">export SPARK_WORKER_INSTANCES=1</div><div class="line"><span class="meta">#</span>每个Worker使用多大的内存</div><div class="line">export SPARK_WORKER_MEMORY=2G</div><div class="line"><span class="meta">#</span>Worker的WebUI端口号</div><div class="line">export SPARK_WORKER_WEBUI_PORT=8081</div><div class="line"><span class="meta">#</span>每个Executor使用使用的核数</div><div class="line">export SPARK_EXECUTOR_CORES=1</div><div class="line"><span class="meta">#</span>每个Executor使用的内存</div><div class="line">export SPARK_EXECUTOR_MEMORY=1G</div><div class="line"></div><div class="line">export SPARK_CLASSPATH=$SPARK_HOME/conf/:$SPARK_HOME/lib/*</div><div class="line">export SPARK_CLASSPATH=$SPARK_CLASSPATH:$CLASSPATH</div><div class="line">export LD_LIBRARY_PATH=$&#123;LD_LIBRARY_PATH&#125;:$HADOOP_HOME/lib/nativ</div></pre></td></tr></table></figure></p>
+<h4 id="配置Slave文件"><a href="#配置Slave文件" class="headerlink" title="配置Slave文件"></a>配置Slave文件</h4><p>拷贝一份slaves.template并且改名为slaves<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sudo cp slaves.template slaves</div><div class="line">```  </div><div class="line">sudo vim slaves，然后根据自己对节点的设置，按照下面类似的方法添加内容</div><div class="line">```shell</div><div class="line">master</div><div class="line">node01</div><div class="line">node02</div><div class="line">```  </div><div class="line"><span class="meta">#</span>## 2.4 把配置好的，所有文件，复制一份到node节点的服务器上</div><div class="line">```shell</div><div class="line">建议先打包，然后使用scp传到所有的node节点，然后在所有的node的节点的/usr/目录下解压</div></pre></td></tr></table></figure></p>
+<h3 id="2-5-启动Spark并且测试"><a href="#2-5-启动Spark并且测试" class="headerlink" title="2.5 启动Spark并且测试"></a>2.5 启动Spark并且测试</h3><p>启动Spark(前提是先启动hadoop，以后会用到其hdfs的系统) ,先启动master,再启动slave， 操作全部在主节点进行, 或者直接全部启动<br>如果启动失败，根据提示进行处理<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>方法一:</div><div class="line">cd $SPARK_HOME/sbin/</div><div class="line">./start-master.sh</div><div class="line">./start-slaves.sh</div><div class="line"><span class="meta">#</span>方法二</div><div class="line">./start-all.sh</div></pre></td></tr></table></figure></p>
+<p>启动 master机器jps有以下显示,相对于hadoop, 多了一个master,一个worker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">14930 ResourceManager</div><div class="line">16437 Jps</div><div class="line">15033 NodeManager</div><div class="line">16324 Worker</div><div class="line">14510 DataNode</div><div class="line">16166 Master</div><div class="line">14753 SecondaryNameNode</div><div class="line">14409 NameNode</div></pre></td></tr></table></figure>
+<p>slave机器jps有如下显示，多了一个worker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2610 NodeManager</div><div class="line">2816 Worker</div><div class="line">2888 Jps</div><div class="line">2466 DataNode</div></pre></td></tr></table></figure></p>
+<p>使用spark shell进行测试<br>在hadoop用户下，进入spark 的bin目录，打开spark-shell命令编程<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd $SPARK_HOME/bin</div><div class="line">spark-shell </div><div class="line">打开后可以看到一个大大的Spark的欢迎图和版本，说明启动成功</div><div class="line">```  </div><div class="line">开始测试</div></pre></td></tr></table></figure></p>
+<p>val text= sc.parallelize(Seq(“aa”,”aa”,”bb”,”cc”))</p>
+<p>#回车可以看到 text: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[0] at parallelize at <console>:21<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我们看一看其第一个元素</div></pre></td></tr></table></figure></console></p>
+<p>text.take(1)</p>
+<p>#回车后最后出现一堆info信息，最后一行出现 res0: Array[String] = Array(aa)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">我们统计其元组数量</div></pre></td></tr></table></figure></p>
+<p>text.count</p>
+<p>#回车后出现 res1: Long = 4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">过滤，统计不含aa的元组数量</div></pre></td></tr></table></figure></p>
+<h1 id="注意这条命令的-gt-和！之间要有一个空格"><a href="#注意这条命令的-gt-和！之间要有一个空格" class="headerlink" title="注意这条命令的 &gt; 和！之间要有一个空格"></a>注意这条命令的 &gt; 和！之间要有一个空格</h1><p>text.filter(r =&gt; !r.contains(“aa”)).count</p>
+<p>#回车后出现<br>res3: Long = 2<br>```  </p>
+<p>如果想自己写相应的spark测试，可以参考这篇文章，这篇文章使用的是idea的编译器，eclipse的我没用过，估计除了打包这里不一样，其他都是一样的<br><a href="http://www.cnblogs.com/shishanyuan/p/4721120.html" target="_blank" rel="external">Spark Idea搭建实战</a></p>
+<p>官网给了很多例子，均在 spark-1.4.0-bin-hadoop2.7\examples\src\main 文件夹下，可做参考</p>
+
+            
+            <p class="more">
+                <a href="http://localhost:4000/hadoop/spark/spark-cluster-install.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://localhost:4000/hadoop/spark/spark-cluster-install.html" title="Spark集群环境的搭建">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <a class="extend prev" rel="prev" href="/categories/hadoop/spark/">前一页</a><a class="page-number" href="/categories/hadoop/spark/">1</a><span class="page-number current">2</span>
+    </nav>
+    
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/hadoop/">大数据</a>
+        <span class="badge">(33)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/hdfs/">hdfs</a>
+        <span class="badge">(8)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/hadoop/">hadoop</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/programme/">programme</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/spark/">spark</a>
+        <span class="badge">(16)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/再测试sss/">再测试sss</a>
+        <span class="badge">(0)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/随笔/">随笔</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/测试一下目录/hadoop/">大数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/hdfs/" title="hdfs">hdfs (8)</a>
+  
+    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (9)</a>
+  
+    <a class="tag-item" href="/tags/linux/" title="linux">linux (2)</a>
+  
+    <a class="tag-item" href="/tags/crontab/" title="crontab">crontab (1)</a>
+  
+    <a class="tag-item" href="/tags/java/" title="java">java (3)</a>
+  
+    <a class="tag-item" href="/tags/JDBC/" title="JDBC">JDBC (1)</a>
+  
+    <a class="tag-item" href="/tags/工具类/" title="工具类">工具类 (1)</a>
+  
+    <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
+  
+    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
+  
+    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
+  
+    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
+  
+    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
+  
+    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
+  
+    <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
+  
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
+  
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+  
+    <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
+  
+    <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
+  
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2018
+    
+
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
+</body>
+</html>
