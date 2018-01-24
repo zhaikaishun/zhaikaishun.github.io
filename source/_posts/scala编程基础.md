@@ -18,6 +18,7 @@ www.w3cschool.cc
 www.runnoob.com
 以上三个地址都能访问"""
 ```
+<!-- more -->
 ## 变量
 ### 变量声明
 ```

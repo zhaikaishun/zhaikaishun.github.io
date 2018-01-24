@@ -15,6 +15,7 @@ scala-2.10.4 ,[下载地址](http://www.scala-lang.org/)
 spark-1.4.0-bin-hadoop2.6.tgz [下载地址](http://spark.apache.org/downloads.html)
 ## 1. 安装scala-2.10.4
 将下载好的scala-2.11.4.tgz复制到/usr/lib  
+<!-- more -->
 ### 1.1 解压安装包
 ```shell
 sudo tar -zxf scala-2.11.4.tgz

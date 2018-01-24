@@ -18,6 +18,7 @@ def groupByKey(partitioner: Partitioner): RDD[(K, Iterable[V])]
 ```
 groupByKey会将RDD[key,value] 按照相同的key进行分组，形成RDD[key,Iterable[value]]的形式， 有点类似于sql中的groupby，例如类似于mysql中的group_concat  
 例如这个例子， 我们对学生的成绩进行分组
+<!-- more -->
 **scala版本**
 ```scala
     val scoreDetail = sc.parallelize(List(("xiaoming",75),("xiaoming",90),("lihua",95),("lihua",100),("xiaofeng",85)))

@@ -6,6 +6,7 @@ categories: [programme]
 author: kaishun
 id: 52
 permalink: scala-collect
+blogexcerpt: 本文参考至scala编程，菜鸟教程，然后将自己的判断以及重要方法的提取， 解释， 合并。在 Scala 中， 字符串的类型实际上是 Java String，它本身没有 String 类。在 Scala 中，String 是一个不可变的对象，所以该对象不可被修改。这就意味着你如果修改字符串就会产生一个新的字符串对象
 ---
 
 本文参考至scala编程，菜鸟教程，然后将自己的判断以及重要方法的提取，解释，合并

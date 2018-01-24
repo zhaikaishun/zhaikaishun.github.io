@@ -14,7 +14,7 @@ permalink: java-commons-math
 [API参考地址](http://commons.apache.org/proper/commons-math/javadocs/api-3.4/org/apache/commons/math3/fitting/WeightedObservedPoint.html)
 
 示例代码如下
-
+<!-- more -->
 ```java
 package cn.mingtong.testdistance;
 

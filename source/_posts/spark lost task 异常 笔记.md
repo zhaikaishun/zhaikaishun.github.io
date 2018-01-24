@@ -10,7 +10,7 @@ permalink: spark-exception
 
 # Lost task java.lang.NullPointerException
 Exception in thread "main" org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost): java.lang.NullPointerException  
-
+<!-- more -->
 我之前的代码类似于
 ```java
 public Iterable<Tuple2<String, String>> call(String s) throws Exception{

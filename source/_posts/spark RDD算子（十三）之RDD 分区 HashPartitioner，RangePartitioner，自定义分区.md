@@ -9,6 +9,7 @@ permalink: spark-rdd-13
 ---
 
 **关键字**: spark分区方式，java HashPartitioner分区，scala HashPartitioner分区， java RangePartitioner 分区，scala RangePartitioner分区， java 自定义分区，scala自定义分区 
+<!-- more -->
 #  **默认分区和HashPartitioner分区**   
 默认的分区就是HashPartition分区,默认分区不再介绍，下面介绍HashPartition的使用
 

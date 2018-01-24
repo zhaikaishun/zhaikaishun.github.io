@@ -10,7 +10,8 @@ permalink: spark-rdd-3
 
 **spark伪集合**  
 尽管 RDD 本身不是严格意义上的集合，但它也支持许多数学上的集合操作，比如合并和相交操作, 下图展示了这四种操作  
-![RDD伪集合](http://i2.muimg.com/567571/cf473cf5e7f9f270.png)  
+![RDD伪集合](http://i2.muimg.com/567571/cf473cf5e7f9f270.png)    
+<!-- more -->
 # **distinct**
 distinct用于去重， 我们生成的RDD可能有重复的元素，使用distinct方法可以去掉重复的元素, 不过此方法涉及到混洗，操作开销很大  
 **scala版本**

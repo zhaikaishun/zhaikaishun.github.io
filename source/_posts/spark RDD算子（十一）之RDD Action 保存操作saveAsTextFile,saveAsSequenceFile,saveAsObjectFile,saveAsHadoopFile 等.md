@@ -10,7 +10,7 @@ permalink: spark-rdd-11
 ---
 
 关键字:Spark算子、Spark函数、Spark RDD行动Action、Spark RDD存储操作、saveAsTextFile、saveAsSequenceFile、saveAsObjectFile,saveAsHadoopFile、saveAsHadoopDataset,saveAsNewAPIHadoopFile、saveAsNewAPIHadoopDataset 
-
+<!-- more -->
 ---
 
 # **saveAsTextFile**

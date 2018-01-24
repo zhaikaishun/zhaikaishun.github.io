@@ -21,6 +21,7 @@ def subtractByKey[W](other: RDD[(K, W)], numPartitions: Int)(implicit arg0: Clas
 def subtractByKey[W](other: RDD[(K, W)], p: Partitioner)(implicit arg0: ClassTag[W]): RDD[(K, V)]
 ```
 类似于subtrac，删掉 RDD 中键与 other RDD 中的键相同的元素
+<!-- more -->
 # **join**  
 **函数定义**
 ```

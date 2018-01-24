@@ -12,6 +12,7 @@ spark 2.x 版本相对于1.x版本，有挺多地方的修改，一是类似于f
 2是类似于dataset的一些问题
 
 下面是2.x版本的iteatable和iteartor之类的区别，只举例了两个，其实只要和iteartor有关的都有了修改
+<!-- more -->
 ## flatMap
 ```java
         JavaRDD<String> flatMapRDD = lines.flatMap(new FlatMapFunction<String, String>() {

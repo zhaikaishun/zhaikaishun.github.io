@@ -1,371 +1,133 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>Hadoop入门案例（六）之二次排序，全排序基础下的二次排序 | 挡路人</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
+    <meta name="description" content="Jelon个人前端小站" >
 
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="hadoop," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="前言：对于二次排序，定义是在一个字段排好顺序的前提下，另外一个字段也进行排序。类似于sql中的order by多个字段，然而，网上大多数二次排序，对于partitioner都没有利用，因为网上的partition竟然都是是按照hash分组的，而且也没设置reduceTaskNum，这不能充分利用集群的资源，只有一个reduce，，即使如果有多个reduce，partition按照hash分区也不属">
-<meta name="keywords" content="hadoop">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hadoop入门案例（六）之二次排序，全排序基础下的二次排序">
-<meta property="og:url" content="http://yoursite.com/hadoop/hadoop/hadoop-example-6.html">
-<meta property="og:site_name" content="挡路人">
-<meta property="og:description" content="前言：对于二次排序，定义是在一个字段排好顺序的前提下，另外一个字段也进行排序。类似于sql中的order by多个字段，然而，网上大多数二次排序，对于partitioner都没有利用，因为网上的partition竟然都是是按照hash分组的，而且也没设置reduceTaskNum，这不能充分利用集群的资源，只有一个reduce，，即使如果有多个reduce，partition按照hash分区也不属">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-22T15:14:42.397Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hadoop入门案例（六）之二次排序，全排序基础下的二次排序">
-<meta name="twitter:description" content="前言：对于二次排序，定义是在一个字段排好顺序的前提下，另外一个字段也进行排序。类似于sql中的order by多个字段，然而，网上大多数二次排序，对于partitioner都没有利用，因为网上的partition竟然都是是按照hash分组的，而且也没设置reduceTaskNum，这不能充分利用集群的资源，只有一个reduce，，即使如果有多个reduce，partition按照hash分区也不属">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
+    
+    <link rel="alternative" href="/atom.xml" title="挡路人" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/hadoop/hadoop/hadoop-example-6.html"/>
-
-
-
-
-
-  <title>Hadoop入门案例（六）之二次排序，全排序基础下的二次排序 | 挡路人</title>
-  
-
-
-
-
-
-
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband">
-	<a href="https://github.com/zhaikaishun">
-	<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
-	</div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">挡路人</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
     </div>
-      
-        <p class="site-subtitle">学有所思，思有所感</p>
-      
-  </div>
+    <![endif]-->
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/hadoop/hadoop/hadoop-example-6.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhaikaishun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="挡路人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">Hadoop入门案例（六）之二次排序，全排序基础下的二次排序</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-03T21:25:21+08:00">
-                2016-08-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">大数据</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">hadoop</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">挡路人</span>
+                    <span class="description">学有所思，思有所感</span>
+                </div>
+            </a>
         </div>
-      </header>
-    
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/hadoop/hadoop/hadoop-example-6.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/hadoop/hadoop/hadoop-example-6.html" class="item ">
+                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
+            </li>
+            
+            <li rel="/hadoop/hadoop/hadoop-example-6.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/hadoop/hadoop/hadoop-example-6.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-      
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>Hadoop入门案例（六）之二次排序，全排序基础下的二次排序</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        kaishun 发表于
+        <time datetime="2016-08-03T13:25:21.000Z">2016-08-03</time>
+    </p>
+    <div class="post-content">
+	<!-- Table of Contents -->
 
-      
         <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a><strong>前言</strong>：</h2><p>对于二次排序，定义是在一个字段排好顺序的前提下，另外一个字段也进行排序。类似于sql中的order by多个字段，然而，网上大多数二次排序，对于partitioner都没有利用，因为网上的partition竟然都是是按照hash分组的，而且也没设置reduceTaskNum，这不能充分利用集群的资源，只有一个reduce，，即使如果有多个reduce，partition按照hash分区也不属于全排序，准确的说属于分组排序。 我对网上的代码做了稍加修改，可以满足全排序的情况下，再进行二次排序。<br>测试数和代码都参考自网上，具体哪个不记得了，反正网上都差不多<br>测试数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">20 21 </div><div class="line">50 51 </div><div class="line">50 52 </div><div class="line">50 53 </div><div class="line">50 54 </div><div class="line">60 51 </div><div class="line">60 53 </div><div class="line">60 52 </div><div class="line">60 56 </div><div class="line">60 57 </div><div class="line">70 58 </div><div class="line">60 61 </div><div class="line">70 54 </div><div class="line">70 55 </div><div class="line">70 56 </div><div class="line">70 57 </div><div class="line">70 58 </div><div class="line">1 2 </div><div class="line">3 4 </div><div class="line">5 6 </div><div class="line">7 82 </div><div class="line">203 21 </div><div class="line">50 512 </div><div class="line">50 522 </div><div class="line">50 53 </div><div class="line">530 54 </div><div class="line">40 511 </div><div class="line">20 53 </div><div class="line">20 522 </div><div class="line">60 56 </div><div class="line">60 57 </div><div class="line">740 58 </div><div class="line">63 61 </div><div class="line">730 54 </div><div class="line">71 55 </div><div class="line">71 56 </div><div class="line">73 57 </div><div class="line">74 58 </div><div class="line">12 211 </div><div class="line">31 42 </div><div class="line">50 62 </div><div class="line">7 8</div></pre></td></tr></table></figure></p>
 <h2 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a><strong>代码如下</strong></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.myhadoop.mapreduce.test;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.*;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Partitioner;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.TextInputFormat;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.DataInput;</div><div class="line"><span class="keyword">import</span> java.io.DataOutput;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.util.StringTokenizer;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Created by Administrator on 2017/6/14.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecondSort</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntPair</span> <span class="keyword">implements</span> <span class="title">WritableComparable</span>&lt;<span class="title">IntPair</span>&gt;</span></div><div class="line"><span class="class">    </span>&#123;</div><div class="line">        <span class="keyword">int</span> first;</div><div class="line">        <span class="keyword">int</span> second;</div><div class="line">        <span class="comment">/**</span></div><div class="line"><span class="comment">         * Set the left and right values.</span></div><div class="line"><span class="comment">         */</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            first = left;</div><div class="line">            second = right;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getFirst</span><span class="params">()</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">return</span> first;</div><div class="line">        &#125;</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSecond</span><span class="params">()</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">return</span> second;</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="comment">//反序列化，从流中的二进制转换成IntPair</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readFields</span><span class="params">(DataInput in)</span> <span class="keyword">throws</span> IOException</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">            first = in.readInt();</div><div class="line">            second = in.readInt();</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="comment">//序列化，将IntPair转化成使用流传送的二进制</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(DataOutput out)</span> <span class="keyword">throws</span> IOException</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">            out.writeInt(first);</div><div class="line">            out.writeInt(second);</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="comment">//key的比较</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(IntPair o)</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">            <span class="keyword">if</span> (first != o.first)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> first &lt; o.first ? -<span class="number">1</span> : <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (second != o.second)</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> second &lt; o.second ? -<span class="number">1</span> : <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//新定义类应该重写的两个方法</span></div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="comment">//The hashCode() method is used by the HashPartitioner (the default partitioner in MapReduce)</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">return</span> first * <span class="number">157</span> + second;</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object right)</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">if</span> (right == <span class="keyword">null</span>)</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            <span class="keyword">if</span> (<span class="keyword">this</span> == right)</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            <span class="keyword">if</span> (right <span class="keyword">instanceof</span> IntPair)</div><div class="line">            &#123;</div><div class="line">                IntPair r = (IntPair) right;</div><div class="line">                <span class="keyword">return</span> r.first == first &amp;&amp; r.second == second;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 分区函数类。根据first确定Partition。</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">FirstPartitioner</span> <span class="keyword">extends</span> <span class="title">Partitioner</span>&lt;<span class="title">IntPair</span>, <span class="title">IntWritable</span>&gt;</span></div><div class="line"><span class="class">    </span>&#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getPartition</span><span class="params">(IntPair key, IntWritable value,<span class="keyword">int</span> numPartitions)</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">int</span> first = key.getFirst();</div><div class="line">            <span class="keyword">if</span>(first&lt;<span class="number">60</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(first&lt;<span class="number">80</span>)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line"></div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 分组函数类。只要first相同就属于同一个组。</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">GroupingComparator</span> <span class="keyword">extends</span> <span class="title">WritableComparator</span></span></div><div class="line"><span class="class">    </span>&#123;</div><div class="line">        <span class="function"><span class="keyword">protected</span> <span class="title">GroupingComparator</span><span class="params">()</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            <span class="keyword">super</span>(IntPair.class, <span class="keyword">true</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="comment">//Compare two WritableComparables.</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(WritableComparable w1, WritableComparable w2)</span></span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            IntPair ip1 = (IntPair) w1;</div><div class="line">            IntPair ip2 = (IntPair) w2;</div><div class="line">            <span class="keyword">int</span> l = ip1.getFirst();</div><div class="line">            <span class="keyword">int</span> r = ip2.getFirst();</div><div class="line">            <span class="keyword">return</span> l == r ? <span class="number">0</span> : (l &lt; r ? -<span class="number">1</span> : <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 自定义map</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Map</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">LongWritable</span>, <span class="title">Text</span>, <span class="title">IntPair</span>, <span class="title">IntWritable</span>&gt;</span></div><div class="line"><span class="class">    </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">final</span> IntPair intkey = <span class="keyword">new</span> IntPair();</div><div class="line">        <span class="keyword">private</span> <span class="keyword">final</span> IntWritable intvalue = <span class="keyword">new</span> IntWritable();</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value, Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            String line = value.toString();</div><div class="line">            StringTokenizer tokenizer = <span class="keyword">new</span> StringTokenizer(line);</div><div class="line">            <span class="keyword">int</span> left = <span class="number">0</span>;</div><div class="line">            <span class="keyword">int</span> right = <span class="number">0</span>;</div><div class="line">            <span class="keyword">if</span> (tokenizer.hasMoreTokens())</div><div class="line">            &#123;</div><div class="line">                left = Integer.parseInt(tokenizer.nextToken());</div><div class="line">                <span class="keyword">if</span> (tokenizer.hasMoreTokens())</div><div class="line">                    right = Integer.parseInt(tokenizer.nextToken());</div><div class="line">                intkey.set(left, right);</div><div class="line">                intvalue.set(right);</div><div class="line">                context.write(intkey, intvalue);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 自定义reduce</span></div><div class="line">    <span class="comment">//</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Reduce</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">IntPair</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span></div><div class="line"><span class="class">    </span>&#123;</div><div class="line">        <span class="keyword">private</span> <span class="keyword">final</span> Text left = <span class="keyword">new</span> Text();</div><div class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Text SEPARATOR = <span class="keyword">new</span> Text(<span class="string">"------------------------------------------------"</span>);</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(IntPair key, Iterable&lt;IntWritable&gt; values,Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException</span></div><div class="line"><span class="function">        </span>&#123;</div><div class="line">            context.write(SEPARATOR, <span class="keyword">null</span>);</div><div class="line">            left.set(Integer.toString(key.getFirst()));</div><div class="line">            <span class="keyword">for</span> (IntWritable val : values)</div><div class="line">            &#123;</div><div class="line">                context.write(left, val);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, InterruptedException, ClassNotFoundException</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line">        <span class="comment">// 读取hadoop配置</span></div><div class="line">        Configuration conf = <span class="keyword">new</span> Configuration();</div><div class="line">        <span class="comment">// 实例化一道作业</span></div><div class="line">        Job job = <span class="keyword">new</span> Job(conf, <span class="string">"secondarysort"</span>);</div><div class="line">        job.setJarByClass(SecondSort.class);</div><div class="line">        <span class="comment">// Mapper类型</span></div><div class="line">        job.setMapperClass(Map.class);</div><div class="line">        <span class="comment">// 不再需要Combiner类型，因为Combiner的输出类型&lt;Text, IntWritable&gt;对Reduce的输入类型&lt;IntPair, IntWritable&gt;不适用</span></div><div class="line">        <span class="comment">//job.setCombinerClass(Reduce.class);</span></div><div class="line">        <span class="comment">// Reducer类型</span></div><div class="line">        job.setReducerClass(Reduce.class);</div><div class="line">        <span class="comment">//设置NumReduceTasks 的数量为三</span></div><div class="line">        job.setNumReduceTasks(<span class="number">3</span>);</div><div class="line">        <span class="comment">// 分区函数</span></div><div class="line">        job.setPartitionerClass(FirstPartitioner.class);</div><div class="line"></div><div class="line"></div><div class="line">        <span class="comment">// 分组函数</span></div><div class="line">        job.setGroupingComparatorClass(GroupingComparator.class);</div><div class="line"></div><div class="line">        <span class="comment">// map 输出Key的类型</span></div><div class="line">        job.setMapOutputKeyClass(IntPair.class);</div><div class="line">        <span class="comment">// map输出Value的类型</span></div><div class="line">        job.setMapOutputValueClass(IntWritable.class);</div><div class="line">        <span class="comment">// rduce输出Key的类型，是Text，因为使用的OutputFormatClass是TextOutputFormat</span></div><div class="line">        job.setOutputKeyClass(Text.class);</div><div class="line">        <span class="comment">// rduce输出Value的类型</span></div><div class="line">        job.setOutputValueClass(IntWritable.class);</div><div class="line"></div><div class="line">        <span class="comment">// 将输入的数据集分割成小数据块splites，同时提供一个RecordReder的实现。</span></div><div class="line">        job.setInputFormatClass(TextInputFormat.class);</div><div class="line">        <span class="comment">// 提供一个RecordWriter的实现，负责数据输出。</span></div><div class="line">        job.setOutputFormatClass(TextOutputFormat.class);</div><div class="line"></div><div class="line">        <span class="comment">// 输入hdfs路径</span></div><div class="line">        FileInputFormat.setInputPaths(job, <span class="keyword">new</span> Path(args[<span class="number">0</span>]));</div><div class="line">        <span class="comment">// 输出hdfs路径</span></div><div class="line">        FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(args[<span class="number">1</span>]));</div><div class="line">        <span class="comment">// 提交job</span></div><div class="line">        System.exit(job.waitForCompletion(<span class="keyword">true</span>) ? <span class="number">0</span> : <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">```  </div><div class="line">## 运行结果</div><div class="line">生成三个文件 partition-<span class="number">00000</span>，partition-<span class="number">00001</span>，partition-<span class="number">00002</span>  </div><div class="line">每个文件第一个字段都按照进行了全排序，满足上一个条件下对第二个字段进行了排序，并且按照第一个字段进行了分组  </div><div class="line">输出的文件分别为 </div><div class="line">**partition-<span class="number">00000</span>**</div></pre></td></tr></table></figure>
 <hr>
@@ -388,420 +150,292 @@
 </ol>
 <h2 id="感悟："><a href="#感悟：" class="headerlink" title="感悟："></a>感悟：</h2><p>主要代码还是网上的，但是做程序开发还是要有自己的独立思考，网上的并不是真正的二次排序，或者说即使满足二次排序，但是也是只有一个reduce任务</p>
 
-      
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/hadoop/">大数据</a>|<a class="cat-link" href="/categories/hadoop/hadoop/">hadoop</a>
+        </span>
+        <span class="post-tags">
+            标签：
             
-              <a href="/hadoop/hadoop/hadoop-example-5.html" rel="next" title="Hadoop入门案例（五）全排序之TotalOrderPartitioner工具类+自动采样">
-                <i class="fa fa-chevron-left"></i> Hadoop入门案例（五）全排序之TotalOrderPartitioner工具类+自动采样
-              </a>
-            
-          </div>
+    
+        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
+    
 
-          <span class="post-nav-divider"></span>
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/hadoop/hadoop/hadoop-example-7.html" rel="prev" title="Hadoop入门案例（七）之TOP K">
-                Hadoop入门案例（七）之TOP K <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
     </div>
   </div>
 
 
-          </div>
-          
+<!-- 上一篇/下一篇 -->
 
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
+<div class="article-nav clearfix">
     
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/hadoop/hadoop/hadoop-example-7.html">
             
-              <p class="site-author-name" itemprop="name">zhaikaishun</p>
-              <p class="site-description motion-element" itemprop="description">the blog of dangluren</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
+                Hadoop入门案例（七）之TOP K
             
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">47</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/hadoop/hadoop/hadoop-example-5.html">
             
-
+                Hadoop入门案例（五）全排序之TotalOrderPartitioner工具类+自动采样
             
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/zhaikaishun" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="zhaikaishun@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://blog.csdn.net/t1dmzks/" title="zhaikaishun blog" target="_blank">zhaikaishun blog</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码如下"><span class="nav-number">2.</span> <span class="nav-text">代码如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2"><span class="nav-number">3.</span> <span class="nav-text">1       2 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4"><span class="nav-number">4.</span> <span class="nav-text">3       4 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6"><span class="nav-number">5.</span> <span class="nav-text">5       6 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-82"><span class="nav-number">6.</span> <span class="nav-text">7       82 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-211"><span class="nav-number">7.</span> <span class="nav-text">12      211 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-522"><span class="nav-number">8.</span> <span class="nav-text">20      522 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#31-42"><span class="nav-number">9.</span> <span class="nav-text">31      42 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#40-511"><span class="nav-number">10.</span> <span class="nav-text">40      511 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#60-61"><span class="nav-number">11.</span> <span class="nav-text">60      61 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#63-61"><span class="nav-number">12.</span> <span class="nav-text">63      61 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#70-58"><span class="nav-number">13.</span> <span class="nav-text">70      58 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#71-56"><span class="nav-number">14.</span> <span class="nav-text">71      56 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#73-57"><span class="nav-number">15.</span> <span class="nav-text">73      57 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#203-21"><span class="nav-number">16.</span> <span class="nav-text">203     21 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#530-54"><span class="nav-number">17.</span> <span class="nav-text">530     54 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#730-54"><span class="nav-number">18.</span> <span class="nav-text">730     54 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析："><span class="nav-number">19.</span> <span class="nav-text">分析：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#感悟："><span class="nav-number">20.</span> <span class="nav-text">感悟：</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">zhaikaishun</span>
-
-  
+        </a>
+    </span>
+    
 </div>
 
+<!-- 文章评论 -->
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
       </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
       </div>
-    
-
-    
-
+    </section>
+    -->
   </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'hadoop-example-6' || 'hadoop/hadoop/hadoop-example-6.html',
+    owner: 'jangdelong',
+    repo: 'blog_comments',
+    clientId: 'b08ed25e52c57993e69c',
+    clientSecret: '1cb9545488f0380904b87350e7c5a270ae03bab7'
+  });
+  </script>
 
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/hadoop/">大数据</a>
+        <span class="badge">(33)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/hdfs/">hdfs</a>
+        <span class="badge">(8)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/hadoop/">hadoop</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/programme/">programme</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/spark/">spark</a>
+        <span class="badge">(16)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/再测试sss/">再测试sss</a>
+        <span class="badge">(0)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/随笔/">随笔</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/测试一下目录/hadoop/">大数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+    <a class="tag-item" href="/tags/hdfs/" title="hdfs">hdfs (8)</a>
   
-
-
-
-
-
-
-
-
-
-
-
-
+    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (9)</a>
   
+    <a class="tag-item" href="/tags/linux/" title="linux">linux (2)</a>
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <a class="tag-item" href="/tags/crontab/" title="crontab">crontab (1)</a>
   
-
+    <a class="tag-item" href="/tags/java/" title="java">java (3)</a>
   
+    <a class="tag-item" href="/tags/JDBC/" title="JDBC">JDBC (1)</a>
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <a class="tag-item" href="/tags/工具类/" title="工具类">工具类 (1)</a>
   
-
+    <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
+    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
   
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
   
-
+    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
   
+    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
   
-
+    <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
-
+    <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
+    <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
+</div>
+    </section>
+    
 
+    
 
-  
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
 
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2018
+    
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
 </body>
 </html>

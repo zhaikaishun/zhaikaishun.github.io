@@ -15,8 +15,9 @@ aa bb cc aa aa aa dd dd ee ee ee ee
 ff aa bb zks
 ee kks
 ee  zz zks
-``` 
+```
 将每一行的第一个单词作为键，1 作为value创建pairRDD
+<!-- more -->
 **scala版本**  
 scala是没有mapToPair函数的，scala版本只需要map就可以了
 ```scala

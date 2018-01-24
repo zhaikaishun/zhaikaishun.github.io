@@ -5,7 +5,8 @@ tags: [java,JDBC,工具类]
 categories: [programme]
 author: kaishun
 id: 55
-permalink: jdbc-util
+permalink: jdbc-util  
+blogexcerpt: 关键字： 批量添加，JDBC批量更新，public void UpdateFileData(String sSQL, ArrayList<String[]> objParams)，JDBCTest
 ---
 
 ## 批量添加

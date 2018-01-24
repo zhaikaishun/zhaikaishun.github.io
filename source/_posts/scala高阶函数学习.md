@@ -18,7 +18,7 @@ http://www.cnblogs.com/wzm-xu/p/4064389.html
 下面以一个小例子演示Scala的高阶函数特性，非常有意思，也非常强大。
 
 首先看这么一个程序：
-
+<!-- more -->
 **code1**：
 
 ```scala

@@ -10,8 +10,8 @@ permalink: spark-rdd-2
 
 
 先来一张spark快速大数据中的图片进行快速入门，后面有更详细的例子  
-![](http://i4.buimg.com/567571/9bf09aff04368678.png)
-
+![spark-map](http://i4.buimg.com/567571/9bf09aff04368678.png)
+<!-- more -->
 
 ## **filter**
 举例，在F:\sparktest\sample.txt 文件的内容如下  

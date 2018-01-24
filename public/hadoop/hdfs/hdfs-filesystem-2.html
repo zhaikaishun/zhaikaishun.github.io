@@ -1,792 +1,424 @@
-<!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    
+    <title>HDFS java操作（二）FileStatus 获取文件属性，globStatus 进行路径过滤 | 挡路人</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
+    <meta name="description" content="Jelon个人前端小站" >
 
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="hdfs," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="前言：本章主要记录了如何使用fileStatus来获取hdfs文件的一些属性，以及如何使用globStatus对路径进行过滤  filestatus 获取文件状态12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364">
-<meta name="keywords" content="hdfs">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HDFS java操作（二）FileStatus 获取文件属性，globStatus 进行路径过滤">
-<meta property="og:url" content="http://yoursite.com/hadoop/hdfs/hdfs-filesystem-2.html">
-<meta property="og:site_name" content="挡路人">
-<meta property="og:description" content="前言：本章主要记录了如何使用fileStatus来获取hdfs文件的一些属性，以及如何使用globStatus对路径进行过滤  filestatus 获取文件状态12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg">
-<meta property="og:updated_time" content="2018-01-22T14:53:00.894Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HDFS java操作（二）FileStatus 获取文件属性，globStatus 进行路径过滤">
-<meta name="twitter:description" content="前言：本章主要记录了如何使用fileStatus来获取hdfs文件的一些属性，以及如何使用globStatus对路径进行过滤  filestatus 获取文件状态12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364">
-<meta name="twitter:image" content="http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
+    
+    <link rel="alternative" href="/atom.xml" title="挡路人" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 </script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/hadoop/hdfs/hdfs-filesystem-2.html"/>
-
-
-
-
-
-  <title>HDFS java操作（二）FileStatus 获取文件属性，globStatus 进行路径过滤 | 挡路人</title>
-  
-
-
-
-
-
-
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband">
-	<a href="https://github.com/zhaikaishun">
-	<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
-	</div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">挡路人</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<body class="home">
+    <!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
     </div>
-      
-        <p class="site-subtitle">学有所思，思有所感</p>
-      
-  </div>
+    <![endif]-->
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/hadoop/hdfs/hdfs-filesystem-2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhaikaishun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="挡路人">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">HDFS java操作（二）FileStatus 获取文件属性，globStatus 进行路径过滤</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-28T21:20:21+08:00">
-                2016-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">大数据</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hadoop/hdfs/" itemprop="url" rel="index">
-                    <span itemprop="name">hdfs</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">挡路人</span>
+                    <span class="description">学有所思，思有所感</span>
+                </div>
+            </a>
         </div>
-      </header>
-    
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/hadoop/hdfs/hdfs-filesystem-2.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/hadoop/hdfs/hdfs-filesystem-2.html" class="item ">
+                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
+            </li>
+            
+            <li rel="/hadoop/hdfs/hdfs-filesystem-2.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/hadoop/hdfs/hdfs-filesystem-2.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
 
-      
-      
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>HDFS java操作（二）FileStatus 获取文件属性，globStatus 进行路径过滤</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        kaishun 发表于
+        <time datetime="2016-06-28T13:20:21.000Z">2016-06-28</time>
+    </p>
+    <div class="post-content">
+	<!-- Table of Contents -->
 
-      
-        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>本章主要记录了如何使用fileStatus来获取hdfs文件的一些属性，以及如何使用globStatus对路径进行过滤</p>
-<p><img src="http://cdn.data-flair.training/blogs/wp-content/uploads/HDFS-Commands.jpg" alt="image"></p>
+        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>本章主要记录了如何使用fileStatus来获取hdfs文件的一些属性，以及如何使用globStatus对路径进行过滤, 列出某个目录下所有文件的信息</p>
+<p><img src="http://or49tneld.bkt.clouddn.com/18-1-23/63075597.jpg" alt="hdfs-commands"></p>
 <h1 id="filestatus-获取文件状态"><a href="#filestatus-获取文件状态" class="headerlink" title="filestatus 获取文件状态"></a>filestatus 获取文件状态</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> hdfs.tutorial;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileStatus;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileSystem;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.net.URI;</div><div class="line"><span class="keyword">import</span> java.net.URISyntaxException;</div><div class="line"><span class="keyword">import</span> java.sql.Timestamp;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Created by Administrator on 2017/5/25.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReadHdfs</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        Path path = <span class="keyword">new</span> Path(<span class="string">"hdfs://192.xxx.xxx.xxx:9000/hdfstest"</span>);</div><div class="line">        Path filePath = <span class="keyword">new</span> Path(<span class="string">"hdfs://192.xxx.xxx.xxx:9000/hdfstest/people.txt"</span>);</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">            <span class="comment">//得到 FileSystem 类</span></div><div class="line">            FileSystem hdfs = getFileSystem();</div><div class="line"></div><div class="line">            <span class="comment">//列出某个目录下所有文件的信息</span></div><div class="line">            listFilesStatus(path, hdfs);</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     *</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> 得到hdfs的连接 FileSystem类</span></div><div class="line"><span class="comment">     * <span class="doctag">@throws</span> URISyntaxException</span></div><div class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></div><div class="line"><span class="comment">     * <span class="doctag">@throws</span> InterruptedException</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> FileSystem <span class="title">getFileSystem</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException, InterruptedException </span>&#123;</div><div class="line">      <span class="comment">//获取FileSystem类的方法有很多种，这里只写一种</span></div><div class="line">        Configuration config = <span class="keyword">new</span> Configuration();</div><div class="line">        URI uri = <span class="keyword">new</span> URI(<span class="string">"hdfs://192.xxx.xxx.xxx:9000"</span>);</div><div class="line">        <span class="keyword">return</span> FileSystem.get(uri,config,<span class="string">"your_user"</span>);<span class="comment">// 第一位为uri，第二位为config，第三位是登录的用户</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 列出某个目录下所有文件的信息</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> path</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> hdfs</span></div><div class="line"><span class="comment">     * <span class="doctag">@throws</span> IOException</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">listFilesStatus</span><span class="params">(Path path, FileSystem hdfs)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        <span class="comment">// 列出目录下的所有文件</span></div><div class="line">        FileStatus[] files = hdfs.listStatus(path);</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;files.length ; i++) &#123;</div><div class="line">            FileStatus file = files[i];</div><div class="line">            <span class="keyword">if</span>(file.isFile())&#123;</div><div class="line">                System.out.println(<span class="string">"这是文件"</span>);</div><div class="line">                <span class="keyword">long</span> len = file.getLen();                   <span class="comment">//文件长度</span></div><div class="line">                String pathSource = file.getPath().toString();<span class="comment">//文件路径</span></div><div class="line">                String fileName = file.getPath().getName();   <span class="comment">// 文件名称</span></div><div class="line">                String parentPath = file.getPath().getParent().toString();<span class="comment">//文件父路径</span></div><div class="line">                Timestamp timestamp = <span class="keyword">new</span> Timestamp(file.getModificationTime());<span class="comment">//文件最后修改时间</span></div><div class="line">                <span class="keyword">long</span> blockSize = file.getBlockSize();   <span class="comment">//文件块大小</span></div><div class="line">                String group = file.getGroup();         <span class="comment">//文件所属组</span></div><div class="line">                String owner = file.getOwner();          <span class="comment">// 文件拥有者</span></div><div class="line">                <span class="keyword">long</span> accessTime = file.getAccessTime();  <span class="comment">//该文件上次访问时间</span></div><div class="line">                <span class="keyword">short</span> replication = file.getReplication(); <span class="comment">//文件副本数</span></div><div class="line">                System.out.println(<span class="string">"文件长度: "</span>+len+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"文件路径: "</span>+pathSource+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"文件名称: "</span>+fileName+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"文件父路径: "</span>+parentPath+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"文件最后修改时间: "</span>+timestamp+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"文件块大小: "</span>+blockSize+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"文件所属组: "</span>+group+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"文件拥有者: "</span>+owner+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"该文件上次访问时间: "</span>+accessTime+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"文件副本数: "</span>+replication+<span class="string">"\n"</span>+</div><div class="line">                        <span class="string">"=============================="</span>);</div><div class="line"></div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(file.isDirectory())&#123;</div><div class="line">                System.out.println(<span class="string">"这是文件夹"</span>);</div><div class="line">                System.out.println(<span class="string">"文件父路径: "</span>+file.getPath().toString());</div><div class="line"></div><div class="line">                <span class="comment">//递归调用</span></div><div class="line">                listFilesStatus(file.getPath(),hdfs);</div><div class="line"></div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(file.isSymlink())&#123;</div><div class="line">                System.out.println(<span class="string">"这是链接文件"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="globStatus-路径过滤"><a href="#globStatus-路径过滤" class="headerlink" title="globStatus 路径过滤"></a>globStatus 路径过滤</h2><p>例如下面的例子，我需要得到/filtertest/<em>/</em> 路径中 带有abc的路径<br>globStatus 很灵活，内部甚至可以写一些正则表达式，有时候在处理大数据的预处理的时候可能很有效</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">public class FileListFilter &#123;</div><div class="line"></div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        FileSystem hdfs = null;</div><div class="line">        try&#123;</div><div class="line">            Configuration config = new Configuration();</div><div class="line"></div><div class="line">            hdfs = FileSystem.get(new URI(&quot;hdfs://192.xxx.xxx.xxx:9000&quot;),</div><div class="line">                    config, &quot;hmaster&quot;);</div><div class="line">            Path allPath = new Path(&quot;/filtertest/*/*&quot;);</div><div class="line"></div><div class="line">            FileStatus[] fileGlobStatuses = hdfs.globStatus(allPath, new PathFilter() &#123;</div><div class="line">                @Override</div><div class="line">                public boolean accept(Path path) &#123;</div><div class="line">                    String contidion = &quot;abc&quot;;</div><div class="line">                    // 过滤出路径中包含 abc字符串 的路径</div><div class="line">                    return  path.toString().contains(contidion);</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">            Path[] globPaths = FileUtil.stat2Paths(fileGlobStatuses);</div><div class="line">            for (Path p :globPaths)&#123;</div><div class="line">                System.out.println(&quot;globe过滤后的路径&quot;+p);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;catch(Exception e)&#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/hdfs/" rel="tag"># hdfs</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/hadoop/">大数据</a>|<a class="cat-link" href="/categories/hadoop/hdfs/">hdfs</a>
+        </span>
+        <span class="post-tags">
+            标签：
             
-              <a href="/hadoop/hdfs/hdfs-filesystem-1.html" rel="next" title="HDFS java操作（一）FileSystem 常用操作">
-                <i class="fa fa-chevron-left"></i> HDFS java操作（一）FileSystem 常用操作
-              </a>
-            
-          </div>
+    
+        <a href="/tags/hdfs/" title="hdfs">hdfs</a>
+    
 
-          <span class="post-nav-divider"></span>
+        </span>
+    </p>
+</article>
+<!-- 分享按钮 -->
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/hadoop/hadoop/hadoop-cluster-install.html" rel="prev" title="hadoop集群搭建教程">
-                hadoop集群搭建教程 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
     </div>
   </div>
 
 
-          </div>
-          
+<!-- 上一篇/下一篇 -->
 
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
+<div class="article-nav clearfix">
     
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/hadoop/hadoop/hadoop-cluster-install.html">
             
-              <p class="site-author-name" itemprop="name">zhaikaishun</p>
-              <p class="site-description motion-element" itemprop="description">the blog of dangluren</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
+                hadoop集群搭建教程
             
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">47</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
+        </a>
+    </span>
+    
+
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/hadoop/hdfs/hdfs-filesystem-1.html">
             
-
+                HDFS java操作（一）FileSystem 常用操作
             
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/zhaikaishun" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="zhaikaishun@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://blog.csdn.net/t1dmzks/" title="zhaikaishun blog" target="_blank">zhaikaishun blog</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#filestatus-获取文件状态"><span class="nav-number">2.</span> <span class="nav-text">filestatus 获取文件状态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#globStatus-路径过滤"><span class="nav-number">2.1.</span> <span class="nav-text">globStatus 路径过滤</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">zhaikaishun</span>
-
-  
+        </a>
+    </span>
+    
 </div>
 
+<!-- 文章评论 -->
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
       </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
       </div>
-    
-
-    
-
+    </section>
+    -->
   </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'hdfs-filesystem-2' || 'hadoop/hdfs/hdfs-filesystem-2.html',
+    owner: 'jangdelong',
+    repo: 'blog_comments',
+    clientId: 'b08ed25e52c57993e69c',
+    clientSecret: '1cb9545488f0380904b87350e7c5a270ae03bab7'
+  });
+  </script>
 
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/hadoop/">大数据</a>
+        <span class="badge">(33)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/hdfs/">hdfs</a>
+        <span class="badge">(8)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/hadoop/">hadoop</a>
+        <span class="badge">(9)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/Linux/">Linux</a>
+        <span class="badge">(2)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/programme/">programme</a>
+        <span class="badge">(6)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/hadoop/spark/">spark</a>
+        <span class="badge">(16)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/再测试sss/">再测试sss</a>
+        <span class="badge">(0)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/随笔/">随笔</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/测试一下目录/">测试一下目录</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/测试一下目录/hadoop/">大数据</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
   
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
+    <a class="tag-item" href="/tags/hdfs/" title="hdfs">hdfs (8)</a>
   
-
-
-
-
-
-
-
-
-
-
-
-
+    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (9)</a>
   
+    <a class="tag-item" href="/tags/linux/" title="linux">linux (2)</a>
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <a class="tag-item" href="/tags/crontab/" title="crontab">crontab (1)</a>
   
-
+    <a class="tag-item" href="/tags/java/" title="java">java (3)</a>
   
+    <a class="tag-item" href="/tags/JDBC/" title="JDBC">JDBC (1)</a>
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <a class="tag-item" href="/tags/工具类/" title="工具类">工具类 (1)</a>
   
-
+    <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
   
+    <a class="tag-item" href="/tags/npm/" title="npm">npm (0)</a>
   
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+    <a class="tag-item" href="/tags/hexo/" title="hexo">hexo (0)</a>
   
-
+    <a class="tag-item" href="/tags/github/" title="github">github (0)</a>
   
+    <a class="tag-item" href="/tags/tags1/" title="tags1">tags1 (0)</a>
   
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+    <a class="tag-item" href="/tags/tags2/" title="tags2">tags2 (0)</a>
   
-
+    <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
+    <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
   
-
+    <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
   
+    <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
+</div>
+    </section>
+    
 
+    
 
-  
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
 
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2018
+    
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script>
 </body>
 </html>

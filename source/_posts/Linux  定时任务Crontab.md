@@ -6,8 +6,7 @@ categories: [Linux]
 author: kaishun
 id: 58
 permalink: linux-crontab
-blogexcerpt: 
-Crontab是Linux系统中在固定时间执行某一个程序的工具，类似于Windows系统中的任务计划程序，在一些自动化的程序或者运维中，起到很大的作用，在很多数据处理方面，例如定时备份数据库，定时指定某些任务等等，用linux的Crontab往往比较方便，下面介绍如何安装与使用crontab
+blogexcerpt: Crontab是Linux系统中在固定时间执行某一个程序的工具，类似于Windows系统中的任务计划程序，在一些自动化的程序或者运维中，起到很大的作用，在很多数据处理方面，例如定时备份数据库，定时指定某些任务等等，用linux的Crontab往往比较方便，下面介绍如何安装与使用crontab
 
 ---
 

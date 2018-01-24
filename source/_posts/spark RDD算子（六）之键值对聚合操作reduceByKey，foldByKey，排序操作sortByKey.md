@@ -18,6 +18,7 @@ def reduceByKey(partitioner: Partitioner, func: (V, V) => V): RDD[(K, V)]
 ```
 接收一个函数，按照相同的key进行reduce操作，类似于scala的reduce的操作  
 例如RDD {(1, 2), (3, 4), (3, 6)}进行reduce  
+<!-- more -->
 **scala版本**
 ```scala
     var mapRDD = sc.parallelize(List((1,2),(3,4),(3,6)))

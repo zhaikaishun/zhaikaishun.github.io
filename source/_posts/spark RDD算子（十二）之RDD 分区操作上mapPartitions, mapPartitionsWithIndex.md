@@ -15,6 +15,7 @@ mapPartition可以倒过来理解，先partition，再把每个partition进行ma
 
 比如，将RDD中的所有数据通过JDBC连接写入数据库，如果使用map函数，可能要为每一个元素都创建一个connection，这样开销很大，如果使用mapPartitions，那么只需要针对每一个分区建立一个connection。  
 下面的例子，**把每一个元素平方**
+<!-- more -->
 **java 每一个元素平方**
 ```java
         JavaRDD<Integer> rdd = sc.parallelize(

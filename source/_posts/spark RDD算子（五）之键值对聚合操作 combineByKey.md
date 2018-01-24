@@ -10,12 +10,14 @@ permalink: spark-rdd-5
 
 # **combineByKey**
 聚合数据一般在集中式数据比较方便，如果涉及到分布式的数据集，该如何去实现呢。这里介绍一下combineByKey, 这个是各种聚集操作的鼻祖，应该要好好了解一下,[参考scala API](http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions)  
+<!-- more -->
 ## **简要介绍**
 ```scala
 def combineByKey[C](createCombiner: (V) => C,  
                     mergeValue: (C, V) => C,   
                     mergeCombiners: (C, C) => C): RD
 ```
+
 - **createCombiner**: combineByKey() 会遍历分区中的所有元素，因此每个元素的键要么还没有遇到过，要么就
 和之前的某个元素的键相同。如果这是一个新的元素， combineByKey() 会使用一个叫作 createCombiner() 的函数来创建
 那个键对应的累加器的初始值

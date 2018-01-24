@@ -18,7 +18,7 @@ scala> val rdd = sc.parallelize(Array((1, 2),(2,4),(2,5), (3, 4),(3,5), (3, 6)))
 scala> val countbyKeyRDD = rdd.countByKey()
 countbyKeyRDD: scala.collection.Map[Int,Long] = Map(1 -> 1, 2 -> 2, 3 -> 3)
 ```
-
+<!-- more -->
 **java例子**  
 ```java
     JavaRDD<Tuple2<Integer, Integer>> tupleRDD =

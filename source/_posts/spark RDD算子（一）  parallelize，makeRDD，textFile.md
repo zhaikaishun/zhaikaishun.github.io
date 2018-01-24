@@ -20,7 +20,7 @@ def parallelize[T](seq: Seq[T], numSlices: Int = defaultParallelism)(implicit ar
 scala> sc.parallelize(List("shenzhen", "is a beautiful city"))
 res1: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[1] at parallelize at <console>:22
 ```  
-
+<!-- more -->
 **java版本**     
 def parallelize[T](list : java.util.List[T], numSlices : scala.Int) : org.apache.spark.api.java.JavaRDD[T] = { /* compiled code */ } 
 - 第一个参数是一个List集合

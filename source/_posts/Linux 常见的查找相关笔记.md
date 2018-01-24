@@ -18,6 +18,7 @@ find /etc -name httpd.conf　　#在/etc目录下文件httpd.conf
 find /etc -name '*srm*'　　#使用通配符*(0或者任意多个)。表示在/etc目录下查找文件名中含有字符串‘srm’的文件
 find . -name 'srm*' 　　#表示当前目录下查找文件名开头是字符串‘srm’的文件
 ```
+<!-- more -->
 2. 按照文件特征查找 
 ```
 find / -amin -10 　　# 查找在系统中最后10分钟访问的文件(access time)

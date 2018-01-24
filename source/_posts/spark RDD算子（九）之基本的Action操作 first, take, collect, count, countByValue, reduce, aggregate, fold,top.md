@@ -6,6 +6,7 @@ categories: [大数据,spark]
 author: kaishun
 id: 43
 permalink: spark-rdd-9
+toc: true
 ---
 
 # **first**  
@@ -17,6 +18,7 @@ scala> val rdd = sc.parallelize(List(1,2,3,3))
 scala> rdd.first()
 res1: Int = 1
 ```
+<!-- more -->
 **java**
 ```java
     JavaRDD<Integer> rdd = sc.parallelize(Arrays.asList(1, 2, 3, 3));
