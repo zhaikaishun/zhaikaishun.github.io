@@ -135,6 +135,361 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-10.html">
+    		spark RDD算子（十）之PairRDD的Action操作countByKey, collectAsMap
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-04-05T13:25:21.000Z">2017-04-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="countByKey"><a href="#countByKey" class="headerlink" title="countByKey"></a><strong>countByKey</strong></h1><p>def countByKey(): Map[K, Long]<br>以RDD{(1, 2),(2,4),(2,5), (3, 4),(3,5), (3, 6)}为例  rdd.countByKey会返回{(1,1),(2,2),(3,3)}<br><strong>scala例子</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scala&gt; <span class="keyword">val</span> rdd = sc.parallelize(<span class="type">Array</span>((<span class="number">1</span>, <span class="number">2</span>),(<span class="number">2</span>,<span class="number">4</span>),(<span class="number">2</span>,<span class="number">5</span>), (<span class="number">3</span>, <span class="number">4</span>),(<span class="number">3</span>,<span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)))</div><div class="line"></div><div class="line">scala&gt; <span class="keyword">val</span> countbyKeyRDD = rdd.countByKey()</div><div class="line">countbyKeyRDD: scala.collection.<span class="type">Map</span>[<span class="type">Int</span>,<span class="type">Long</span>] = <span class="type">Map</span>(<span class="number">1</span> -&gt; <span class="number">1</span>, <span class="number">2</span> -&gt; <span class="number">2</span>, <span class="number">3</span> -&gt; <span class="number">3</span>)</div></pre></td></tr></table></figure></p>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-rdd-10.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-rdd-10.html" title="spark RDD算子（十）之PairRDD的Action操作countByKey, collectAsMap">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-9.html">
+    		spark RDD算子（九）之基本的Action操作 first, take, collect, count, countByValue, reduce, aggregate, fold,top
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-28T13:25:21.000Z">2017-03-28</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="first"><a href="#first" class="headerlink" title="first"></a><strong>first</strong></h1><p>返回第一个元素<br><strong>scala</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scala&gt; <span class="keyword">val</span> rdd = sc.parallelize(<span class="type">List</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>))</div><div class="line"></div><div class="line">scala&gt; rdd.first()</div><div class="line">res1: <span class="type">Int</span> = <span class="number">1</span></div></pre></td></tr></table></figure></p>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-rdd-9.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-rdd-9.html" title="spark RDD算子（九）之基本的Action操作 first, take, collect, count, countByValue, reduce, aggregate, fold,top">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-8.html">
+    		spark RDD算子（八）之键值对关联操作 subtractByKey, join, rightOuterJoin, leftOuterJoin
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-18T13:25:21.000Z">2017-03-18</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>先从spark-learning中的一张图大致了解其功能<br><img src="http://i1.piimg.com/567571/1ccee438414f9c6f.png" alt=""></p>
+<h1 id="subtractByKey"><a href="#subtractByKey" class="headerlink" title="subtractByKey"></a><strong>subtractByKey</strong></h1><p><strong>函数定义</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def subtractByKey[W](other: RDD[(K, W)])(implicit arg0: ClassTag[W]): RDD[(K, V)]</div><div class="line"></div><div class="line">def subtractByKey[W](other: RDD[(K, W)], numPartitions: Int)(implicit arg0: ClassTag[W]): RDD[(K, V)]</div><div class="line"></div><div class="line">def subtractByKey[W](other: RDD[(K, W)], p: Partitioner)(implicit arg0: ClassTag[W]): RDD[(K, V)]</div></pre></td></tr></table></figure></p>
+<p>类似于subtrac，删掉 RDD 中键与 other RDD 中的键相同的元素<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-rdd-8.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-rdd-8.html" title="spark RDD算子（八）之键值对关联操作 subtractByKey, join, rightOuterJoin, leftOuterJoin">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-7.html">
+    		spark RDD算子（七）之键值对分组操作 groupByKey，cogroup
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-07T13:25:21.000Z">2017-03-07</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="groupByKey"><a href="#groupByKey" class="headerlink" title="groupByKey"></a><strong>groupByKey</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def groupByKey(): RDD[(K, Iterable[V])]</div><div class="line"></div><div class="line">def groupByKey(numPartitions: Int): RDD[(K, Iterable[V])]</div><div class="line"></div><div class="line">def groupByKey(partitioner: Partitioner): RDD[(K, Iterable[V])]</div></pre></td></tr></table></figure>
+<p>groupByKey会将RDD[key,value] 按照相同的key进行分组，形成RDD[key,Iterable[value]]的形式， 有点类似于sql中的groupby，例如类似于mysql中的group_concat<br>例如这个例子， 我们对学生的成绩进行分组<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-rdd-7.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-rdd-7.html" title="spark RDD算子（七）之键值对分组操作 groupByKey，cogroup">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-6.html">
+    		spark RDD算子（六）之键值对聚合操作reduceByKey，foldByKey，排序操作sortByKey
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-06T13:25:21.000Z">2017-03-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="reduceByKey"><a href="#reduceByKey" class="headerlink" title="reduceByKey"></a><strong>reduceByKey</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def reduceByKey(func: (V, V) =&gt; V): RDD[(K, V)]</div><div class="line"></div><div class="line">def reduceByKey(func: (V, V) =&gt; V, numPartitions: Int): RDD[(K, V)]</div><div class="line"></div><div class="line">def reduceByKey(partitioner: Partitioner, func: (V, V) =&gt; V): RDD[(K, V)]</div></pre></td></tr></table></figure>
+<p>接收一个函数，按照相同的key进行reduce操作，类似于scala的reduce的操作<br>例如RDD {(1, 2), (3, 4), (3, 6)}进行reduce<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-rdd-6.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-rdd-6.html" title="spark RDD算子（六）之键值对聚合操作reduceByKey，foldByKey，排序操作sortByKey">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-5.html">
+    		spark RDD算子（五）之键值对聚合操作 combineByKey
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-05T13:25:21.000Z">2017-03-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="combineByKey"><a href="#combineByKey" class="headerlink" title="combineByKey"></a><strong>combineByKey</strong></h1><p>聚合数据一般在集中式数据比较方便，如果涉及到分布式的数据集，该如何去实现呢。这里介绍一下combineByKey, 这个是各种聚集操作的鼻祖，应该要好好了解一下,<a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions" target="_blank" rel="external">参考scala API</a><br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-rdd-5.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-rdd-5.html" title="spark RDD算子（五）之键值对聚合操作 combineByKey">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-4.html">
+    		spark RDD算子（四）之创建键值对RDD mapToPair flatMapToPair
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-03-04T13:25:21.000Z">2017-03-04</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="mapToPair"><a href="#mapToPair" class="headerlink" title="mapToPair"></a><strong>mapToPair</strong></h1><p>举例，在F:\sparktest\sample.txt 文件的内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">aa bb cc aa aa aa dd dd ee ee ee ee </div><div class="line">ff aa bb zks</div><div class="line">ee kks</div><div class="line">ee  zz zks</div></pre></td></tr></table></figure></p>
+<p>将每一行的第一个单词作为键，1 作为value创建pairRDD<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-rdd-4.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-rdd-4.html" title="spark RDD算子（四）之创建键值对RDD mapToPair flatMapToPair">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
     	<a href="http://dangluren.top/hadoop/spark/spark-rdd-3.html">
     		spark RDD算子（三） distinct，union，intersection，subtract，cartesian
     	</a>
@@ -285,359 +640,6 @@
 </article>
 
     
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-exception.html">
-    		spark lost task 异常笔记
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-02-05T13:25:21.000Z">2017-02-05</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/spark/" title="spark">spark</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h1 id="Lost-task-java-lang-NullPointerException"><a href="#Lost-task-java-lang-NullPointerException" class="headerlink" title="Lost task java.lang.NullPointerException"></a>Lost task java.lang.NullPointerException</h1><p>Exception in thread “main” org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost): java.lang.NullPointerException<br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-exception.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-exception.html" title="spark lost task 异常笔记">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-v1-v2.html">
-    		spark 从1.x 转到2.x，编写程序的的一些区别
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-02-05T13:25:21.000Z">2017-02-05</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/spark/" title="spark">spark</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>spark 2.x 版本相对于1.x版本，有挺多地方的修改，一是类似于flatMapRDD 中 iteator iteatable之类的区别<br>2是类似于dataset的一些问题</p>
-<p>下面是2.x版本的iteatable和iteartor之类的区别，只举例了两个，其实只要和iteartor有关的都有了修改<br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-v1-v2.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-v1-v2.html" title="spark 从1.x 转到2.x，编写程序的的一些区别">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-cluster-install.html">
-    		Spark集群环境的搭建
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-09-05T13:25:21.000Z">2016-09-05</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/spark/" title="spark">spark</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>前提：已经安装好了hadoop, 说明，这次安装的是spark-1.4.0-bin-hadoop2.6.tgz版本，这个版本是兼容hadoop2.7的hdfs和yarn的</p>
-<h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备:"></a>软件准备:</h2><p>scala-2.10.4 ,<a href="http://www.scala-lang.org/" target="_blank" rel="external">下载地址</a><br>spark-1.4.0-bin-hadoop2.6.tgz <a href="http://spark.apache.org/downloads.html" target="_blank" rel="external">下载地址</a></p>
-<h2 id="1-安装scala-2-10-4"><a href="#1-安装scala-2-10-4" class="headerlink" title="1. 安装scala-2.10.4"></a>1. 安装scala-2.10.4</h2><p>将下载好的scala-2.11.4.tgz复制到/usr/lib<br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-cluster-install.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-cluster-install.html" title="Spark集群环境的搭建">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-8.html">
-    		Hadoop入门案例（八）之 表 关联
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-20T13:25:21.000Z">2016-08-20</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                表关联:两个表关联，代码和以后再贴一起在github上贴出来，mapreduce表关联思路很简单。主要如下 思路： mapper阶段:(key，value) value中加一个字符，用来区别多个表 .reduce时 new 多个数组，例如我们是两个表关联，通过value中的字符，用来判断哪个是哪个表，分别放在不同的数组中，然后数组中进行笛卡尔乘积即可
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-8.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-8.html" title="Hadoop入门案例（八）之 表 关联">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-7.html">
-    		Hadoop入门案例（七）之TOP K
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-05T13:25:21.000Z">2016-08-05</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                目的：找出数据集中的top k，二. 思路1. 最开始是快速排序或者归并排序2. 其次就是wordcount，然后再进行一遍mapReduce 3. 先排序，再取前k个2.2 在mapper阶段，找出本地的top k, 然后所有的独立的top k集合在reduce中运算
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-7.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-7.html" title="Hadoop入门案例（七）之TOP K">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-6.html">
-    		Hadoop入门案例（六）之二次排序，全排序基础下的二次排序
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-03T13:25:21.000Z">2016-08-03</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                对于二次排序，定义是在一个字段排好顺序的前提下，另外一个字段也进行排序。类似于sql中的order by多个字段，然而，网上大多数二次排序，对于partitioner都没有利用，因为网上的partition竟然都是是按照hash分组的，而且也没设置reduceTaskNum，这不能充分利用集群的资源，只有一个reduce，，即使如果有多个reduce，partition按照hash分区也不属于全排序，准确的说属于分组排序。我对网上的代码做了稍加修改，可以满足全排序的情况下，再进行二次排序。测试数和代码都参考自网上，具体哪个不记得了，反正网上都差不多测试数据
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-6.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-6.html" title="Hadoop入门案例（六）之二次排序，全排序基础下的二次排序">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-5.html">
-    		Hadoop入门案例（五）全排序之TotalOrderPartitioner工具类+自动采样
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-02T13:25:21.000Z">2016-08-02</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p><strong>为什么用这种方法</strong><br>我们之前的是自定义分区的，但是如果我们不知道数据的分布，手动分区不太容易，稍有不慎，会导致数据倾斜较大，这时候，我们应该使用采样点进行排序，本文使用的是 Hadoop内置的名为 TotalOrderPartitioner 的全排序，采样器使用的是 InputSampler.Sampler，关键解释已经存在于代码之中。 文章参考了<br>国外  <a href="http://blog.ditullio.fr/2016/01/04/hadoop-basics-total-order-sorting-mapreduce/#The_TotalOrderPartitioner" target="_blank" rel="external">http://blog.ditullio.fr/2016/01/04/hadoop-basics-total-order-sorting-mapreduce/#The_TotalOrderPartitioner</a><br>国内  <a href="http://www.cnblogs.com/one--way/p/5931308.html" target="_blank" rel="external">http://www.cnblogs.com/one--way/p/5931308.html</a><br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-5.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-5.html" title="Hadoop入门案例（五）全排序之TotalOrderPartitioner工具类+自动采样">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
 
     
     <nav class="page-navigator">
@@ -658,7 +660,7 @@
     
     <li>
         <a href="/categories/hadoop/">大数据</a>
-        <span class="badge">(33)</span>
+        <span class="badge">(40)</span>
     </li>
     
     <li>
@@ -672,33 +674,33 @@
     </li>
     
     <li>
+        <a href="/categories/programme/">programme</a>
+        <span class="badge">(10)</span>
+    </li>
+    
+    <li>
         <a href="/categories/Linux/">Linux</a>
         <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/programme/">programme</a>
-        <span class="badge">(6)</span>
+        <a href="/categories/架构/">架构</a>
+        <span class="badge">(3)</span>
     </li>
     
     <li>
         <a href="/categories/hadoop/spark/">spark</a>
-        <span class="badge">(16)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/测试一下目录/">测试一下目录</a>
-        <span class="badge">(1)</span>
+        <span class="badge">(22)</span>
     </li>
     
     <li>
         <a href="/categories/随笔/">随笔</a>
-        <span class="badge">(1)</span>
+        <span class="badge">(2)</span>
     </li>
     
     <li>
-        <a href="/categories/测试一下目录/hadoop/">大数据</a>
-        <span class="badge">(1)</span>
+        <a href="/categories/算法/">算法</a>
+        <span class="badge">(2)</span>
     </li>
     
 </ul>
@@ -714,29 +716,47 @@
   
     <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (9)</a>
   
-    <a class="tag-item" href="/tags/linux/" title="linux">linux (2)</a>
-  
-    <a class="tag-item" href="/tags/crontab/" title="crontab">crontab (1)</a>
-  
-    <a class="tag-item" href="/tags/java/" title="java">java (3)</a>
+    <a class="tag-item" href="/tags/java/" title="java">java (8)</a>
   
     <a class="tag-item" href="/tags/JDBC/" title="JDBC">JDBC (1)</a>
   
     <a class="tag-item" href="/tags/工具类/" title="工具类">工具类 (1)</a>
   
-    <a class="tag-item" href="/tags/spark/" title="spark">spark (16)</a>
+    <a class="tag-item" href="/tags/linux/" title="linux">linux (2)</a>
+  
+    <a class="tag-item" href="/tags/crontab/" title="crontab">crontab (1)</a>
+  
+    <a class="tag-item" href="/tags/Netty/" title="Netty">Netty (1)</a>
+  
+    <a class="tag-item" href="/tags/spark/" title="spark">spark (22)</a>
+  
+    <a class="tag-item" href="/tags/netty/" title="netty">netty (1)</a>
+  
+    <a class="tag-item" href="/tags/hive/" title="hive">hive (1)</a>
+  
+    <a class="tag-item" href="/tags/大数据/" title="大数据">大数据 (1)</a>
   
     <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
+    <a class="tag-item" href="/tags/io/" title="io">io (1)</a>
+  
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
+  
+    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (2)</a>
+  
+    <a class="tag-item" href="/tags/剑指向offer/" title="剑指向offer">剑指向offer (1)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
+  
+    <a class="tag-item" href="/tags/笔试题/" title="笔试题">笔试题 (1)</a>
+  
+    <a class="tag-item" href="/tags/动态规划/" title="动态规划">动态规划 (1)</a>
+  
+    <a class="tag-item" href="/tags/数学/" title="数学">数学 (1)</a>
   
     <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
-    <a class="tag-item" href="/tags/标签1/" title="标签1">标签1 (1)</a>
-  
-    <a class="tag-item" href="/tags/标签2/" title="标签2">标签2 (1)</a>
-  
-    <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (1)</a>
+    <a class="tag-item" href="/tags/xml解析/" title="xml解析">xml解析 (1)</a>
   
 </div>
     </section>
