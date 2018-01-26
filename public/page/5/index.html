@@ -136,15 +136,15 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-v1-v2.html">
-    		spark 从1.x 转到2.x，编写程序的的一些区别
+    	<a href="http://dangluren.top/hadoop/spark/spark-sourcecode-install.html">
+    		spark-2.2.0源码阅读环境的搭建
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-02-05T13:25:21.000Z">2017-02-05</time>
+        <time datetime="2017-05-28T13:25:21.000Z">2017-05-28</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -159,17 +159,17 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>spark 2.x 版本相对于1.x版本，有挺多地方的修改，一是类似于flatMapRDD 中 iteator iteatable之类的区别<br>2是类似于dataset的一些问题</p>
-<p>下面是2.x版本的iteatable和iteartor之类的区别，只举例了两个，其实只要和iteartor有关的都有了修改<br>
+                <h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><p>去<a href="http://spark.apache.org/downloads.html" target="_blank" rel="external">官网</a> 下载 <a href="https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0.tgz" target="_blank" rel="external">spark-2.2.0.tgz</a></p>
+<h2 id="解压后，用idea打开"><a href="#解压后，用idea打开" class="headerlink" title="解压后，用idea打开"></a>解压后，用idea打开</h2><p>pom maven需要下载很多包，并且加载，需要等待一下，最好建议改成阿里云的依赖仓库，这样比较快。不改也可以<br>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-v1-v2.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/hadoop/spark/spark-sourcecode-install.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-v1-v2.html" title="spark 从1.x 转到2.x，编写程序的的一些区别">
+            <a href="http://dangluren.top/hadoop/spark/spark-sourcecode-install.html" title="spark-2.2.0源码阅读环境的搭建">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -187,15 +187,15 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-cluster-install.html">
-    		Spark集群环境的搭建
+    	<a href="http://dangluren.top/hadoop/spark/spark-sql-dataType-transform.html">
+    		Spark Sql 编程式结构DataType转换 代码类小结
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2016-09-05T13:25:21.000Z">2016-09-05</time>
+        <time datetime="2017-05-21T13:25:21.000Z">2017-05-21</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -210,266 +210,14 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>前提：已经安装好了hadoop, 说明，这次安装的是spark-1.4.0-bin-hadoop2.6.tgz版本，这个版本是兼容hadoop2.7的hdfs和yarn的</p>
-<h2 id="软件准备"><a href="#软件准备" class="headerlink" title="软件准备:"></a>软件准备:</h2><p>scala-2.10.4 ,<a href="http://www.scala-lang.org/" target="_blank" rel="external">下载地址</a><br>spark-1.4.0-bin-hadoop2.6.tgz <a href="http://spark.apache.org/downloads.html" target="_blank" rel="external">下载地址</a></p>
-<h2 id="1-安装scala-2-10-4"><a href="#1-安装scala-2-10-4" class="headerlink" title="1. 安装scala-2.10.4"></a>1. 安装scala-2.10.4</h2><p>将下载好的scala-2.11.4.tgz复制到/usr/lib<br>
+                <h3 id="基本类型数据转DataType"><a href="#基本类型数据转DataType" class="headerlink" title="基本类型数据转DataType"></a>基本类型数据转DataType</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> DataType <span class="title">attrToDataType</span><span class="params">(String attrstr)</span></span>&#123;</div><div class="line">		DataType returnDataType = DataTypes.StringType;</div><div class="line">		</div><div class="line">		<span class="keyword">switch</span>(attrstr.toLowerCase())&#123;</div><div class="line">		<span class="keyword">case</span> <span class="string">"short"</span> :</div><div class="line">			returnDataType = DataTypes.StringType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"char"</span> :</div><div class="line">			returnDataType = DataTypes.StringType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"int"</span> :</div><div class="line">			returnDataType = DataTypes.IntegerType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"integer"</span> :</div><div class="line">			returnDataType = DataTypes.IntegerType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"float"</span> :</div><div class="line">			returnDataType = DataTypes.FloatType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"double"</span> :</div><div class="line">			returnDataType = DataTypes.DoubleType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"string"</span> :</div><div class="line">			returnDataType = DataTypes.StringType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"varchar"</span>:</div><div class="line">			returnDataType = DataTypes.StringType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"long"</span>:</div><div class="line">			returnDataType = DataTypes.LongType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"boolean"</span>:</div><div class="line">			returnDataType = DataTypes.BooleanType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		<span class="keyword">case</span> <span class="string">"date"</span>:</div><div class="line">			returnDataType = DataTypes.DateType;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> returnDataType;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-cluster-install.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/hadoop/spark/spark-sql-dataType-transform.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-cluster-install.html" title="Spark集群环境的搭建">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-8.html">
-    		Hadoop入门案例（八）之 表 关联
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-20T13:25:21.000Z">2016-08-20</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                表关联:两个表关联，代码和以后再贴一起在github上贴出来，mapreduce表关联思路很简单。主要如下 思路： mapper阶段:(key，value) value中加一个字符，用来区别多个表 .reduce时 new 多个数组，例如我们是两个表关联，通过value中的字符，用来判断哪个是哪个表，分别放在不同的数组中，然后数组中进行笛卡尔乘积即可
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-8.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-8.html" title="Hadoop入门案例（八）之 表 关联">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-7.html">
-    		Hadoop入门案例（七）之TOP K
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-05T13:25:21.000Z">2016-08-05</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                目的：找出数据集中的top k，二. 思路1. 最开始是快速排序或者归并排序2. 其次就是wordcount，然后再进行一遍mapReduce 3. 先排序，再取前k个2.2 在mapper阶段，找出本地的top k, 然后所有的独立的top k集合在reduce中运算
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-7.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-7.html" title="Hadoop入门案例（七）之TOP K">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-6.html">
-    		Hadoop入门案例（六）之二次排序，全排序基础下的二次排序
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-03T13:25:21.000Z">2016-08-03</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                对于二次排序，定义是在一个字段排好顺序的前提下，另外一个字段也进行排序。类似于sql中的order by多个字段，然而，网上大多数二次排序，对于partitioner都没有利用，因为网上的partition竟然都是是按照hash分组的，而且也没设置reduceTaskNum，这不能充分利用集群的资源，只有一个reduce，，即使如果有多个reduce，partition按照hash分区也不属于全排序，准确的说属于分组排序。我对网上的代码做了稍加修改，可以满足全排序的情况下，再进行二次排序。测试数和代码都参考自网上，具体哪个不记得了，反正网上都差不多测试数据
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-6.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-6.html" title="Hadoop入门案例（六）之二次排序，全排序基础下的二次排序">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-5.html">
-    		Hadoop入门案例（五）全排序之TotalOrderPartitioner工具类+自动采样
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-02T13:25:21.000Z">2016-08-02</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p><strong>为什么用这种方法</strong><br>我们之前的是自定义分区的，但是如果我们不知道数据的分布，手动分区不太容易，稍有不慎，会导致数据倾斜较大，这时候，我们应该使用采样点进行排序，本文使用的是 Hadoop内置的名为 TotalOrderPartitioner 的全排序，采样器使用的是 InputSampler.Sampler，关键解释已经存在于代码之中。 文章参考了<br>国外  <a href="http://blog.ditullio.fr/2016/01/04/hadoop-basics-total-order-sorting-mapreduce/#The_TotalOrderPartitioner" target="_blank" rel="external">http://blog.ditullio.fr/2016/01/04/hadoop-basics-total-order-sorting-mapreduce/#The_TotalOrderPartitioner</a><br>国内  <a href="http://www.cnblogs.com/one--way/p/5931308.html" target="_blank" rel="external">http://www.cnblogs.com/one--way/p/5931308.html</a><br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-5.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-5.html" title="Hadoop入门案例（五）全排序之TotalOrderPartitioner工具类+自动采样">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-4.html">
-    		Hadoop入门案例（四）全排序之自定义分区 字符串（单词）排序
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2016-08-01T13:25:21.000Z">2016-08-01</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                大量文本中有很多单词，需要对这些单词进行排序，排序规则按照字符进行排序。 和上一篇对数字进行排序是一样的 http://blog.csdn.net/T1DMzks/article/details/73028776 ， 只不过是自定义分区有点变化, 利用mapReduce中map到reduce端的shuffle进行排序，MapReduce只能保证各个分区内部有序，但不能保证全局有序，于是我还自定义了分区，在map后、shuffle之前，我先将小于c的放在0分区，c-f的放在1分区，其余的放在2分区，这样，首先保证了分区与分区之间是整体有序，然后各个分区进行各自的shuffle，使其分区内部有序。
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-4.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-4.html" title="Hadoop入门案例（四）全排序之自定义分区 字符串（单词）排序">
+            <a href="http://dangluren.top/hadoop/spark/spark-sql-dataType-transform.html" title="Spark Sql 编程式结构DataType转换 代码类小结">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
                 
@@ -489,21 +237,21 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-3.html">
-    		Hadoop入门案例（三）全排序之自定义分区 数字排序
+    	<a href="http://dangluren.top/hadoop/spark/spark-fetchfailedException.html">
+    		Spark Shuffle FetchFailedException异常
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2016-07-25T13:25:21.000Z">2016-07-25</time>
+        <time datetime="2017-05-09T13:25:21.000Z">2017-05-09</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
+        <a href="/tags/spark/" title="spark">spark</a>
     
 
         </span>
@@ -512,14 +260,201 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                需求介绍：大量的文本中有大量数字，需要对数字进行全排序,按照升序排序。 原理分析 利用mapReduce中map到reduce端的shuffle进行排序，MapReduce只能保证各个分区内部有序，但不能保证全局有序，于是我还自定义了分区，在map后、shuffle之前，我先将小于50的放在0分区，50-100的放在1分区，100到150的放在2分区，其余的放在三分区，这样，首先保证了分区与分区之间是整体有序，然后各个分区进行各自的shuffle，使其分区内部有序
+                <p>翻译<br><a href="http://stackoverflow.com/questions/34941410/fetchfailedexception-or-metadatafetchfailedexception-when-processing-big-data-se" target="_blank" rel="external">http://stackoverflow.com/questions/34941410/fetchfailedexception-or-metadatafetchfailedexception-when-processing-big-data-se</a>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">org.apache.spark.shuffle.MetadataFetchFailedException: Missing an output location for shuffle 0</div><div class="line"></div><div class="line">org.apache.spark.shuffle.FetchFailedException: Failed to connect to ip-xxxxxxxx</div><div class="line"></div><div class="line">org.apache.spark.shuffle.FetchFailedException: Error in opening FileSegmentManagedBuffer&#123;file=/mnt/yarn/nm/usercache/xxxx/appcache/application_1450751731124_8446/blockm</div><div class="line">gr-8a7b17b8-f4c3-45e7-aea8-8b0a7481be55/08/shuffle_0_224_0.data, offset=12329181, length=2104094&#125;</div></pre></td></tr></table></figure>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-3.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/hadoop/spark/spark-fetchfailedException.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-3.html" title="Hadoop入门案例（三）全排序之自定义分区 数字排序">
+            <a href="http://dangluren.top/hadoop/spark/spark-fetchfailedException.html" title="Spark Shuffle FetchFailedException异常">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-fqa.html">
+    		spark碰到的问题
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-05-07T13:25:21.000Z">2017-05-07</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h4 id="java-io-FileNotFoundException-File-does-not-exist"><a href="#java-io-FileNotFoundException-File-does-not-exist" class="headerlink" title="java.io.FileNotFoundException: File does not exist"></a>java.io.FileNotFoundException: File does not exist</h4><pre><code>java.io.FileNotFoundException: File does not exist: hdfs://master:9000/user/hmaster/.sparkStaging/application_1498791665418_0041/spark-assembly-1.4.0-hadoop2.6.0.jar
+        at org.apache.hadoop.hdfs.DistributedFileSystem$22.doCall(DistributedFileSystem.java:1309)
+        at org.apache.hadoop.hdfs.DistributedFileSystem$22.doCall(DistributedFileSystem.java:1301)
+        at org.apache.hadoop.fs.FileSystemLinkResolver.resolve(FileSystemLinkResolver.java:81)
+        at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:1301)
+        at org.apache.hadoop.yarn.util.FSDownload.copy(FSDownload.java:253)
+        at org.apache.hadoop.yarn.util.FSDownload.access$000(FSDownload.java:63)
+        at org.apache.hadoop.yarn.util.FSDownload$2.run(FSDownload.java:361)
+        at org.apache.hadoop.yarn.util.FSDownload$2.run(FSDownload.java:359)
+        at java.lang.Thread.run(Thread.java:745)
+        ...
+
+Failing this attempt. Failing the application.
+         ApplicationMaster host: N/A
+         ApplicationMaster RPC port: -1
+         queue: root.hmaster
+         start time: 1499311838058
+         final status: FAILED
+         tracking URL: http://master:8088/cluster/app/application_1498791665418_0041
+         user: hmaster
+Exception in thread &quot;main&quot; org.apache.spark.SparkException: Application application_1498791665418_0041 finished with failed status
+        at org.apache.spark.deploy.yarn.Client.run(Client.scala:841)
+        at org.apache.spark.deploy.yarn.Client$.main(Client.scala:867)
+        at org.apache.spark.deploy.yarn.Client.main(Client.scala)
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:606)
+        at org.apache.spark.deploy.SparkSubmit$.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:664)
+...
+</code></pre>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-fqa.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-fqa.html" title="spark碰到的问题">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/Linux/linux-crontab.html">
+    		Linux  定时任务Crontab
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-05-06T13:25:21.000Z">2017-05-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/linux/" title="linux">linux</a> / 
+    
+        <a href="/tags/crontab/" title="crontab">crontab</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                Crontab是Linux系统中在固定时间执行某一个程序的工具，类似于Windows系统中的任务计划程序，在一些自动化的程序或者运维中，起到很大的作用，在很多数据处理方面，例如定时备份数据库，定时指定某些任务等等，用linux的Crontab往往比较方便，下面介绍如何安装与使用crontab
+            
+            <p class="more">
+                <a href="http://dangluren.top/Linux/linux-crontab.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/Linux/linux-crontab.html" title="Linux  定时任务Crontab">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/Linux/">Linux</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/Linux/linux-find-xargs.html">
+    		Linux 常见的查找相关笔记
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-05-05T13:25:21.000Z">2017-05-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/linux/" title="linux">linux</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="查找文件名"><a href="#查找文件名" class="headerlink" title="查找文件名"></a>查找文件名</h2><p> find -name filename </p>
+<ol>
+<li>按照文件名查找<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find / -name httpd.conf　　#在根目录下查找文件httpd.conf，表示在整个硬盘查找</div><div class="line">find /etc -name httpd.conf　　#在/etc目录下文件httpd.conf</div><div class="line">find /etc -name &apos;*srm*&apos;　　#使用通配符*(0或者任意多个)。表示在/etc目录下查找文件名中含有字符串‘srm’的文件</div><div class="line">find . -name &apos;srm*&apos; 　　#表示当前目录下查找文件名开头是字符串‘srm’的文件</div></pre></td></tr></table></figure>
+</li>
+</ol>
+            
+            <p class="more">
+                <a href="http://dangluren.top/Linux/linux-find-xargs.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/Linux/linux-find-xargs.html" title="Linux 常见的查找相关笔记">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
                 
@@ -534,26 +469,30 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        <a class="cat-link" href="/categories/programme/">programme</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-2.html">
-    		Hadoop入门案例（二） 单词去重
+    	<a href="http://dangluren.top/programme/jdbc-util.html">
+    		JDBC批量插入与更新工具类
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2016-07-22T13:25:21.000Z">2016-07-22</time>
+        <time datetime="2017-05-04T13:25:21.000Z">2017-05-04</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
+        <a href="/tags/java/" title="java">java</a> / 
+    
+        <a href="/tags/JDBC/" title="JDBC">JDBC</a> / 
+    
+        <a href="/tags/工具类/" title="工具类">工具类</a>
     
 
         </span>
@@ -562,16 +501,16 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                前言:单词去重在很多地方都会进行，其实这个就类似于wordcount。 需求说明:对指定的一个或者多个文本进行数据去重,需求输入一个或者多个文本，测试文本内容:输出的内容中单词没有重复,代码如下
+                关键字： 批量添加，JDBC批量更新，public void UpdateFileData(String sSQL, ArrayList<String[]> objParams)，JDBCTest
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-2.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/programme/jdbc-util.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-2.html" title="Hadoop入门案例（二） 单词去重">
+            <a href="http://dangluren.top/programme/jdbc-util.html" title="JDBC批量插入与更新工具类">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -584,26 +523,28 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        <a class="cat-link" href="/categories/programme/">programme</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hadoop/hadoop-example-1.html">
-    		Hadoop入门案例（一） wordcount
+    	<a href="http://dangluren.top/programme/java-awt-eventqueue-exception.html">
+    		异常Exception in thread -AWT-EventQueue-0- java.lang.NullPointerException
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2016-07-16T13:25:21.000Z">2016-07-16</time>
+        <time datetime="2017-05-04T13:25:21.000Z">2017-05-04</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/hadoop/" title="hadoop">hadoop</a>
+        <a href="/tags/java/" title="java">java</a> / 
+    
+        <a href="/tags/Exception/" title="Exception">Exception</a>
     
 
         </span>
@@ -612,16 +553,119 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>个人感想：<br>虽然现在一直用的是Spark，但是由于目前公司是将Hadoop的程序转移到Spark，这个过程需要用到hadoop，加上现在大多数的大数据平台依旧还是使用的MapReduce的编程模型，所以MapReduce也应该是比较熟悉才行。并且，一般的大数据学习，都是从一些分布式计算框架开始看起，MapReduce一般都是必学的内容，接下来几篇文章，不讲述原理（因为原理网上太多了），只记录一些非常简单，但却非常实用应用案例，以便以后自己查看阅读<br>
+                更新UI等操作时异常，类似于Android中的更新ui一样，ui线程相当于主线程，再对此进行直接更新，两个线程事物会冲突报这个异常，在Android中使用的是handle的方法，同理,类似于，在java 界面编程上，我们把其他的线程放在一个队列当中，我们称这个队列为消息队列，可以使用如下方法，把更新UI的操作，放在下面的run方法中去。 这样，就实现了消息队列的方式。最后由主线程有序的处理这些消息事件
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-1.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/programme/java-awt-eventqueue-exception.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hadoop/hadoop-example-1.html" title="Hadoop入门案例（一） wordcount">
+            <a href="http://dangluren.top/programme/java-awt-eventqueue-exception.html" title="异常Exception in thread -AWT-EventQueue-0- java.lang.NullPointerException">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/programme/">programme</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/programme/scala-higher-order-functions.html">
+    		scala高阶函数学习
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-05-01T13:25:21.000Z">2017-05-01</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/scala/" title="scala">scala</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>参考文章<br><a href="http://www.cnblogs.com/wzm-xu/p/4063814.html" target="_blank" rel="external">http://www.cnblogs.com/wzm-xu/p/4063814.html</a><br><a href="http://www.cnblogs.com/wzm-xu/p/4064389.html" target="_blank" rel="external">http://www.cnblogs.com/wzm-xu/p/4064389.html</a>  </p>
+<h1 id="scala高阶函数上"><a href="#scala高阶函数上" class="headerlink" title="scala高阶函数上"></a>scala高阶函数上</h1><p>高阶函数是函数式编程里面一个非常重要的特色，所谓的高阶函数，就是以其它函数作为参数的函数。</p>
+<p>下面以一个小例子演示Scala的高阶函数特性，非常有意思，也非常强大。</p>
+<p>首先看这么一个程序：<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/programme/scala-higher-order-functions.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/programme/scala-higher-order-functions.html" title="scala高阶函数学习">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/programme/">programme</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/programme/scala-collect.html">
+    		scala集合
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-04-29T13:25:21.000Z">2017-04-29</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/scala/" title="scala">scala</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                本文参考至scala编程，菜鸟教程，然后将自己的判断以及重要方法的提取， 解释， 合并。在 Scala 中， 字符串的类型实际上是 Java String，它本身没有 String 类。在 Scala 中，String 是一个不可变的对象，所以该对象不可被修改。这就意味着你如果修改字符串就会产生一个新的字符串对象
+            
+            <p class="more">
+                <a href="http://dangluren.top/programme/scala-collect.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/programme/scala-collect.html" title="scala集合">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -632,7 +676,7 @@
 
     
     <nav class="page-navigator">
-        <a class="extend prev" rel="prev" href="/page/4/">前一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">后一页</a>
+        <a class="extend prev" rel="prev" href="/page/4/">前一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">后一页</a>
     </nav>
     
 
@@ -651,7 +695,12 @@
     
     <li>
         <a href="/categories/hadoop/">大数据</a>
-        <span class="badge">(40)</span>
+        <span class="badge">(43)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/linux/">linux</a>
+        <span class="badge">(5)</span>
     </li>
     
     <li>
@@ -661,12 +710,12 @@
     
     <li>
         <a href="/categories/hadoop/hadoop/">hadoop</a>
-        <span class="badge">(9)</span>
+        <span class="badge">(11)</span>
     </li>
     
     <li>
         <a href="/categories/programme/">programme</a>
-        <span class="badge">(10)</span>
+        <span class="badge">(12)</span>
     </li>
     
     <li>
@@ -676,21 +725,21 @@
     
     <li>
         <a href="/categories/架构/">架构</a>
-        <span class="badge">(3)</span>
+        <span class="badge">(21)</span>
     </li>
     
     <li>
         <a href="/categories/hadoop/spark/">spark</a>
-        <span class="badge">(22)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
-        <span class="badge">(2)</span>
+        <span class="badge">(23)</span>
     </li>
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -703,29 +752,37 @@
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
+    <a class="tag-item" href="/tags/大数据/" title="大数据">大数据 (4)</a>
+  
+    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (11)</a>
+  
+    <a class="tag-item" href="/tags/yarn/" title="yarn">yarn (2)</a>
+  
+    <a class="tag-item" href="/tags/linux/" title="linux">linux (7)</a>
+  
     <a class="tag-item" href="/tags/hdfs/" title="hdfs">hdfs (8)</a>
   
-    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (9)</a>
-  
-    <a class="tag-item" href="/tags/java/" title="java">java (8)</a>
+    <a class="tag-item" href="/tags/java/" title="java">java (15)</a>
   
     <a class="tag-item" href="/tags/JDBC/" title="JDBC">JDBC (1)</a>
   
     <a class="tag-item" href="/tags/工具类/" title="工具类">工具类 (1)</a>
   
-    <a class="tag-item" href="/tags/linux/" title="linux">linux (2)</a>
-  
     <a class="tag-item" href="/tags/crontab/" title="crontab">crontab (1)</a>
   
-    <a class="tag-item" href="/tags/Netty/" title="Netty">Netty (1)</a>
-  
-    <a class="tag-item" href="/tags/spark/" title="spark">spark (22)</a>
+    <a class="tag-item" href="/tags/Netty/" title="Netty">Netty (2)</a>
   
     <a class="tag-item" href="/tags/netty/" title="netty">netty (1)</a>
   
-    <a class="tag-item" href="/tags/hive/" title="hive">hive (1)</a>
+    <a class="tag-item" href="/tags/spark/" title="spark">spark (23)</a>
   
-    <a class="tag-item" href="/tags/大数据/" title="大数据">大数据 (1)</a>
+    <a class="tag-item" href="/tags/架构/" title="架构">架构 (1)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (3)</a>
+  
+    <a class="tag-item" href="/tags/Hexo/" title="Hexo">Hexo (1)</a>
+  
+    <a class="tag-item" href="/tags/hive/" title="hive">hive (1)</a>
   
     <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
@@ -733,11 +790,11 @@
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
+    <a class="tag-item" href="/tags/zookeeper/" title="zookeeper">zookeeper (9)</a>
+  
     <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (2)</a>
   
     <a class="tag-item" href="/tags/剑指向offer/" title="剑指向offer">剑指向offer (1)</a>
-  
-    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
   
     <a class="tag-item" href="/tags/笔试题/" title="笔试题">笔试题 (1)</a>
   
@@ -748,6 +805,8 @@
     <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/xml解析/" title="xml解析">xml解析 (1)</a>
+  
+    <a class="tag-item" href="/tags/资源/" title="资源">资源 (1)</a>
   
 </div>
     </section>

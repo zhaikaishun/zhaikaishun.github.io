@@ -1,5 +1,5 @@
 ﻿---
-title: 浅谈分布式服务协调技术 Zookeeper
+title: zookeeper Curator框架简单使用
 date: 2018-01-02 21:25:21
 tags: [zookeeper]
 categories: [架构]

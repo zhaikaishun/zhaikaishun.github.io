@@ -136,21 +136,21 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/架构/netty3.html">
-    		Netty入门三之最佳实践
+    	<a href="http://dangluren.top/架构/zookeeper9.html">
+    		浅谈分布式服务协调技术 Zookeeper
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-08-07T13:25:21.000Z">2017-08-07</time>
+        <time datetime="2018-01-02T13:25:21.000Z">2018-01-02</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/java/" title="java">java</a>
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
     
 
         </span>
@@ -159,17 +159,18 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>关键字 最佳实践： 数据通信，心跳检测</p>
-<p>代码在 <a href="https://github.com/zhaikaishun/NettyTutorial" target="_blank" rel="external">https://github.com/zhaikaishun/NettyTutorial</a> 代码在SocketIO_03下<br>
+                <p>github： <a href="https://github.com/zhaikaishun/zookeeper_tutorial" target="_blank" rel="external">https://github.com/zhaikaishun/zookeeper_tutorial</a>  </p>
+<hr>
+<h2 id="Curator框架的目的"><a href="#Curator框架的目的" class="headerlink" title="Curator框架的目的"></a>Curator框架的目的</h2><p>官网首页介绍是 Guava is to Java what Curator is to Xookeeper ，为了更好的实现java操作zookeeper服务器，后来出现了Curator框架，非常的强大，目前已经是Apache的顶级项目，里面提供了更多丰富的操作，例如session超时重连、主从选举、分布式计算器、分布式锁等等适用于各种复杂zookeeper场景的API封装。<br>Maven依赖<br>jar包下载<br>都去官网下载，<a href="http://curator.apache.org/" target="_blank" rel="external">http://curator.apache.org/</a><br>
             
             <p class="more">
-                <a href="http://dangluren.top/架构/netty3.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/架构/zookeeper9.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/架构/netty3.html" title="Netty入门三之最佳实践">
+            <a href="http://dangluren.top/架构/zookeeper9.html" title="浅谈分布式服务协调技术 Zookeeper">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -187,21 +188,21 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/架构/netty2.html">
-    		Netty入门二 之解编码
+    	<a href="http://dangluren.top/架构/zookeeper8.html">
+    		zookeeper的zkclient的使用简介
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-08-03T13:25:21.000Z">2017-08-03</time>
+        <time datetime="2017-12-29T13:25:21.000Z">2017-12-29</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/netty/" title="netty">netty</a>
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
     
 
         </span>
@@ -210,17 +211,29 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>关键字：Netty解编码，JBoss Marshalling，  </p>
-<p>代码在 <a href="https://github.com/zhaikaishun/NettyTutorial" target="_blank" rel="external">https://github.com/zhaikaishun/NettyTutorial</a> 在SocketIO_02  kaishun.netty.serial下 </p>
+                <p>github： <a href="https://github.com/zhaikaishun/zookeeper_tutorial" target="_blank" rel="external">https://github.com/zhaikaishun/zookeeper_tutorial</a></p>
+<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Zookeeper的原生API，就之前的那一些，用起来还是比较麻烦的，所以，有些工程师对原生的API接口进行了封装，简化了ZK的复杂性。  </p>
+<ol>
+<li>创建客户端的方法： ZKClient(Arguments)  </li>
+</ol>
+<ul>
+<li>参数1：zkServer zookeeper服务器的地址，用”,”分割</li>
+<li>参数2：sessionTimeout超时回话，为毫秒，默认是30000ms</li>
+<li>参数3：connectionTimeOut 连接超时会话  </li>
+<li>参数4：IZKConnection接口的实现类</li>
+<li>参数5：zkSerializer 兹定于序列化实现  </li>
+</ul>
+<p>需要引入zkclient的jar包，自行百度即可<br>
             
             <p class="more">
-                <a href="http://dangluren.top/架构/netty2.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/架构/zookeeper8.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/架构/netty2.html" title="Netty入门二 之解编码">
+            <a href="http://dangluren.top/架构/zookeeper8.html" title="zookeeper的zkclient的使用简介">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -238,21 +251,21 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/架构/netty1.html">
-    		Netty入门一
+    	<a href="http://dangluren.top/架构/zookeeper7.html">
+    		zookeeper的ACL
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-08-01T13:25:21.000Z">2017-08-01</time>
+        <time datetime="2017-12-28T13:25:21.000Z">2017-12-28</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/Netty/" title="Netty">Netty</a>
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
     
 
         </span>
@@ -261,16 +274,64 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>关键字： Netty简介，Netty实现通信的步骤，绑定多个端口，TCP粘包、拆包问题，DellmiterBasedFrameDecoder(自定义分隔符)， FixedLengthFrameDecoder(定长)</p>
-<p>代码在 <a href="https://github.com/zhaikaishun/NettyTutorial" target="_blank" rel="external">https://github.com/zhaikaishun/NettyTutorial</a>  下的socketIO02</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
+                <h2 id="什么是ACL"><a href="#什么是ACL" class="headerlink" title="什么是ACL"></a>什么是ACL</h2><p>ACL  叫做Access Control List，ACL（访问控制列表）,例如linux中的文件系统中就有ACL，传统的文件系统中，ACL分为两个维度，一个是属组，一个是权限。 子目录/文件默认继承父目录的ACL。而在Zookeeper中，node的ACL是没有继承关系的，是独立控制的。Zookeeper的ACL，可以从三个维度来理解：一是scheme; 二是user; 三是permission。<br>
             
             <p class="more">
-                <a href="http://dangluren.top/架构/netty1.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/架构/zookeeper7.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/架构/netty1.html" title="Netty入门一">
+            <a href="http://dangluren.top/架构/zookeeper7.html" title="zookeeper的ACL">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/架构/">架构</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/架构/zookeeper6.html">
+    		zookeeper分布式锁思路（无代码）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-12-21T13:25:21.000Z">2017-12-21</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="什么是分布式锁"><a href="#什么是分布式锁" class="headerlink" title="什么是分布式锁"></a>什么是分布式锁</h2><p>想必大家肯定很熟悉多线程之间的锁，他们属于同一个jvm，才能实现资源的共享，保证数据一致性，但是，如果在分布式的机器中，我们如何保证数据的一致性呢，这里就需要用到分布式锁的问题。<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/架构/zookeeper6.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/架构/zookeeper6.html" title="zookeeper分布式锁思路（无代码）">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
                 
@@ -285,26 +346,26 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/programme/">programme</a>
+        <a class="cat-link" href="/categories/架构/">架构</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/programme/java-rmi.html">
-    		java本地调用cmd，shell命令，远程调用Linux执行命令方法总结
+    	<a href="http://dangluren.top/架构/zookeeper5.html">
+    		zookeeper的watch（原生API）
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-07-20T13:25:21.000Z">2017-07-20</time>
+        <time datetime="2017-12-20T13:25:21.000Z">2017-12-20</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/java/" title="java">java</a>
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
     
 
         </span>
@@ -313,14 +374,16 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>有时候经常会碰到需要远程调用Linux或者本地调用Linux或者本地调用cmd的一些命令，最近小结了一下这几种用法<br>
+                <p>github: <a href="https://github.com/zhaikaishun/zookeeper_tutorial" target="_blank" rel="external">https://github.com/zhaikaishun/zookeeper_tutorial</a></p>
+<hr>
+<h2 id="Zookeeper的watcher事件"><a href="#Zookeeper的watcher事件" class="headerlink" title="Zookeeper的watcher事件"></a>Zookeeper的watcher事件</h2><p>zookeeper有watch事件，是<strong>一次性触发</strong>的，当watch监视的数据发生变化时，通知设置了该watch的client，即watcher。<br>同样，其watcher是监听数据发生了某些变化，那就一定会有对应的事件类型，和状态类型。<br>
             
             <p class="more">
-                <a href="http://dangluren.top/programme/java-rmi.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/架构/zookeeper5.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/programme/java-rmi.html" title="java本地调用cmd，shell命令，远程调用Linux执行命令方法总结">
+            <a href="http://dangluren.top/架构/zookeeper5.html" title="zookeeper的watch（原生API）">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
@@ -335,28 +398,26 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/programme/">programme</a>
+        <a class="cat-link" href="/categories/架构/">架构</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/programme/xml-io-util.html">
-    		java本地常用IO操作
+    	<a href="http://dangluren.top/架构/zookeeper4.html">
+    		操作zookeeper之原生API的基本操作
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-07-10T13:25:21.000Z">2017-07-10</time>
+        <time datetime="2017-12-10T13:25:21.000Z">2017-12-10</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/java/" title="java">java</a> / 
-    
-        <a href="/tags/io/" title="io">io</a>
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
     
 
         </span>
@@ -365,14 +426,14 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <h2 id="BufferWriter"><a href="#BufferWriter" class="headerlink" title="BufferWriter"></a>BufferWriter</h2>
+                <p><strong>关键字：</strong> java原生API，创建连接，创建节点同步方式，获取节点信息，获取子节点信息，修改节点的值<br>，判断节点是否存在，删除节点，Zookeeper创建删除等节点的异步方式<br>java惭怍zooleeper，一种是原生API，一种是zkclient方式，一种是curator框架操作<br>github： <a href="https://github.com/zhaikaishun/zookeeper_tutorial" target="_blank" rel="external">https://github.com/zhaikaishun/zookeeper_tutorial</a></p>
             
             <p class="more">
-                <a href="http://dangluren.top/programme/xml-io-util.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/架构/zookeeper4.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/programme/xml-io-util.html" title="java本地常用IO操作">
+            <a href="http://dangluren.top/架构/zookeeper4.html" title="操作zookeeper之原生API的基本操作">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
@@ -387,26 +448,26 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/programme/">programme</a>
+        <a class="cat-link" href="/categories/架构/">架构</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/programme/java-read-jarfile.html">
-    		jar读取资源配置文件，jar包内包外，以及包内读取目录的方法
+    	<a href="http://dangluren.top/架构/zookeeper3.html">
+    		搭建zookeeper集群
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-07-06T13:25:21.000Z">2017-07-06</time>
+        <time datetime="2017-11-25T13:25:21.000Z">2017-11-25</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/java/" title="java">java</a>
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
     
 
         </span>
@@ -415,16 +476,120 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>java程序打成jar包后，经常碰到一些资源文件找不到等问题，最近总结了一下之前用到的几种获取路径、资源文件的方法</p>
+                <p>Zookeeper环境搭建  </p>
+<p>前期准备：<br>由于Zookeeper需要先安装java</p>
+<p>机器： 三台测试机器<br>192.168.1.31<br>192.168.1.32<br>192.168.1.33  </p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
             
             <p class="more">
-                <a href="http://dangluren.top/programme/java-read-jarfile.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/架构/zookeeper3.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/programme/java-read-jarfile.html" title="jar读取资源配置文件，jar包内包外，以及包内读取目录的方法">
+            <a href="http://dangluren.top/架构/zookeeper3.html" title="搭建zookeeper集群">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/架构/">架构</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/架构/zookeeper2.html">
+    		zookeeper简介
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-11-20T13:25:21.000Z">2017-11-20</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="zookeeper简介"><a href="#zookeeper简介" class="headerlink" title="zookeeper简介"></a>zookeeper简介</h2><p>zookeeper主要是一个分布式服务协调框架，实现同步服务，配置维护和命名服务等分布式应用。是一个高性能的分布式数据一致性解决方案。<br>zookeeper是一个高可用的分布式管理与协调框架，给予ZAB算法（原子消息广播协议）的实现。该框架能很好的保证分布式环境中数据的一致性。也正是由于这样的特性，使得zookeeper成为了解决分布式一致性问题的利器。<br><strong>顺序一致性</strong> 从客户端发起的事物请求，最终将严格按照其发起的顺序被应用的zookeeper中去<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/架构/zookeeper2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/架构/zookeeper2.html" title="zookeeper简介">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/架构/">架构</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/架构/zookeeper1.html">
+    		浅谈分布式服务协调技术 Zookeeper
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-11-10T13:25:21.000Z">2017-11-10</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/zookeeper/" title="zookeeper">zookeeper</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Google的三篇论文影响了很多很多人，也影响了很多很多系统。这三篇论文一直是分布式领域传阅的经典。根据MapReduce，于是我们有了Hadoop；根据GFS，于是我们有了HDFS；根据BigTable，于是我们有了HBase。而在这三篇论文里都提及Google的一个Lock Service —— Chubby，哦，于是我们有了Zookeeper。</p>
+<p>随着大数据的火热，Hxx们已经变得耳熟能详，现在作为一个开发人员如果都不知道这几个名词出门都好像不好意思跟人打招呼。但实际上对我们这些非大数据开发人员而言，Zookeeper是比Hxx们可能接触到更多的一个基础服务。但是，无奈的是它一直默默的位于二线，从来没有Hxx们那么耀眼。那么到底什么是Zookeeper呢？Zookeeper可以用来干什么？我们将如何使用Zookeeper？Zookeeper又是怎么实现的？<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/架构/zookeeper1.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/架构/zookeeper1.html" title="浅谈分布式服务协调技术 Zookeeper">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -442,23 +607,25 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/hive-1.2.2-install.html">
-    		hive 1.2.2安装 教程
+    	<a href="http://dangluren.top/hadoop/hadoop/yarn-vmemory-over.html">
+    		Container is running beyond virtual memory limits. Current usage- 611.1 MB of 1 GB physical memory u
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-07-01T13:25:21.000Z">2017-07-01</time>
+        <time datetime="2017-10-25T13:25:21.000Z">2017-10-25</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/hive/" title="hive">hive</a> / 
+        <a href="/tags/大数据/" title="大数据">大数据</a> / 
     
-        <a href="/tags/大数据/" title="大数据">大数据</a>
+        <a href="/tags/hadoop/" title="hadoop">hadoop</a> / 
+    
+        <a href="/tags/yarn/" title="yarn">yarn</a>
     
 
         </span>
@@ -467,236 +634,18 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>关键字：hive 1.2.2 安装，hive配置</p>
-<h1 id="安装前提："><a href="#安装前提：" class="headerlink" title="安装前提："></a>安装前提：</h1><ol>
-<li>安装好了hadoop，hadoop的集群搭建：<a href="http://blog.csdn.net/t1dmzks/article/details/68958562" target="_blank" rel="external">http://blog.csdn.net/t1dmzks/article/details/68958562</a>  </li>
-<li>安装好了mysql： mysql的编译安装（yum安装） <a href="http://blog.csdn.net/t1dmzks/article/details/71374740" target="_blank" rel="external">http://blog.csdn.net/t1dmzks/article/details/71374740</a></li>
-</ol>
+                <p>hadoop 在 yarn 上运行时报的虚拟内存错误，或者是物理内存不够错误</p>
+<h2 id="异常显示"><a href="#异常显示" class="headerlink" title="异常显示"></a>异常显示</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Container [pid=100287,containerID=container_1513249052998_0007_01_000009] is </div><div class="line">running beyond virtual memory limits. Current usage: 611.1 MB of 1 GB physical</div><div class="line">memory used; 4.9 GB of 3 GB virtual memory used. Killing container.</div></pre></td></tr></table></figure>
+<p>但是后面任务可能还是可以正常的运行的<br>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/hive-1.2.2-install.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/hadoop/hadoop/yarn-vmemory-over.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/hive-1.2.2-install.html" title="hive 1.2.2安装 教程">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/programme/">programme</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/programme/xml-parse1.html">
-    		解析XML文件的几种方式
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-06-26T13:25:21.000Z">2017-06-26</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/java/" title="java">java</a> / 
-    
-        <a href="/tags/xml解析/" title="xml解析">xml解析</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>虽然更喜欢用json,但是xml更灵活，在配置文件的时候更方便</p>
-<h2 id="要用SAXRead需要的jar包"><a href="#要用SAXRead需要的jar包" class="headerlink" title="要用SAXRead需要的jar包"></a>要用SAXRead需要的jar包</h2><p>dom4j-1.6.1.jar, jaxen-1.1-beta-10.jar</p>
-<h2 id="XML文件格式如下"><a href="#XML文件格式如下" class="headerlink" title="XML文件格式如下"></a>XML文件格式如下</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;  </div><div class="line">  <span class="comment">&lt;!-- </span></div><div class="line"><span class="comment">  tablename保存数据表的名称</span></div><div class="line"><span class="comment">  fieldname保存字段名称， type对应的是字段的属性，都必须得有</span></div><div class="line"><span class="comment">    --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tables</span>&gt;</span>  </div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">tablename</span>=<span class="string">"people"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"age"</span> <span class="attr">type</span>=<span class="string">"int"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">splitsign</span> <span class="attr">rule</span>=<span class="string">","</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">tablename</span>=<span class="string">"book"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"price"</span> <span class="attr">type</span>=<span class="string">"int"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">splitsign</span> <span class="attr">rule</span>=<span class="string">"."</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">tablename</span>=<span class="string">"cat"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"color"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"category"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">splitsign</span> <span class="attr">rule</span>=<span class="string">" "</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">tablename</span>=<span class="string">"people1"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"age"</span> <span class="attr">type</span>=<span class="string">"int"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"sex"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">splitsign</span> <span class="attr">rule</span>=<span class="string">","</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="tag">&lt;/<span class="name">tables</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="读取所有的表名称"><a href="#读取所有的表名称" class="headerlink" title="读取所有的表名称"></a>读取所有的表名称</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> String configPath=<span class="string">"conf/config_table.xml"</span>;</div><div class="line">		<span class="comment">/**</span></div><div class="line"><span class="comment">		 * </span></div><div class="line"><span class="comment">		 * <span class="doctag">@return</span> an arrayList tableList</span></div><div class="line"><span class="comment">		 * <span class="doctag">@throws</span> DocumentException</span></div><div class="line"><span class="comment">		 */</span></div><div class="line">	    <span class="function"><span class="keyword">public</span> ArrayList <span class="title">getTableName</span><span class="params">()</span> <span class="keyword">throws</span> DocumentException</span>&#123;</div><div class="line">	    	ArrayList&lt;String&gt; tableNameArray = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">	        </div><div class="line">	        SAXReader reader = <span class="keyword">new</span> SAXReader();  </div><div class="line">	          </div><div class="line">	        Document document = reader.read(<span class="keyword">new</span> File(configPath));  </div><div class="line">	        </div><div class="line">	        String xpathtable = <span class="string">"//tables//table"</span>;</div><div class="line">	        List&lt;String&gt; list = document.selectNodes(xpathtable);</div><div class="line">	        Iterator iter = list.iterator();</div><div class="line">	        <span class="keyword">while</span>(iter.hasNext())&#123;</div><div class="line">	        	Element element = (Element) iter.next();</div><div class="line">	        	tableNameArray.add(element.attribute(<span class="number">0</span>).getValue());</div><div class="line">	        	      	</div><div class="line">	        &#125;</div><div class="line">	        <span class="keyword">return</span> tableNameArray;</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">``` </div><div class="line"></div><div class="line">##  根据表名称，获取所有的字段以及属性</div><div class="line">```java</div><div class="line"> <span class="comment">/**</span></div><div class="line"><span class="comment">	     * <span class="doctag">@param</span> table name</span></div><div class="line"><span class="comment">	     * <span class="doctag">@return</span>	an String[] String[0] is field, String[1] is sttribute</span></div><div class="line"><span class="comment">	     * <span class="doctag">@throws</span> DocumentException</span></div><div class="line"><span class="comment">	     */</span></div><div class="line">	    <span class="keyword">public</span> String[] getFieldAndAttr(String tablename) <span class="keyword">throws</span> DocumentException&#123;</div><div class="line">	        <span class="comment">// Initialize table field</span></div><div class="line">	    	String fieldString = <span class="string">""</span>;</div><div class="line">	    	<span class="comment">// Initialize table attribute</span></div><div class="line">	        String attrString=<span class="string">""</span>;</div><div class="line">	        <span class="comment">// Initialize the split sign</span></div><div class="line">	        String splitsignString = <span class="string">""</span>;</div><div class="line">	        </div><div class="line">	        String[] tableFieldAndAttr=<span class="keyword">null</span>;</div><div class="line">	    	</div><div class="line">	        SAXReader reader = <span class="keyword">new</span> SAXReader();  </div><div class="line">	        Document document = reader.read(<span class="keyword">new</span> File(configPath));  </div><div class="line">	        </div><div class="line">	        String xpath = <span class="string">"//tables//table[@tablename='"</span>+tablename+<span class="string">"']//fieldname"</span>;</div><div class="line">	        List&lt;String&gt; list = document.selectNodes(xpath);</div><div class="line">	        Iterator iter = list.iterator();</div><div class="line">	        <span class="keyword">while</span>(iter.hasNext())&#123;</div><div class="line">	        	Element element = (Element) iter.next();</div><div class="line">	        	<span class="comment">// connect the field</span></div><div class="line">	        	fieldString = fieldString+element.attribute(<span class="number">0</span>).getValue()+ <span class="string">" "</span>;</div><div class="line">	        	<span class="comment">// connect the attribute</span></div><div class="line">	        	attrString = attrString+element.attribute(<span class="number">1</span>).getValue()+ <span class="string">" "</span>;</div><div class="line">	        &#125;</div><div class="line">	        <span class="comment">// remove the last character</span></div><div class="line">	        fieldString = fieldString.substring(<span class="number">0</span>,fieldString.length()-<span class="number">1</span>);</div><div class="line">	        attrString = attrString.substring(<span class="number">0</span>,attrString.length()-<span class="number">1</span>);</div><div class="line">	        </div><div class="line">	        String xpathSplit = <span class="string">"//tables//table[@tablename='"</span>+tablename+<span class="string">"']//splitsign"</span>;</div><div class="line">	        List&lt;String&gt; signlist = document.selectNodes(xpathSplit);</div><div class="line">	        Iterator splititer = signlist.iterator();</div><div class="line">	        <span class="keyword">while</span>(splititer.hasNext())&#123;</div><div class="line">	        	Element splitElement = (Element) splititer.next();</div><div class="line">	        	splitsignString = splitsignString+splitElement.attribute(<span class="number">0</span>).getValue();</div><div class="line">	        &#125;</div><div class="line">	 </div><div class="line">	        tableFieldAndAttr = <span class="keyword">new</span> String[]&#123;fieldString,attrString,splitsignString&#125;;</div><div class="line">	        <span class="keyword">return</span> tableFieldAndAttr;</div><div class="line">	    </div><div class="line">	    &#125;  </div><div class="line">```  </div><div class="line"></div><div class="line">## 另外介绍一下XMLConfiguration, 将所有的字段以及属性放入到map中, 使用XMLConfiguration</div><div class="line">需要引入的jar包commons-configuration-<span class="number">1.0</span>.jar,</div></pre></td></tr></table></figure>
-<p>package teststring;</p>
-<p>import org.apache.commons.configuration.ConfigurationException;<br>import org.apache.commons.configuration.XMLConfiguration;</p>
-<p>import java.util.HashMap;<br>import java.util.Iterator;<br>import java.util.Map;</p>
-<p>/**</p>
-<ul>
-<li><p>Created by Administrator on 2017/3/21.<br>*/<br>public class TestConf {</p>
-<p> public static void main(String[] args) {</p>
-<pre><code>Map&lt;String,Object&gt; dataMap=new HashMap&lt;String,Object&gt;();
-try {
-    XMLConfiguration config = new XMLConfiguration(&quot;conf/datawatch_config.xml&quot;);
-    config.setEncoding(&quot;UTF-8&quot;);
-    config.setDelimiterParsingDisabled(true);
-    Iterator&lt;String&gt; iter = config.getKeys();
-    while (iter.hasNext())
-    {
-        String key = iter.next().toString();
-        dataMap.put(key, config.getProperty(key));
-    }
-
-} catch (ConfigurationException e) {
-    e.printStackTrace();
-}
-</code></pre><p> }<br>}</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## XMLconfig的XPATH的使用, 使用XPATH解析， xpath是我比较喜欢的一种解析方式</div><div class="line">```xml</div><div class="line">&lt;comm&gt;</div><div class="line">  &lt;data&gt;</div><div class="line">    &lt;name&gt;zks&lt;/name&gt;</div><div class="line">   &lt;age&gt;24&lt;/age&gt;</div><div class="line">  &lt;/data&gt;</div><div class="line">  &lt;data&gt;</div><div class="line">    &lt;name&gt;skz&lt;/name&gt;</div><div class="line">    &lt;age&gt;23&lt;/age&gt;</div><div class="line">  &lt;/data&gt;</div><div class="line">&lt;/comm&gt;</div></pre></td></tr></table></figure>
-<p>需要引入的jar包 commons-jxpath-1.3.jar,<br>commons-configuration-1.0.jar<br>其中 <a href="http://commons.apache.org/proper/commons-jxpath/download_jxpath.cgi" target="_blank" rel="external">commos-jaxpath-1.3下载地址</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> XMLConfiguration config = new XMLConfiguration(&quot;conf/datawatch_config.xml&quot;);</div><div class="line"> //注意下面的两句话，必须这样才能使用xpath去解析</div><div class="line">XPathExpressionEngine xPathExpressionEngine = new XPathExpressionEngine();</div><div class="line">config.setExpressionEngine(xPathExpressionEngine);</div><div class="line">System.out.println(config.getString(&quot;data[1]/name&quot;));</div><div class="line">System.out.println(config.getString(&quot;data[2]/name&quot;));</div><div class="line">System.out.println(config.getString(&quot;data[name=&apos;skz&apos;]/age&quot;));</div></pre></td></tr></table></figure></p>
-<p>将会输出<br>zks<br>skz<br>23  </p>
-<p>更多XPATH解析方法参考 菜鸟教程  </p>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>xml如下</p>
-<pre><code class="xml"><span class="tag">&lt;<span class="name">comm</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">data</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">name</span>&gt;</span>zks<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">age</span>&gt;</span>24<span class="tag">&lt;/<span class="name">age</span>&gt;</span>
-   <span class="tag">&lt;<span class="name">sex</span>&gt;</span>man<span class="tag">&lt;/<span class="name">sex</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">data</span>&gt;</span>
-  <span class="tag">&lt;<span class="name">data</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">name</span>&gt;</span>skz<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">age</span>&gt;</span>23<span class="tag">&lt;/<span class="name">age</span>&gt;</span>
-  <span class="tag">&lt;/<span class="name">data</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">comm</span>&gt;</span>
-</code></pre>
-<p>如果我想得到第一个data下的所有的， 然后按照上面的，存入map中，怎么做呢， 我们可以得到data下的这个config，可以使用SubnodeConfiguration subnodeConfiguration = config.configurationAt(key),代码如下</p>
-<pre><code class="java"> SubnodeConfiguration subnodeConfiguration = config.configurationAt(<span class="string">"data[1]"</span>);
-<span class="comment">// 下面就可以用了</span>
- Iterator itea1 = subnodeConfiguration.getKeys();
-                <span class="keyword">while</span> (itea1.hasNext()){
-                    System.out.println(<span class="string">"iter.next().toString(): "</span>+itea1.next().toString());
-                     System.out.println(<span class="string">"conf.getProperty"</span>+subnodeConfiguration.getProperty(key));
-                }
-</code></pre>
-<p>参考自<a href="http://stackoverflow.com/questions/14388418/apache-commons-xmlconfiguration-how-to-fetch-a-list-of-objects-at-a-given-node" target="_blank" rel="external">stackoverflow</a> 和 <a href="http://commons.apache.org/proper/commons-configuration/userguide/howto_xml.html" target="_blank" rel="external">http://commons.apache.org/proper/commons-configuration/userguide/howto_xml.html</a>  </p>
-
-            
-            <p class="more">
-                <a href="http://dangluren.top/programme/xml-parse1.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/programme/xml-parse1.html" title="解析XML文件的几种方式">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/算法/">算法</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/算法/dynamic-programming-1.html">
-    		动态规划之基本概念
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-06-25T13:25:21.000Z">2017-06-25</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/算法/" title="算法">算法</a> / 
-    
-        <a href="/tags/动态规划/" title="动态规划">动态规划</a> / 
-    
-        <a href="/tags/数学/" title="数学">数学</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="怀念曾经"><a href="#怀念曾经" class="headerlink" title="怀念曾经"></a><strong>怀念曾经</strong></h2><p> 曾经大学学过的数学当中，最喜欢的就是高等数学和运筹学，不仅仅和自己兴趣有关，也和老师的敬业、以及负责性有关。运筹学，本就以实际例子为例讲解，模型设计极为巧妙，优化方法非常有趣，并且叫我们运筹学的老师年轻漂亮，教学效果还很好。所以虽然这么久了。我依然还记得很多里面的内容。由于最近工作碰到几个算法，属于道路优化相关，设计到了运筹学的一些知识，于是又花时间将将运筹学给看了一遍，突然发现运筹学博大精深，不仅仅在计算机中，在控制论，经济学，以及整个人生都存在，多年后再看运筹学，已经不是以前的只为考试了，慢慢体会到运筹学中动态规划的意义了，本文大多属于书上的内容，这里算是做做笔记把。 </p>
-            
-            <p class="more">
-                <a href="http://dangluren.top/算法/dynamic-programming-1.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/算法/dynamic-programming-1.html" title="动态规划之基本概念">
+            <a href="http://dangluren.top/hadoop/hadoop/yarn-vmemory-over.html" title="Container is running beyond virtual memory limits. Current usage- 611.1 MB of 1 GB physical memory u">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/算法/">算法</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/算法/offer-harvester.html">
-    		剑指offer前10题
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-06-16T13:25:21.000Z">2017-06-16</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/剑指向offer/" title="剑指向offer">剑指向offer</a> / 
-    
-        <a href="/tags/算法/" title="算法">算法</a> / 
-    
-        <a href="/tags/笔试题/" title="笔试题">笔试题</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h2><p>问题:<br>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数<br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/算法/offer-harvester.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/算法/offer-harvester.html" title="剑指offer前10题">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -707,7 +656,7 @@ try {
 
     
     <nav class="page-navigator">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">后一页</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">后一页</a>
     </nav>
     
 
@@ -726,7 +675,12 @@ try {
     
     <li>
         <a href="/categories/hadoop/">大数据</a>
-        <span class="badge">(40)</span>
+        <span class="badge">(43)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/linux/">linux</a>
+        <span class="badge">(5)</span>
     </li>
     
     <li>
@@ -736,12 +690,12 @@ try {
     
     <li>
         <a href="/categories/hadoop/hadoop/">hadoop</a>
-        <span class="badge">(9)</span>
+        <span class="badge">(11)</span>
     </li>
     
     <li>
         <a href="/categories/programme/">programme</a>
-        <span class="badge">(10)</span>
+        <span class="badge">(12)</span>
     </li>
     
     <li>
@@ -751,21 +705,21 @@ try {
     
     <li>
         <a href="/categories/架构/">架构</a>
-        <span class="badge">(3)</span>
+        <span class="badge">(21)</span>
     </li>
     
     <li>
         <a href="/categories/hadoop/spark/">spark</a>
-        <span class="badge">(22)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
-        <span class="badge">(2)</span>
+        <span class="badge">(23)</span>
     </li>
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -778,29 +732,37 @@ try {
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
+    <a class="tag-item" href="/tags/大数据/" title="大数据">大数据 (4)</a>
+  
+    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (11)</a>
+  
+    <a class="tag-item" href="/tags/yarn/" title="yarn">yarn (2)</a>
+  
+    <a class="tag-item" href="/tags/linux/" title="linux">linux (7)</a>
+  
     <a class="tag-item" href="/tags/hdfs/" title="hdfs">hdfs (8)</a>
   
-    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (9)</a>
-  
-    <a class="tag-item" href="/tags/java/" title="java">java (8)</a>
+    <a class="tag-item" href="/tags/java/" title="java">java (15)</a>
   
     <a class="tag-item" href="/tags/JDBC/" title="JDBC">JDBC (1)</a>
   
     <a class="tag-item" href="/tags/工具类/" title="工具类">工具类 (1)</a>
   
-    <a class="tag-item" href="/tags/linux/" title="linux">linux (2)</a>
-  
     <a class="tag-item" href="/tags/crontab/" title="crontab">crontab (1)</a>
   
-    <a class="tag-item" href="/tags/Netty/" title="Netty">Netty (1)</a>
-  
-    <a class="tag-item" href="/tags/spark/" title="spark">spark (22)</a>
+    <a class="tag-item" href="/tags/Netty/" title="Netty">Netty (2)</a>
   
     <a class="tag-item" href="/tags/netty/" title="netty">netty (1)</a>
   
-    <a class="tag-item" href="/tags/hive/" title="hive">hive (1)</a>
+    <a class="tag-item" href="/tags/spark/" title="spark">spark (23)</a>
   
-    <a class="tag-item" href="/tags/大数据/" title="大数据">大数据 (1)</a>
+    <a class="tag-item" href="/tags/架构/" title="架构">架构 (1)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (3)</a>
+  
+    <a class="tag-item" href="/tags/Hexo/" title="Hexo">Hexo (1)</a>
+  
+    <a class="tag-item" href="/tags/hive/" title="hive">hive (1)</a>
   
     <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
@@ -808,11 +770,11 @@ try {
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
+    <a class="tag-item" href="/tags/zookeeper/" title="zookeeper">zookeeper (9)</a>
+  
     <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (2)</a>
   
     <a class="tag-item" href="/tags/剑指向offer/" title="剑指向offer">剑指向offer (1)</a>
-  
-    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
   
     <a class="tag-item" href="/tags/笔试题/" title="笔试题">笔试题 (1)</a>
   
@@ -823,6 +785,8 @@ try {
     <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/xml解析/" title="xml解析">xml解析 (1)</a>
+  
+    <a class="tag-item" href="/tags/资源/" title="资源">资源 (1)</a>
   
 </div>
     </section>

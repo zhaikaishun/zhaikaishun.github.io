@@ -130,26 +130,26 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        <a class="cat-link" href="/categories/programme/">programme</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-9.html">
-    		spark RDD算子（九）之基本的Action操作 first, take, collect, count, countByValue, reduce, aggregate, fold,top
+    	<a href="http://dangluren.top/programme/java-rmi.html">
+    		java本地调用cmd，shell命令，远程调用Linux执行命令方法总结
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-03-28T13:25:21.000Z">2017-03-28</time>
+        <time datetime="2017-07-20T13:25:21.000Z">2017-07-20</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/spark/" title="spark">spark</a>
+        <a href="/tags/java/" title="java">java</a>
     
 
         </span>
@@ -158,16 +158,16 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <h1 id="first"><a href="#first" class="headerlink" title="first"></a><strong>first</strong></h1><p>返回第一个元素<br><strong>scala</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">scala&gt; <span class="keyword">val</span> rdd = sc.parallelize(<span class="type">List</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">3</span>))</div><div class="line"></div><div class="line">scala&gt; rdd.first()</div><div class="line">res1: <span class="type">Int</span> = <span class="number">1</span></div></pre></td></tr></table></figure></p>
+                <p>有时候经常会碰到需要远程调用Linux或者本地调用Linux或者本地调用cmd的一些命令，最近小结了一下这几种用法<br>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-9.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/programme/java-rmi.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-9.html" title="spark RDD算子（九）之基本的Action操作 first, take, collect, count, countByValue, reduce, aggregate, fold,top">
+            <a href="http://dangluren.top/programme/java-rmi.html" title="java本地调用cmd，shell命令，远程调用Linux执行命令方法总结">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -180,26 +180,28 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        <a class="cat-link" href="/categories/programme/">programme</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-8.html">
-    		spark RDD算子（八）之键值对关联操作 subtractByKey, join, rightOuterJoin, leftOuterJoin
+    	<a href="http://dangluren.top/programme/xml-io-util.html">
+    		java本地常用IO操作
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-03-18T13:25:21.000Z">2017-03-18</time>
+        <time datetime="2017-07-10T13:25:21.000Z">2017-07-10</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/spark/" title="spark">spark</a>
+        <a href="/tags/java/" title="java">java</a> / 
+    
+        <a href="/tags/io/" title="io">io</a>
     
 
         </span>
@@ -208,18 +210,16 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <p>先从spark-learning中的一张图大致了解其功能<br><img src="http://i1.piimg.com/567571/1ccee438414f9c6f.png" alt=""></p>
-<h1 id="subtractByKey"><a href="#subtractByKey" class="headerlink" title="subtractByKey"></a><strong>subtractByKey</strong></h1><p><strong>函数定义</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def subtractByKey[W](other: RDD[(K, W)])(implicit arg0: ClassTag[W]): RDD[(K, V)]</div><div class="line"></div><div class="line">def subtractByKey[W](other: RDD[(K, W)], numPartitions: Int)(implicit arg0: ClassTag[W]): RDD[(K, V)]</div><div class="line"></div><div class="line">def subtractByKey[W](other: RDD[(K, W)], p: Partitioner)(implicit arg0: ClassTag[W]): RDD[(K, V)]</div></pre></td></tr></table></figure></p>
-<p>类似于subtrac，删掉 RDD 中键与 other RDD 中的键相同的元素<br>
+                <h2 id="BufferWriter"><a href="#BufferWriter" class="headerlink" title="BufferWriter"></a>BufferWriter</h2>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-8.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/programme/xml-io-util.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-8.html" title="spark RDD算子（八）之键值对关联操作 subtractByKey, join, rightOuterJoin, leftOuterJoin">
+            <a href="http://dangluren.top/programme/xml-io-util.html" title="java本地常用IO操作">
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -232,26 +232,26 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        <a class="cat-link" href="/categories/programme/">programme</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-7.html">
-    		spark RDD算子（七）之键值对分组操作 groupByKey，cogroup
+    	<a href="http://dangluren.top/programme/java-read-jarfile.html">
+    		jar读取资源配置文件，jar包内包外，以及包内读取目录的方法
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-03-07T13:25:21.000Z">2017-03-07</time>
+        <time datetime="2017-07-06T13:25:21.000Z">2017-07-06</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/spark/" title="spark">spark</a>
+        <a href="/tags/java/" title="java">java</a>
     
 
         </span>
@@ -260,66 +260,14 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <h1 id="groupByKey"><a href="#groupByKey" class="headerlink" title="groupByKey"></a><strong>groupByKey</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def groupByKey(): RDD[(K, Iterable[V])]</div><div class="line"></div><div class="line">def groupByKey(numPartitions: Int): RDD[(K, Iterable[V])]</div><div class="line"></div><div class="line">def groupByKey(partitioner: Partitioner): RDD[(K, Iterable[V])]</div></pre></td></tr></table></figure>
-<p>groupByKey会将RDD[key,value] 按照相同的key进行分组，形成RDD[key,Iterable[value]]的形式， 有点类似于sql中的groupby，例如类似于mysql中的group_concat<br>例如这个例子， 我们对学生的成绩进行分组<br>
+                <p>java程序打成jar包后，经常碰到一些资源文件找不到等问题，最近总结了一下之前用到的几种获取路径、资源文件的方法</p>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-7.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/programme/java-read-jarfile.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-7.html" title="spark RDD算子（七）之键值对分组操作 groupByKey，cogroup">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-6.html">
-    		spark RDD算子（六）之键值对聚合操作reduceByKey，foldByKey，排序操作sortByKey
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-03-06T13:25:21.000Z">2017-03-06</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/spark/" title="spark">spark</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h1 id="reduceByKey"><a href="#reduceByKey" class="headerlink" title="reduceByKey"></a><strong>reduceByKey</strong></h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def reduceByKey(func: (V, V) =&gt; V): RDD[(K, V)]</div><div class="line"></div><div class="line">def reduceByKey(func: (V, V) =&gt; V, numPartitions: Int): RDD[(K, V)]</div><div class="line"></div><div class="line">def reduceByKey(partitioner: Partitioner, func: (V, V) =&gt; V): RDD[(K, V)]</div></pre></td></tr></table></figure>
-<p>接收一个函数，按照相同的key进行reduce操作，类似于scala的reduce的操作<br>例如RDD {(1, 2), (3, 4), (3, 6)}进行reduce<br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-6.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-6.html" title="spark RDD算子（六）之键值对聚合操作reduceByKey，foldByKey，排序操作sortByKey">
+            <a href="http://dangluren.top/programme/java-read-jarfile.html" title="jar读取资源配置文件，jar包内包外，以及包内读取目录的方法">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
                 
@@ -339,21 +287,23 @@
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-5.html">
-    		spark RDD算子（五）之键值对聚合操作 combineByKey
+    	<a href="http://dangluren.top/hadoop/hive-1.2.2-install.html">
+    		hive 1.2.2安装 教程
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-03-05T13:25:21.000Z">2017-03-05</time>
+        <time datetime="2017-07-01T13:25:21.000Z">2017-07-01</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
             
     
-        <a href="/tags/spark/" title="spark">spark</a>
+        <a href="/tags/大数据/" title="大数据">大数据</a> / 
+    
+        <a href="/tags/hive/" title="hive">hive</a>
     
 
         </span>
@@ -362,225 +312,18 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <h1 id="combineByKey"><a href="#combineByKey" class="headerlink" title="combineByKey"></a><strong>combineByKey</strong></h1><p>聚合数据一般在集中式数据比较方便，如果涉及到分布式的数据集，该如何去实现呢。这里介绍一下combineByKey, 这个是各种聚集操作的鼻祖，应该要好好了解一下,<a href="http://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.rdd.PairRDDFunctions" target="_blank" rel="external">参考scala API</a><br>
+                <p>关键字：hive 1.2.2 安装，hive配置</p>
+<h1 id="安装前提："><a href="#安装前提：" class="headerlink" title="安装前提："></a>安装前提：</h1><ol>
+<li>安装好了hadoop，hadoop的集群搭建：<a href="http://blog.csdn.net/t1dmzks/article/details/68958562" target="_blank" rel="external">http://blog.csdn.net/t1dmzks/article/details/68958562</a>  </li>
+<li>安装好了mysql： mysql的编译安装（yum安装） <a href="http://blog.csdn.net/t1dmzks/article/details/71374740" target="_blank" rel="external">http://blog.csdn.net/t1dmzks/article/details/71374740</a></li>
+</ol>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-5.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/hadoop/hive-1.2.2-install.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-5.html" title="spark RDD算子（五）之键值对聚合操作 combineByKey">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-4.html">
-    		spark RDD算子（四）之创建键值对RDD mapToPair flatMapToPair
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-03-04T13:25:21.000Z">2017-03-04</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/spark/" title="spark">spark</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h1 id="mapToPair"><a href="#mapToPair" class="headerlink" title="mapToPair"></a><strong>mapToPair</strong></h1><p>举例，在F:\sparktest\sample.txt 文件的内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">aa bb cc aa aa aa dd dd ee ee ee ee </div><div class="line">ff aa bb zks</div><div class="line">ee kks</div><div class="line">ee  zz zks</div></pre></td></tr></table></figure></p>
-<p>将每一行的第一个单词作为键，1 作为value创建pairRDD<br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-4.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-4.html" title="spark RDD算子（四）之创建键值对RDD mapToPair flatMapToPair">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-3.html">
-    		spark RDD算子（三） distinct，union，intersection，subtract，cartesian
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-03-03T13:25:21.000Z">2017-03-03</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/spark/" title="spark">spark</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p><strong>spark伪集合</strong><br>尽管 RDD 本身不是严格意义上的集合，但它也支持许多数学上的集合操作，比如合并和相交操作, 下图展示了这四种操作<br><img src="http://i2.muimg.com/567571/cf473cf5e7f9f270.png" alt="RDD伪集合"><br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-3.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-3.html" title="spark RDD算子（三） distinct，union，intersection，subtract，cartesian">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-2.html">
-    		spark RDD算子（二） filter,map ,flatMap
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-03-02T13:25:21.000Z">2017-03-02</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/spark/" title="spark">spark</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>先来一张spark快速大数据中的图片进行快速入门，后面有更详细的例子<br><img src="http://i4.buimg.com/567571/9bf09aff04368678.png" alt="spark-map"><br>
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-2.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-2.html" title="spark RDD算子（二） filter,map ,flatMap">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-1.html">
-    		spark RDD算子（一）  parallelize，makeRDD，textFile
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        kaishun 发表于
-        <time datetime="2017-03-01T13:25:21.000Z">2017-03-01</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/spark/" title="spark">spark</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h2 id="parallelize"><a href="#parallelize" class="headerlink" title="parallelize"></a>parallelize</h2><p>调用SparkContext 的 parallelize()，将一个存在的集合，变成一个RDD，这种方式试用于学习spark和做一些spark的测试<br><strong>scala版本</strong><br>def parallelize<a href="seq: Seq[T], numSlices: Int = defaultParallelism" target="_blank" rel="external">T</a>(implicit arg0: ClassTag[T]): RDD[T]  </p>
-<ul>
-<li>第一个参数一是一个 Seq集合</li>
-<li>第二个参数是分区数</li>
-<li>返回的是RDD[T]<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">scala&gt; sc.parallelize(<span class="type">List</span>(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>))</div><div class="line">res1: org.apache.spark.rdd.<span class="type">RDD</span>[<span class="type">String</span>] = <span class="type">ParallelCollectionRDD</span>[<span class="number">1</span>] at parallelize at &lt;console&gt;:<span class="number">22</span></div><div class="line">```  </div><div class="line">&lt;!-- more --&gt;</div><div class="line">**java版本**     </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">parallelize</span></span>[<span class="type">T</span>](list : java.util.<span class="type">List</span>[<span class="type">T</span>], numSlices : scala.<span class="type">Int</span>) : org.apache.spark.api.java.<span class="type">JavaRDD</span>[<span class="type">T</span>] = &#123; <span class="comment">/* compiled code */</span> &#125; </div><div class="line">- 第一个参数是一个<span class="type">List</span>集合</div><div class="line">- 第二个参数是一个分区，可以默认</div><div class="line">- 返回的是一个<span class="type">JavaRDD</span>[<span class="type">T</span>]</div><div class="line">java版本只能接收<span class="type">List</span>的集合</div><div class="line">```java</div><div class="line"><span class="type">JavaRDD</span>&lt;<span class="type">String</span>&gt; javaStringRDD = sc.parallelize(<span class="type">Arrays</span>.asList(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>));</div><div class="line">```  </div><div class="line"></div><div class="line">## makeRDD</div><div class="line">只有scala版本的才有makeRDD  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeRDD</span></span>[<span class="type">T</span>](seq : scala.<span class="type">Seq</span>[<span class="type">T</span>], numSlices : scala.<span class="type">Int</span> = &#123; <span class="comment">/* compiled code */</span> &#125;)  </div><div class="line">跟parallelize类似</div><div class="line">```scala</div><div class="line">sc.makeRDD(<span class="type">List</span>(<span class="string">"shenzhen"</span>, <span class="string">"is a beautiful city"</span>))</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="textFile"><a href="#textFile" class="headerlink" title="textFile"></a>textFile</h2><p>调用SparkContext.textFile()方法，从外部存储中读取数据来创建 RDD<br>例如在我本地F:\dataexample\wordcount\input下有个sample.txt文件，文件随便写了点内容，我需要将里面的内容读取出来创建RDD<br><strong>scala版本</strong><br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lines = sc.textFile(<span class="string">"F:\\dataexample\\wordcount\\input"</span>)</div></pre></td></tr></table></figure></p>
-<p><strong>java版本</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> JavaRDD&lt;String&gt; lines = sc.textFile(<span class="string">"F:\\dataexample\\wordcount\\input"</span>);</div><div class="line">```  </div><div class="line">注: textFile支持分区，支持模式匹配，例如把F:\\dataexample\\wordcount\\目录下inp开头的给转换成RDD</div><div class="line">```scala</div><div class="line">var lines = sc.textFile(<span class="string">"F:\\dataexample\\wordcount\\inp*"</span>)</div></pre></td></tr></table></figure></p>
-<p>多个路径可以使用逗号分隔，例如<br><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> lines = sc.textFile(<span class="string">"dir1,dir2"</span>,<span class="number">3</span>)</div></pre></td></tr></table></figure></p>
-
-            
-            <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-rdd-1.html">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-rdd-1.html" title="spark RDD算子（一）  parallelize，makeRDD，textFile">
+            <a href="http://dangluren.top/hadoop/hive-1.2.2-install.html" title="hive 1.2.2安装 教程">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
                 
@@ -595,20 +338,286 @@
     <header>
         <!-- 标签这有且只能显示一个 -->
         
-        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        <a class="cat-link" href="/categories/programme/">programme</a>
         
         <!-- 文章标题 -->
         
     <h3 class="post-title">
-    	<a href="http://dangluren.top/hadoop/spark/spark-exception.html">
-    		spark lost task 异常笔记
+    	<a href="http://dangluren.top/programme/xml-parse1.html">
+    		解析XML文件的几种方式
     	</a>
     </h3>
 
     </header>
     <p class="post-meta">
         kaishun 发表于
-        <time datetime="2017-02-05T13:25:21.000Z">2017-02-05</time>
+        <time datetime="2017-06-26T13:25:21.000Z">2017-06-26</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/java/" title="java">java</a> / 
+    
+        <a href="/tags/xml解析/" title="xml解析">xml解析</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>虽然更喜欢用json,但是xml更灵活，在配置文件的时候更方便</p>
+<h2 id="要用SAXRead需要的jar包"><a href="#要用SAXRead需要的jar包" class="headerlink" title="要用SAXRead需要的jar包"></a>要用SAXRead需要的jar包</h2><p>dom4j-1.6.1.jar, jaxen-1.1-beta-10.jar</p>
+<h2 id="XML文件格式如下"><a href="#XML文件格式如下" class="headerlink" title="XML文件格式如下"></a>XML文件格式如下</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;  </div><div class="line">  <span class="comment">&lt;!-- </span></div><div class="line"><span class="comment">  tablename保存数据表的名称</span></div><div class="line"><span class="comment">  fieldname保存字段名称， type对应的是字段的属性，都必须得有</span></div><div class="line"><span class="comment">    --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">tables</span>&gt;</span>  </div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">tablename</span>=<span class="string">"people"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"age"</span> <span class="attr">type</span>=<span class="string">"int"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">splitsign</span> <span class="attr">rule</span>=<span class="string">","</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">tablename</span>=<span class="string">"book"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"price"</span> <span class="attr">type</span>=<span class="string">"int"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">splitsign</span> <span class="attr">rule</span>=<span class="string">"."</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">tablename</span>=<span class="string">"cat"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"color"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"category"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">splitsign</span> <span class="attr">rule</span>=<span class="string">" "</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	</div><div class="line">	<span class="tag">&lt;<span class="name">table</span> <span class="attr">tablename</span>=<span class="string">"people1"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"name"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"age"</span> <span class="attr">type</span>=<span class="string">"int"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldname</span> <span class="attr">fieldname</span>=<span class="string">"sex"</span> <span class="attr">type</span>=<span class="string">"string"</span>/&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">splitsign</span> <span class="attr">rule</span>=<span class="string">","</span> /&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">table</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="tag">&lt;/<span class="name">tables</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="读取所有的表名称"><a href="#读取所有的表名称" class="headerlink" title="读取所有的表名称"></a>读取所有的表名称</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> String configPath=<span class="string">"conf/config_table.xml"</span>;</div><div class="line">		<span class="comment">/**</span></div><div class="line"><span class="comment">		 * </span></div><div class="line"><span class="comment">		 * <span class="doctag">@return</span> an arrayList tableList</span></div><div class="line"><span class="comment">		 * <span class="doctag">@throws</span> DocumentException</span></div><div class="line"><span class="comment">		 */</span></div><div class="line">	    <span class="function"><span class="keyword">public</span> ArrayList <span class="title">getTableName</span><span class="params">()</span> <span class="keyword">throws</span> DocumentException</span>&#123;</div><div class="line">	    	ArrayList&lt;String&gt; tableNameArray = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div><div class="line">	        </div><div class="line">	        SAXReader reader = <span class="keyword">new</span> SAXReader();  </div><div class="line">	          </div><div class="line">	        Document document = reader.read(<span class="keyword">new</span> File(configPath));  </div><div class="line">	        </div><div class="line">	        String xpathtable = <span class="string">"//tables//table"</span>;</div><div class="line">	        List&lt;String&gt; list = document.selectNodes(xpathtable);</div><div class="line">	        Iterator iter = list.iterator();</div><div class="line">	        <span class="keyword">while</span>(iter.hasNext())&#123;</div><div class="line">	        	Element element = (Element) iter.next();</div><div class="line">	        	tableNameArray.add(element.attribute(<span class="number">0</span>).getValue());</div><div class="line">	        	      	</div><div class="line">	        &#125;</div><div class="line">	        <span class="keyword">return</span> tableNameArray;</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">``` </div><div class="line"></div><div class="line">##  根据表名称，获取所有的字段以及属性</div><div class="line">```java</div><div class="line"> <span class="comment">/**</span></div><div class="line"><span class="comment">	     * <span class="doctag">@param</span> table name</span></div><div class="line"><span class="comment">	     * <span class="doctag">@return</span>	an String[] String[0] is field, String[1] is sttribute</span></div><div class="line"><span class="comment">	     * <span class="doctag">@throws</span> DocumentException</span></div><div class="line"><span class="comment">	     */</span></div><div class="line">	    <span class="keyword">public</span> String[] getFieldAndAttr(String tablename) <span class="keyword">throws</span> DocumentException&#123;</div><div class="line">	        <span class="comment">// Initialize table field</span></div><div class="line">	    	String fieldString = <span class="string">""</span>;</div><div class="line">	    	<span class="comment">// Initialize table attribute</span></div><div class="line">	        String attrString=<span class="string">""</span>;</div><div class="line">	        <span class="comment">// Initialize the split sign</span></div><div class="line">	        String splitsignString = <span class="string">""</span>;</div><div class="line">	        </div><div class="line">	        String[] tableFieldAndAttr=<span class="keyword">null</span>;</div><div class="line">	    	</div><div class="line">	        SAXReader reader = <span class="keyword">new</span> SAXReader();  </div><div class="line">	        Document document = reader.read(<span class="keyword">new</span> File(configPath));  </div><div class="line">	        </div><div class="line">	        String xpath = <span class="string">"//tables//table[@tablename='"</span>+tablename+<span class="string">"']//fieldname"</span>;</div><div class="line">	        List&lt;String&gt; list = document.selectNodes(xpath);</div><div class="line">	        Iterator iter = list.iterator();</div><div class="line">	        <span class="keyword">while</span>(iter.hasNext())&#123;</div><div class="line">	        	Element element = (Element) iter.next();</div><div class="line">	        	<span class="comment">// connect the field</span></div><div class="line">	        	fieldString = fieldString+element.attribute(<span class="number">0</span>).getValue()+ <span class="string">" "</span>;</div><div class="line">	        	<span class="comment">// connect the attribute</span></div><div class="line">	        	attrString = attrString+element.attribute(<span class="number">1</span>).getValue()+ <span class="string">" "</span>;</div><div class="line">	        &#125;</div><div class="line">	        <span class="comment">// remove the last character</span></div><div class="line">	        fieldString = fieldString.substring(<span class="number">0</span>,fieldString.length()-<span class="number">1</span>);</div><div class="line">	        attrString = attrString.substring(<span class="number">0</span>,attrString.length()-<span class="number">1</span>);</div><div class="line">	        </div><div class="line">	        String xpathSplit = <span class="string">"//tables//table[@tablename='"</span>+tablename+<span class="string">"']//splitsign"</span>;</div><div class="line">	        List&lt;String&gt; signlist = document.selectNodes(xpathSplit);</div><div class="line">	        Iterator splititer = signlist.iterator();</div><div class="line">	        <span class="keyword">while</span>(splititer.hasNext())&#123;</div><div class="line">	        	Element splitElement = (Element) splititer.next();</div><div class="line">	        	splitsignString = splitsignString+splitElement.attribute(<span class="number">0</span>).getValue();</div><div class="line">	        &#125;</div><div class="line">	 </div><div class="line">	        tableFieldAndAttr = <span class="keyword">new</span> String[]&#123;fieldString,attrString,splitsignString&#125;;</div><div class="line">	        <span class="keyword">return</span> tableFieldAndAttr;</div><div class="line">	    </div><div class="line">	    &#125;  </div><div class="line">```  </div><div class="line"></div><div class="line">## 另外介绍一下XMLConfiguration, 将所有的字段以及属性放入到map中, 使用XMLConfiguration</div><div class="line">需要引入的jar包commons-configuration-<span class="number">1.0</span>.jar,</div></pre></td></tr></table></figure>
+<p>package teststring;</p>
+<p>import org.apache.commons.configuration.ConfigurationException;<br>import org.apache.commons.configuration.XMLConfiguration;</p>
+<p>import java.util.HashMap;<br>import java.util.Iterator;<br>import java.util.Map;</p>
+<p>/**</p>
+<ul>
+<li><p>Created by Administrator on 2017/3/21.<br>*/<br>public class TestConf {</p>
+<p> public static void main(String[] args) {</p>
+<pre><code>Map&lt;String,Object&gt; dataMap=new HashMap&lt;String,Object&gt;();
+try {
+    XMLConfiguration config = new XMLConfiguration(&quot;conf/datawatch_config.xml&quot;);
+    config.setEncoding(&quot;UTF-8&quot;);
+    config.setDelimiterParsingDisabled(true);
+    Iterator&lt;String&gt; iter = config.getKeys();
+    while (iter.hasNext())
+    {
+        String key = iter.next().toString();
+        dataMap.put(key, config.getProperty(key));
+    }
+
+} catch (ConfigurationException e) {
+    e.printStackTrace();
+}
+</code></pre><p> }<br>}</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">## XMLconfig的XPATH的使用, 使用XPATH解析， xpath是我比较喜欢的一种解析方式</div><div class="line">```xml</div><div class="line">&lt;comm&gt;</div><div class="line">  &lt;data&gt;</div><div class="line">    &lt;name&gt;zks&lt;/name&gt;</div><div class="line">   &lt;age&gt;24&lt;/age&gt;</div><div class="line">  &lt;/data&gt;</div><div class="line">  &lt;data&gt;</div><div class="line">    &lt;name&gt;skz&lt;/name&gt;</div><div class="line">    &lt;age&gt;23&lt;/age&gt;</div><div class="line">  &lt;/data&gt;</div><div class="line">&lt;/comm&gt;</div></pre></td></tr></table></figure>
+<p>需要引入的jar包 commons-jxpath-1.3.jar,<br>commons-configuration-1.0.jar<br>其中 <a href="http://commons.apache.org/proper/commons-jxpath/download_jxpath.cgi" target="_blank" rel="external">commos-jaxpath-1.3下载地址</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> XMLConfiguration config = new XMLConfiguration(&quot;conf/datawatch_config.xml&quot;);</div><div class="line"> //注意下面的两句话，必须这样才能使用xpath去解析</div><div class="line">XPathExpressionEngine xPathExpressionEngine = new XPathExpressionEngine();</div><div class="line">config.setExpressionEngine(xPathExpressionEngine);</div><div class="line">System.out.println(config.getString(&quot;data[1]/name&quot;));</div><div class="line">System.out.println(config.getString(&quot;data[2]/name&quot;));</div><div class="line">System.out.println(config.getString(&quot;data[name=&apos;skz&apos;]/age&quot;));</div></pre></td></tr></table></figure></p>
+<p>将会输出<br>zks<br>skz<br>23  </p>
+<p>更多XPATH解析方法参考 菜鸟教程  </p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>xml如下</p>
+<pre><code class="xml"><span class="tag">&lt;<span class="name">comm</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">data</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">name</span>&gt;</span>zks<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">age</span>&gt;</span>24<span class="tag">&lt;/<span class="name">age</span>&gt;</span>
+   <span class="tag">&lt;<span class="name">sex</span>&gt;</span>man<span class="tag">&lt;/<span class="name">sex</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">data</span>&gt;</span>
+  <span class="tag">&lt;<span class="name">data</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">name</span>&gt;</span>skz<span class="tag">&lt;/<span class="name">name</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">age</span>&gt;</span>23<span class="tag">&lt;/<span class="name">age</span>&gt;</span>
+  <span class="tag">&lt;/<span class="name">data</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">comm</span>&gt;</span>
+</code></pre>
+<p>如果我想得到第一个data下的所有的， 然后按照上面的，存入map中，怎么做呢， 我们可以得到data下的这个config，可以使用SubnodeConfiguration subnodeConfiguration = config.configurationAt(key),代码如下</p>
+<pre><code class="java"> SubnodeConfiguration subnodeConfiguration = config.configurationAt(<span class="string">"data[1]"</span>);
+<span class="comment">// 下面就可以用了</span>
+ Iterator itea1 = subnodeConfiguration.getKeys();
+                <span class="keyword">while</span> (itea1.hasNext()){
+                    System.out.println(<span class="string">"iter.next().toString(): "</span>+itea1.next().toString());
+                     System.out.println(<span class="string">"conf.getProperty"</span>+subnodeConfiguration.getProperty(key));
+                }
+</code></pre>
+<p>参考自<a href="http://stackoverflow.com/questions/14388418/apache-commons-xmlconfiguration-how-to-fetch-a-list-of-objects-at-a-given-node" target="_blank" rel="external">stackoverflow</a> 和 <a href="http://commons.apache.org/proper/commons-configuration/userguide/howto_xml.html" target="_blank" rel="external">http://commons.apache.org/proper/commons-configuration/userguide/howto_xml.html</a>  </p>
+
+            
+            <p class="more">
+                <a href="http://dangluren.top/programme/xml-parse1.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/programme/xml-parse1.html" title="解析XML文件的几种方式">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/算法/">算法</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/算法/dynamic-programming-1.html">
+    		动态规划之基本概念
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-06-25T13:25:21.000Z">2017-06-25</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/算法/" title="算法">算法</a> / 
+    
+        <a href="/tags/动态规划/" title="动态规划">动态规划</a> / 
+    
+        <a href="/tags/数学/" title="数学">数学</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="怀念曾经"><a href="#怀念曾经" class="headerlink" title="怀念曾经"></a><strong>怀念曾经</strong></h2><p> 曾经大学学过的数学当中，最喜欢的就是高等数学和运筹学，不仅仅和自己兴趣有关，也和老师的敬业、以及负责性有关。运筹学，本就以实际例子为例讲解，模型设计极为巧妙，优化方法非常有趣，并且叫我们运筹学的老师年轻漂亮，教学效果还很好。所以虽然这么久了。我依然还记得很多里面的内容。由于最近工作碰到几个算法，属于道路优化相关，设计到了运筹学的一些知识，于是又花时间将将运筹学给看了一遍，突然发现运筹学博大精深，不仅仅在计算机中，在控制论，经济学，以及整个人生都存在，多年后再看运筹学，已经不是以前的只为考试了，慢慢体会到运筹学中动态规划的意义了，本文大多属于书上的内容，这里算是做做笔记把。 </p>
+            
+            <p class="more">
+                <a href="http://dangluren.top/算法/dynamic-programming-1.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/算法/dynamic-programming-1.html" title="动态规划之基本概念">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/随笔/">随笔</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/随笔/mylife2.html">
+    		我为什么写博客
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-06-16T13:25:21.000Z">2017-06-16</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/随笔/" title="随笔">随笔</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="引入点"><a href="#引入点" class="headerlink" title="引入点"></a><strong>引入点</strong></h2><p>由于前几天天行vpn被封，都不知道如何访问google了，突然感觉没有google的世界是多么的恐怖，很是怀恋之前的vps，突然想到，曾经的大学舍友很喜欢捣鼓这个，就问了问还有没有代理的方法，哇，不问不知道，一问吓一跳，一年多不见，今天才知道肥羊竟然是这方面的高手，然后完美解决了我这里的问题：<br>肥羊的博客:    <a href="https://91vps.club/" target="_blank" rel="external">https://91vps.club/</a> – 怕是被封了<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/随笔/mylife2.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/随笔/mylife2.html" title="我为什么写博客">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/算法/">算法</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/算法/offer-harvester.html">
+    		剑指offer前10题
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-06-16T13:25:21.000Z">2017-06-16</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/算法/" title="算法">算法</a> / 
+    
+        <a href="/tags/剑指向offer/" title="剑指向offer">剑指向offer</a> / 
+    
+        <a href="/tags/笔试题/" title="笔试题">笔试题</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h2 id="二维数组中的查找"><a href="#二维数组中的查找" class="headerlink" title="二维数组中的查找"></a>二维数组中的查找</h2><p>问题:<br>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/算法/offer-harvester.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/算法/offer-harvester.html" title="剑指offer前10题">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-sql-dataType-transform.html">
+    		Spark Sql 编程式结构DataType转换 代码类小结
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-06-15T13:25:21.000Z">2017-06-15</time>
         &nbsp;&nbsp;
         <span class="post-tags">
             标签：
@@ -623,16 +632,67 @@
     <div class="post-content">
         <div class="post-excerpt">
             
-                <h1 id="Lost-task-java-lang-NullPointerException"><a href="#Lost-task-java-lang-NullPointerException" class="headerlink" title="Lost task java.lang.NullPointerException"></a>Lost task java.lang.NullPointerException</h1><p>Exception in thread “main” org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost): java.lang.NullPointerException<br>
+                <h2 id="it行业加班是普遍现象，千万不要和程序猿抱怨工作累！"><a href="#it行业加班是普遍现象，千万不要和程序猿抱怨工作累！" class="headerlink" title="it行业加班是普遍现象，千万不要和程序猿抱怨工作累！"></a><strong>it行业加班是普遍现象，千万不要和程序猿抱怨工作累！</strong></h2><p>曾经的一个在国企朋友向我抱怨，内容是这样的：<strong>“8点30过一分钟打卡就算迟到，5点30打卡就算早退，觉得太不公平了，工作太累了”</strong>，据我所知，该同学工作很轻松，每天基本就是盖盖章，谢谢报告等，每天能8点半上班，5点30还没到，公司都人都准备好东西排队打卡回家了。！！！！！有没有搞错，what’s the fuck，你向谁抱怨不好，竟然向程序猿抱怨工作累！！！  </p>
+<p>还一次，上个月高中几个在深圳的同学聚会，一个做证券，一个做药物研发，一个做财务管理的，就我一个程序猿。我们四个人自然而然的讨论到了工作。<br>
             
             <p class="more">
-                <a href="http://dangluren.top/hadoop/spark/spark-exception.html">阅读剩下更多</a>
+                <a href="http://dangluren.top/hadoop/spark/spark-sql-dataType-transform.html">阅读剩下更多</a>
             </p>
         </div>
         <div class="post-thumbnail" data-img="">
-            <a href="http://dangluren.top/hadoop/spark/spark-exception.html" title="spark lost task 异常笔记">
+            <a href="http://dangluren.top/hadoop/spark/spark-sql-dataType-transform.html" title="Spark Sql 编程式结构DataType转换 代码类小结">
                 
                     <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/hadoop/">大数据</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://dangluren.top/hadoop/spark/spark-rdd-tutorial.html">
+    		spark常用RDD算子 汇总（java和scala版本）
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        kaishun 发表于
+        <time datetime="2017-06-02T13:25:21.000Z">2017-06-02</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/spark/" title="spark">spark</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>github： <a href="https://github.com/zhaikaishun/spark_tutorial" target="_blank" rel="external">https://github.com/zhaikaishun/spark_tutorial</a><br>spark RDD的算子挺多，有时候如何灵活的使用，该如何用一下子想不起来，这一段时间将spark的算子如何使用的例子给记录了下来，下面是spark RDD 的一些常用算子的使用<br>这些算子包括有java的，也有scala的语言，由于精力有限，暂时没有python的，以后有空再加上吧<br>
+            
+            <p class="more">
+                <a href="http://dangluren.top/hadoop/spark/spark-rdd-tutorial.html">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://dangluren.top/hadoop/spark/spark-rdd-tutorial.html" title="spark常用RDD算子 汇总（java和scala版本）">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
                 
             </a>
         </div>
@@ -643,7 +703,7 @@
 
     
     <nav class="page-navigator">
-        <a class="extend prev" rel="prev" href="/archives/page/3/">前一页</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/5/">后一页</a>
+        <a class="extend prev" rel="prev" href="/archives/page/3/">前一页</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/5/">后一页</a>
     </nav>
     
 
@@ -660,7 +720,12 @@
     
     <li>
         <a href="/categories/hadoop/">大数据</a>
-        <span class="badge">(40)</span>
+        <span class="badge">(43)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/linux/">linux</a>
+        <span class="badge">(5)</span>
     </li>
     
     <li>
@@ -670,12 +735,12 @@
     
     <li>
         <a href="/categories/hadoop/hadoop/">hadoop</a>
-        <span class="badge">(9)</span>
+        <span class="badge">(11)</span>
     </li>
     
     <li>
         <a href="/categories/programme/">programme</a>
-        <span class="badge">(10)</span>
+        <span class="badge">(12)</span>
     </li>
     
     <li>
@@ -685,21 +750,21 @@
     
     <li>
         <a href="/categories/架构/">架构</a>
-        <span class="badge">(3)</span>
+        <span class="badge">(21)</span>
     </li>
     
     <li>
         <a href="/categories/hadoop/spark/">spark</a>
-        <span class="badge">(22)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/随笔/">随笔</a>
-        <span class="badge">(2)</span>
+        <span class="badge">(23)</span>
     </li>
     
     <li>
         <a href="/categories/算法/">算法</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/随笔/">随笔</a>
         <span class="badge">(2)</span>
     </li>
     
@@ -712,29 +777,37 @@
         <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   
+    <a class="tag-item" href="/tags/大数据/" title="大数据">大数据 (4)</a>
+  
+    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (11)</a>
+  
+    <a class="tag-item" href="/tags/yarn/" title="yarn">yarn (2)</a>
+  
+    <a class="tag-item" href="/tags/linux/" title="linux">linux (7)</a>
+  
     <a class="tag-item" href="/tags/hdfs/" title="hdfs">hdfs (8)</a>
   
-    <a class="tag-item" href="/tags/hadoop/" title="hadoop">hadoop (9)</a>
-  
-    <a class="tag-item" href="/tags/java/" title="java">java (8)</a>
+    <a class="tag-item" href="/tags/java/" title="java">java (15)</a>
   
     <a class="tag-item" href="/tags/JDBC/" title="JDBC">JDBC (1)</a>
   
     <a class="tag-item" href="/tags/工具类/" title="工具类">工具类 (1)</a>
   
-    <a class="tag-item" href="/tags/linux/" title="linux">linux (2)</a>
-  
     <a class="tag-item" href="/tags/crontab/" title="crontab">crontab (1)</a>
   
-    <a class="tag-item" href="/tags/Netty/" title="Netty">Netty (1)</a>
-  
-    <a class="tag-item" href="/tags/spark/" title="spark">spark (22)</a>
+    <a class="tag-item" href="/tags/Netty/" title="Netty">Netty (2)</a>
   
     <a class="tag-item" href="/tags/netty/" title="netty">netty (1)</a>
   
-    <a class="tag-item" href="/tags/hive/" title="hive">hive (1)</a>
+    <a class="tag-item" href="/tags/spark/" title="spark">spark (23)</a>
   
-    <a class="tag-item" href="/tags/大数据/" title="大数据">大数据 (1)</a>
+    <a class="tag-item" href="/tags/架构/" title="架构">架构 (1)</a>
+  
+    <a class="tag-item" href="/tags/算法/" title="算法">算法 (3)</a>
+  
+    <a class="tag-item" href="/tags/Hexo/" title="Hexo">Hexo (1)</a>
+  
+    <a class="tag-item" href="/tags/hive/" title="hive">hive (1)</a>
   
     <a class="tag-item" href="/tags/曲线拟合/" title="曲线拟合">曲线拟合 (1)</a>
   
@@ -742,11 +815,11 @@
   
     <a class="tag-item" href="/tags/scala/" title="scala">scala (3)</a>
   
+    <a class="tag-item" href="/tags/zookeeper/" title="zookeeper">zookeeper (9)</a>
+  
     <a class="tag-item" href="/tags/随笔/" title="随笔">随笔 (2)</a>
   
     <a class="tag-item" href="/tags/剑指向offer/" title="剑指向offer">剑指向offer (1)</a>
-  
-    <a class="tag-item" href="/tags/算法/" title="算法">算法 (2)</a>
   
     <a class="tag-item" href="/tags/笔试题/" title="笔试题">笔试题 (1)</a>
   
@@ -757,6 +830,8 @@
     <a class="tag-item" href="/tags/Exception/" title="Exception">Exception (1)</a>
   
     <a class="tag-item" href="/tags/xml解析/" title="xml解析">xml解析 (1)</a>
+  
+    <a class="tag-item" href="/tags/资源/" title="资源">资源 (1)</a>
   
 </div>
     </section>
